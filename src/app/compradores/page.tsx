@@ -28,7 +28,7 @@ export default function Customers() {
     useEffect(() => {
         fetch(`/api/pegarCompradores?id=${id}`)
         .then(res => res.json())
-        .then(data =>  { console.log(data),setCompradoresData(data); setTimeout(() => {
+        .then(data =>  { setCompradoresData(data); setTimeout(() => {
             setTotal(data.length)
         }, 300);})
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))

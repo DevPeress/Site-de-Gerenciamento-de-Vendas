@@ -1,1 +1,7 @@
-{}
+{
+  "/api/pegarCompradores/route": "app/api/pegarCompradores/route.js",
+  "/inicio/page": "app/inicio/page.js",
+  "/login/page": "app/login/page.js",
+  "/compradores/page": "app/compradores/page.js",
+  "/produtos/page": "app/produtos/page.js"
+}

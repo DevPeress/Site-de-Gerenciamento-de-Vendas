@@ -1,4 +1,3 @@
-import { Header } from "@/components/header";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,6 +7,6 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <Header/>
+    <></>
   );
 }

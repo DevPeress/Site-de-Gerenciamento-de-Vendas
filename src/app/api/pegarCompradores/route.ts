@@ -16,17 +16,21 @@ interface Usuarios {
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id");
+  const id = Number(searchParams.get("id"))
+
+  if (isNaN(id)) {
+    return new NextResponse("ID inválido", { status: 400 });
+  }
 
   try {
     const vendas = await prisma.vendas.findMany({
-      where: { idLoja: Number(id) }
+      where: { idLoja: id }
     })
 
     const compradores: Usuarios[] = await Promise.all(
       vendas.map(async (row) => {
         const usuario = await prisma.usuario.findUnique({
-          where: { id: Number(row.comprador) },
+          where: { id: row.comprador },
         });
 
         if (!usuario) throw new Error("Usuário não encontrado");
@@ -43,7 +47,10 @@ export async function GET(req: Request) {
     );
 
     return NextResponse.json(compradores);
-  } catch {
-    return new NextResponse("Erro ao encontrar dados", { status: 400 })
+  } catch(err) {
+    console.error("[GET Compradores]:", err)
+    return new NextResponse("Erro ao encontrar dados", { status: 500 })
+  } finally {
+    await prisma.$disconnect()
   }
 }
