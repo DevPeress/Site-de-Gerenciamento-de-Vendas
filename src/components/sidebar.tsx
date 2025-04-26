@@ -53,19 +53,17 @@ export function SideBar() {
                     const iconSrc = isActive ? item.on : item.off;
 
                     return (
-                        <div key={item.nome} className="flex relative w-4/5 h-10 items-center justify-center rounded-[.5vw] hover:scale-105">
-                            <Link href={pagina}>
-                                <Image
-                                    className="absolute w-5 left-5"
-                                    src={iconSrc}
-                                    alt={`Ícone para ${item.nome}`}
-                                    width={180}
-                                    height={38}
-                                    priority
-                                />
-                                <h1 className={`absolute left-12 text-[1vw] ${textColor}`}>{item.nome}</h1>
-                            </Link>
-                        </div>
+                        <Link key={item.nome} href={pagina} className="flex relative w-4/5 h-10 items-center justify-center rounded-[.5vw] hover:scale-110">
+                            <Image
+                                className="absolute w-5 left-5"
+                                src={iconSrc}
+                                alt={`Ícone para ${item.nome}`}
+                                width={180}
+                                height={38}
+                                priority
+                            />
+                            <h1 className={`absolute left-12 text-[1vw] ${textColor}`}>{item.nome}</h1>
+                        </Link>
                     );
                 })}
             </div>

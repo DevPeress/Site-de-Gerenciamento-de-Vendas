@@ -1,0 +1,41 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Notify } from './notify';
+
+interface Grafico {
+  name: string,
+  current: number,
+  previous: number
+}
+
+export function MyBarChart() {
+  // API PUXANDO O GRÁFICO PELA LOJA
+  const id = 1
+
+  const [data,setDados] = useState<Grafico[]>([])
+
+  useEffect(() => {
+    fetch(`/api/pegarGrafico?id=${id}`)
+    .then(res => res.json())
+    .then(data => setDados(data))
+    .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
+  }, []);
+
+  return (
+    <div className="flex absolute top-12 justify-center items-center w-full h-full">
+      <ResponsiveContainer width="95%" height="100%">
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="current" fill="#1D4ED8" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="previous" fill="#E5E7EB" radius={[4, 4, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}

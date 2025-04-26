@@ -100,7 +100,7 @@ export default function Customers() {
 
                         <tbody ref={tableRef}>
                             {CompradoresData.slice(lista-6,lista).map((item, index) => (
-                                <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] text-[.7vw] h-18">
+                                <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] text-[.7vw] h-18 hover:scale-101">
                                     <td>
                                         <Image
                                             className="relative w-8 top-2.5 left-2.5"

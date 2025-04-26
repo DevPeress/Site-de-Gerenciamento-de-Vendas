@@ -18,7 +18,6 @@ export async function GET(req: Request) {
     })
 
     const produtos = vendas.map(async (row) => {
-
         return {
           nome: row.produto,
           desc: row.desc
