@@ -21,7 +21,8 @@ export async function GET(req: Request) {
       budget: valores[0].budget,
       customers: valores[0].customers,
       task: valores[0].task,
-      total: valores[0].total
+      total: valores[0].total,
+      nome: valores[0].nome
     }
 
     return NextResponse.json(dados);

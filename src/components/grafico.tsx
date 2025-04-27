@@ -25,15 +25,14 @@ export function MyBarChart() {
 
   return (
     <div className="flex absolute top-12 justify-center items-center w-full h-full">
-      <ResponsiveContainer width="95%" height="100%">
+      <ResponsiveContainer width="95%" height="95%">
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Legend />
-          <Bar dataKey="current" fill="#1D4ED8" radius={[4, 4, 0, 0]} />
-          <Bar dataKey="previous" fill="#E5E7EB" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="Atual" fill="#1D4ED8" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="Previsto" fill="#E5E7EB" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

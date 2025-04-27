@@ -2,7 +2,7 @@
 
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
-import AuthGuard from "@/components/rota";
+import AuthGuard from "@/components/authguard";
 import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -27,6 +27,7 @@ export default function Customers() {
     const id = 1
 
     useEffect(() => {
+        document.title = "Compradores"
         fetch(`/api/pegarCompradores?id=${id}`)
         .then(res => res.json())
         .then(data =>  { setCompradoresData(data); setTimeout(() => {

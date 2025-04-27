@@ -1,5 +1,11 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+    title: '404',
+    description: 'Página não encontrada'
+}
 
 export default function NotFound() {
     return(

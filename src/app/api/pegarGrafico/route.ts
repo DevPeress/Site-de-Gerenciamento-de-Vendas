@@ -21,18 +21,18 @@ export async function GET(req: Request) {
 
   try {
     const dados = [
-        { name: '1 Aug', current: 16000, previous: 11000 },
-        { name: '2 Aug', current: 4000, previous: 19000 },
-        { name: '3 Aug', current: 17000, previous: 11000 },
-        { name: '4 Aug', current: 21000, previous: 23000 },
-        { name: '5 Aug', current: 22000, previous: 22000 },
-        { name: '6 Aug', current: 17500, previous: 19500 },
-        { name: '7 Aug', current: 17500, previous: 19500 },
-        { name: '8 Aug', current: 17500, previous: 19500 },
-        { name: '9 Aug', current: 17500, previous: 19500 },
-        { name: '10 Aug', current: 17500, previous: 19500 },
-        { name: '11 Aug', current: 17500, previous: 19500 },
-        { name: '12 Aug', current: 17500, previous: 19500 },
+        { name: 'Janeiro', Atual: 16000, Previsto: 11000 },
+        { name: 'Fevereiro', Atual: 4000, Previsto: 19000 },
+        { name: 'Maio', Atual: 17000, Previsto: 11000 },
+        { name: 'Abril', Atual: 21000, Previsto: 23000 },
+        { name: 'Março', Atual: 0, Previsto: 45000 },
+        { name: 'Junho', Atual: 0, Previsto: 35000 },
+        { name: 'Julho', Atual: 0, Previsto: 20000 },
+        { name: 'Agosto', Atual: 0, Previsto: 25000 },
+        { name: 'Setembro', Atual: 0, Previsto: 32000 },
+        { name: 'Outubro', Atual: 0, Previsto: 37500 },
+        { name: 'Novembro', Atual: 0, Previsto: 45000 },
+        { name: 'Dezembro', Atual: 0, Previsto: 50000 },
     ]
 
     return NextResponse.json(dados);

@@ -2,7 +2,7 @@
 
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
-import AuthGuard from "@/components/rota";
+import AuthGuard from "@/components/authguard";
 import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -18,6 +18,10 @@ export default function Products() {
     const voltar = () => setLista((prev => prev - 1 <= 0 ? 1 : prev - 1))   
 
     const [produtosData,setprodutosData] = useState<Produtos[]>([ ]) 
+
+    useEffect(() => {
+      document.title = "Produtos"
+    },[])
 
     const tableRef = useRef<HTMLTableSectionElement>(null);
     const Pesquisar = (texto: string) => {

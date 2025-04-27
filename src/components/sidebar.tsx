@@ -2,6 +2,8 @@
 import Image from "next/image" 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { Notify } from "./notify";
 
 interface Escolhas {
     nome: string,
@@ -12,6 +14,8 @@ interface Escolhas {
 export function SideBar() {
     const pathname = usePathname();
     const urlSemBarraInicial = pathname.replace(/^\/+/, '');
+    const [nome,setNome] = useState<string>('')
+    const id = 1
     
     const escolhas: Escolhas[] = [
         { nome: "Inicio", off: "dashboard-d.svg", on:"dashboard-a.svg" },
@@ -23,6 +27,22 @@ export function SideBar() {
         { nome: "Registrar", off: "register-d.svg", on:"register-a.svg" },
         { nome: "Erros", off: "error-d.svg", on:"error-a.svg" }
     ]
+
+    useEffect(() => {
+        const savedNome = localStorage.getItem('nome');
+
+        if (savedNome) {
+            setNome(savedNome);
+        } else {
+            fetch(`/api/pegarValores?id=${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setNome(data.nome);
+                localStorage.setItem('nome', data.nome);
+            })
+            .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"));
+        }
+    }, []);
 
     return(
         <main className="flex fixed items-center justify-center bg-[#111827] w-[14.583vw] h-full select-none">
@@ -39,7 +59,7 @@ export function SideBar() {
             </div>
 
             <div className="flex absolute top-30 bg-[rgb(255,255,255,0.04)] w-5/6 h-15 rounded items-center">
-                <h1 className="absolute top-2 left-5 text-[#FFFFFF] text-lg">Acme Inc</h1>
+                <h1 className="absolute top-2 left-5 text-[#FFFFFF] text-lg">{nome}</h1>
                 <h2 className="absolute top-8 left-5 text-[#9CA3AF] text-xs">Your tier: Premium</h2>
             </div>
             

@@ -3,7 +3,13 @@ import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { MyBarChart } from "@/components/grafico";
 import { LastCostumers } from "@/components/lastCostumers";
-import AuthGuard from "@/components/rota";
+import AuthGuard from "@/components/authguard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Ínicio',
+    description: 'Página inicial do projeto'
+}
 
 export default async function DashBoard() {
     let budget, customers, task, total = 0
@@ -21,10 +27,10 @@ export default async function DashBoard() {
     }
 
     const tipos = [
-        { n: "BUDGET", i: "budge.svg", v: budget },
-        { n: "TOTAL CUSTOMERS", i: "customers.svg", v: customers },
-        { n: "TASK PROGRESS", i: "task.svg", v: task },
-        { n: "TOTAL PROFIT", i: "profit.svg", v: total }
+        { n: "ORÇAMENTO", i: "budge.svg", v: budget },
+        { n: "CLIENTES TOTAIS", i: "customers.svg", v: customers },
+        { n: "PROGRESSO DA TAREFA", i: "task.svg", v: task },
+        { n: "LUCRO TOTAL", i: "profit.svg", v: total }
     ]
 
     return (
@@ -34,8 +40,8 @@ export default async function DashBoard() {
             <Pagina>
                 <div className="flex absolute left-[2.7085vw] top-1 w-[80vw] h-40 items-center justify-between select-none">
                     {tipos.map((item, index) => {
-                        const cifrao = item.n === "TASK PROGRESS" || item.n === "TOTAL CUSTOMERS" ? "" : "R$"
-                        const porc = item.n === "TASK PROGRESS" ? "%" : ""
+                        const cifrao = item.n === "PROGRESSO DA TAREFA" || item.n === "CLIENTES TOTAIS" ? "" : "R$"
+                        const porc = item.n === "PROGRESSO DA TAREFA" ? "%" : ""
 
                         return (
                             <div key={index} className="flex relative w-[22.5%] h-full bg-[#FFFFFF] rounded items-center justify-center">
@@ -55,12 +61,12 @@ export default async function DashBoard() {
                 </div>
 
                 <div className="flex absolute left-[2.7085vw] top-45 w-[80vw] h-2/5 bg-[#FFFFFF] rounded items-center justify-center select-none">
-                    <h1 className="absolute top-5 left-5 text-[#111827] text-[1vw] font-bold">Latest Sales</h1>
+                    <h1 className="absolute top-5 left-5 text-[#111827] text-[1vw] font-bold">ÚLTIMAS VENDAS</h1>
                     <MyBarChart />
                 </div>
 
                 <div className="flex absolute left-[2.7085vw] top-135 w-[80vw] h-[15vw] bg-[#FFFFFF] rounded items-center justify-center overflow-hidden">
-                    <h1 className="absolute top-5 left-5 text-[#111827] text-[1vw] font-bold select-none">Latest Orders</h1>
+                    <h1 className="absolute top-5 left-5 text-[#111827] text-[1vw] font-bold select-none">ÚLTIMOS PEDIDOS</h1>
 
                     <LastCostumers />
                 </div>
