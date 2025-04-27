@@ -292,12 +292,6 @@
   .top-45 {
     top: calc(var(--spacing) * 45);
   }
-  .top-48\.5 {
-    top: calc(var(--spacing) * 48.5);
-  }
-  .top-52 {
-    top: calc(var(--spacing) * 52);
-  }
   .top-55 {
     top: calc(var(--spacing) * 55);
   }
@@ -306,9 +300,6 @@
   }
   .top-60 {
     top: calc(var(--spacing) * 60);
-  }
-  .top-62 {
-    top: calc(var(--spacing) * 62);
   }
   .top-135 {
     top: calc(var(--spacing) * 135);

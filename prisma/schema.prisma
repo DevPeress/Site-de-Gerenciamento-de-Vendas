@@ -42,7 +42,7 @@ model Empresas {
   customers Int @default(0)
   task Int @default(0)
   total Int @default(0)
-  grafico String
+  grafico String @default({})
 }
 
 model Funcionarios {

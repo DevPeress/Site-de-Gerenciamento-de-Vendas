@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from '@prisma/client';
 import { Senhas } from "../senha";
+import { json } from "stream/consumers";
 
 const prisma = new PrismaClient();
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const email = searchParams.get("email")
-  const senha = searchParams.get("senhas")
+  const senha = searchParams.get("senha")
 
   if (!email) {
     return new NextResponse("Email inválido", { status: 400 });
@@ -26,10 +27,11 @@ export async function GET(req: Request) {
         return new NextResponse("Conta não encontrada", { status: 400 });
     }
 
-    const verify = Senhas("Check",senha,conta.senha)
+    const verify= await Senhas("Check",senha,conta.senha)
+
     return NextResponse.json(verify)
   } catch(err) {
-    console.error("[GET Verify Conta]:", err)
+    console.error("[GET Login]:", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })
   } finally {
     await prisma.$disconnect()

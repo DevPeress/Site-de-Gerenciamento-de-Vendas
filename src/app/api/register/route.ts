@@ -4,21 +4,21 @@ import { Senhas } from "../senha";
 
 const prisma = new PrismaClient();
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const email = searchParams.get("email")
-  const senha = searchParams.get("senhas")
+export async function POST(req: Request) {
+  const body = await req.json();
+  const { senha, email } = body;
 
-  if (!email) {
-    return new NextResponse("Email inválido", { status: 400 });
-  }
-
-  if (!senha) {
-    return new NextResponse("Senha inválido", { status: 400 });
+  if (!senha || !email) {
+    return new NextResponse("Erro ao cadastrar", { status: 400 });
   }
 
   try {
-    const senhaHash = Senhas("Hash", senha, "")
+    const senhaHash = await Senhas("Hash", senha, "");
+
+    if (typeof senhaHash !== "string") {
+      return new NextResponse("Erro ao gerar senha", { status: 500 });
+    }
+
     const user = await prisma.usuario.create({
         data: {
           nome: "Teste",
@@ -33,7 +33,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(user)
   } catch(err) {
-    console.error("[GET Verify Conta]:", err)
+    console.error("[PUT Register Conta]:", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })
   } finally {
     await prisma.$disconnect()

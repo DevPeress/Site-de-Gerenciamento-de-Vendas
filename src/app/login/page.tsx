@@ -39,7 +39,7 @@ export default function Login() {
             .then(data => { 
                 if (data) {
                     setEtapa("2")
-                    setMensagem("Inserir Email")
+                    setMensagem("Logar na Plataforma")
                 } else {
                     setEtapa("3")
                     setMensagem("Cadastrar na Plataforma")
@@ -53,13 +53,19 @@ export default function Login() {
 
     const verifyLogin = () => {
         if (emailV && senhaV) {
-            fetch(`/api/login?email=${email}?senha=${senha}`)
+            fetch(`/api/login?email=${email}&senha=${senha}`, {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                }
+            })
             .then(res => res.json())
             .then(data => { 
+                console.log(data)
                 if (data) {
                     router.push('/inicio');
                 } else {
-                    Notify("Erro, reinicie a página!")
+                    Notify("E-mail ou Senha estão incorretos!")
                 }
             })
             .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
@@ -70,7 +76,16 @@ export default function Login() {
 
     const verifyRegister = () => {
         if (emailV && senhaV) {
-            fetch(`/api/register?email=${email}?senha=${senha}`)
+            fetch("/api/register",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    senha,
+                    email
+                })
+            })
             .then(res => res.json())
             .then(data => { 
                 if (data) {
@@ -79,7 +94,7 @@ export default function Login() {
                     Notify("Erro ao criar os Dados!")
                 }
             })
-            .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
+            .catch((err) => Notify("Não foi cadastrar a conta! Recarregue a Página"))
         } else {
             Notify("E-mail ou senha estão incorretos!")
         }
