@@ -4,12 +4,6 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-interface Usuarios {
-    ordem: number,
-    comprador: string,
-    data: string,
-    status: number
-}
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -21,10 +15,12 @@ export async function GET(req: Request) {
 
   try {
     const vendas = await prisma.vendas.findMany({
-      where: { idLoja: id }
+      where: { idLoja: id },
+      orderBy: { id: 'desc' },
+      take: 3
     })
 
-    const compradores: Usuarios[] = await Promise.all(
+    const compradores = await Promise.all(
       vendas.map(async (row) => {
         const usuario = await prisma.usuario.findUnique({
           where: { id: row.comprador },
@@ -32,15 +28,11 @@ export async function GET(req: Request) {
 
         if (!usuario) throw new Error("Usuário não encontrado");
 
-        function getRandomIntInRange(min: number, max: number) {
-          return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
         return {
-          ordem: 1,
+          ordem: row.order,
           comprador: usuario.nome,
-          data: "12/04/2025",
-          status: getRandomIntInRange(1,3)
+          data: row.rg,
+          status: row.status
         };
       })
     );

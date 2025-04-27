@@ -13,14 +13,18 @@ export async function GET(req: Request) {
   }
 
   try {
-    const valores = {
-        budget: 1,
-        customers: 1,
-        task: 10,
-        total: 5
+    const valores = await prisma.empresas.findMany({
+      where: { idLoja: id }
+    })
+
+    const dados = {
+      budget: valores[0].budget,
+      customers: valores[0].customers,
+      task: valores[0].task,
+      total: valores[0].total
     }
 
-    return NextResponse.json(valores);
+    return NextResponse.json(dados);
   } catch(err) {
     console.error("[GET Pegar Valores]:", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })

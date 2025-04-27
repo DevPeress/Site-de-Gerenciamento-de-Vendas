@@ -2,6 +2,7 @@
 
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
+import AuthGuard from "@/components/rota";
 import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -66,6 +67,7 @@ export default function Customers() {
 
     return (
         <>
+            <AuthGuard />
             <SideBar />
             <Pagina> 
                 <h1 className="absolute top-5 left-[2.7085vw] text-[2vw] text-[#111827] select-none">Customers</h1>

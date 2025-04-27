@@ -1,12 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-    
-    const auth = true
-
     const { pathname } = request.nextUrl;
 
-    if ((pathname === '/' || pathname === '/login') && auth) {
+    if (pathname === '/') {
         return NextResponse.redirect(new URL('/inicio', request.url));
     }
 

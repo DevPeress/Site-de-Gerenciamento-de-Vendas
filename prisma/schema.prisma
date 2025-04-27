@@ -18,15 +18,35 @@ model Usuario {
 }
 
 model Vendas {
-  id Int @id
+  id Int @id @default(autoincrement())
   idLoja  Int
   comprador   Int
   rg  String
+  status Int @default(1)
+  order String
 }
 
 model Produtos {
-  id Int @id
+  id Int @id @default(autoincrement())
   idLoja  Int
   produto String
   desc String
+}
+
+model Empresas {
+  id Int @id @default(autoincrement())
+  idLoja  Int
+  nome String
+  budget Int @default(0)
+  customers Int @default(0)
+  task Int @default(0)
+  total Int @default(0)
+  grafico String
+}
+
+model Funcionarios {
+  id Int @id @default(autoincrement())
+  idLoja  Int
+  nome String
+  cargo String
 }

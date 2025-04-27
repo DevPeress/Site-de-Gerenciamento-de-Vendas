@@ -20,9 +20,6 @@ export function LastCostumers() {
     const id = 1
 
     const [dado,setDados] = useState<Usuarios[]>([])
-    const [infos,setInfos] = useState<Infos[]>([
-        { cor: "", nome: "" }
-    ])
 
     useEffect(() => {
         fetch(`/api/pegarUltimosPedidos?id=${id}`)
