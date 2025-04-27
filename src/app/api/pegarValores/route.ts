@@ -19,7 +19,7 @@ export async function GET(req: Request) {
         task: 10,
         total: 5
     }
-    console.log(valores)
+
     return NextResponse.json(valores);
   } catch(err) {
     console.error("[GET Pegar Valores]:", err)

@@ -5,10 +5,7 @@ import { MyBarChart } from "@/components/grafico";
 import { LastCostumers } from "@/components/lastCostumers";
 
 export default async function DashBoard() {
-    let budget = 0
-    let customers = 0
-    let task = 0
-    let total = 0
+    let budget, customers, task, total = 0
 
     let id = 1
 
@@ -22,68 +19,41 @@ export default async function DashBoard() {
         total = valores.total
     }
 
+    const tipos = [
+        { n: "BUDGET", i: "budge.svg", v: budget },
+        { n: "TOTAL CUSTOMERS", i: "customers.svg", v: customers },
+        { n: "TASK PROGRESS", i: "task.svg", v: task },
+        { n: "TOTAL PROFIT", i: "profit.svg", v: total }
+    ]
+
     return (
         <>
             <SideBar />
             <Pagina>
-                <div className="flex absolute left-[2.7085vw] top-1 w-[80vw] h-40 items-center justify-between">
-                    <div className="flex relative w-[22.5%] h-full bg-[#FFFFFF] rounded items-center justify-center">
-                        <h1 className="absolute top-10 left-5 text-[#6B7280] text-[.5vw] font-bold">BUDGET</h1>
-                        <div className="absolute top-15 left-5 text-[#111827] text-[2vw] font-bold">R${budget}</div>
-                        <Image
-                            className="absolute w-15 top-10 right-5"
-                            src="budge.svg"
-                            alt={`Ícone para budge`}
-                            width={180}
-                            height={38}
-                            priority
-                        />
-                    </div>
-                    <div className="flex relative w-[22.5%] h-full bg-[#FFFFFF] rounded items-center justify-center">
-                        <h1 className="absolute top-10 left-5 text-[#6B7280] text-[.5vw] font-bold">Total Customers</h1>
-                        <div className="absolute top-15 left-5 text-[#111827] text-[2vw] font-bold">{customers}</div>
-                        <Image
-                            className="absolute w-15 top-10 right-5"
-                            src="customers.svg"
-                            alt={`Ícone para Customers`}
-                            width={180}
-                            height={38}
-                            priority
-                        />
-                    </div>
-                    <div className="flex relative w-[22.5%] h-full bg-[#FFFFFF] rounded items-center justify-center">
-                        <h1 className="absolute top-10 left-5 text-[#6B7280] text-[.5vw] font-bold">Task Progress</h1>
-                        <div className="absolute top-15 left-5 text-[#111827] text-[2vw] font-bold">{task}%</div>
-                        <Image
-                            className="absolute w-15 top-10 right-5"
-                            src="task.svg"
-                            alt={`Ícone para Task`}
-                            width={180}
-                            height={38}
-                            priority
-                        />
-                    </div>
-                    <div className="flex relative w-[22.5%] h-full bg-[#FFFFFF] rounded items-center justify-center">
-                        <h1 className="absolute top-10 left-5 text-[#6B7280] text-[.5vw] font-bold">Total Profit</h1>
-                        <div className="absolute top-15 left-5 text-[#111827] text-[2vw] font-bold">R${total}k</div>
-                        <Image
-                            className="absolute w-15 top-10 right-5"
-                            src="profit.svg"
-                            alt={`Ícone para profit`}
-                            width={180}
-                            height={38}
-                            priority
-                        />
-                    </div>
+                <div className="flex absolute left-[2.7085vw] top-1 w-[80vw] h-40 items-center justify-between select-none">
+                    {tipos.map((item) => 
+                        <div className="flex relative w-[22.5%] h-full bg-[#FFFFFF] rounded items-center justify-center">
+                            <h1 className="absolute top-10 left-5 text-[#6B7280] text-[.5vw] font-bold">{item.n}</h1>
+                            <div className="absolute top-15 left-5 text-[#111827] text-[2vw] font-bold">{item.n === "TASK PROGRESS" ? "" : "R$"}{item.v}</div>
+                            <Image
+                                className="absolute w-15 top-10 right-5"
+                                src={item.i}
+                                alt={`Ícone para profit`}
+                                width={180}
+                                height={38}
+                                priority
+                            />
+                        </div>
+                    )}
                 </div>
 
-                <div className="flex absolute left-[2.7085vw] top-45 w-[80vw] h-2/5 bg-[#FFFFFF] rounded items-center justify-center">
+                <div className="flex absolute left-[2.7085vw] top-45 w-[80vw] h-2/5 bg-[#FFFFFF] rounded items-center justify-center select-none">
                     <h1 className="absolute top-5 left-5 text-[#111827] text-[1vw] font-bold">Latest Sales</h1>
                     <MyBarChart />
                 </div>
 
                 <div className="flex absolute left-[2.7085vw] top-135 w-[80vw] h-[15vw] bg-[#FFFFFF] rounded items-center justify-center overflow-hidden">
-                    <h1 className="absolute top-5 left-5 text-[#111827] text-[1vw] font-bold">Latest Orders</h1>
+                    <h1 className="absolute top-5 left-5 text-[#111827] text-[1vw] font-bold select-none">Latest Orders</h1>
 
                     <LastCostumers />
                 </div>

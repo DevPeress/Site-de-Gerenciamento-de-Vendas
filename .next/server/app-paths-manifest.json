@@ -5,6 +5,7 @@
   "/api/pegarCompradores/route": "app/api/pegarCompradores/route.js",
   "/compradores/page": "app/compradores/page.js",
   "/inicio/page": "app/inicio/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/produtos/page": "app/produtos/page.js"
+  "/produtos/page": "app/produtos/page.js",
+  "/logar/page": "app/logar/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

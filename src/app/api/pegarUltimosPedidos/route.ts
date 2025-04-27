@@ -32,11 +32,15 @@ export async function GET(req: Request) {
 
         if (!usuario) throw new Error("Usuário não encontrado");
 
+        function getRandomIntInRange(min: number, max: number) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
         return {
           ordem: 1,
           comprador: usuario.nome,
           data: "12/04/2025",
-          status: 1
+          status: getRandomIntInRange(1,3)
         };
       })
     );

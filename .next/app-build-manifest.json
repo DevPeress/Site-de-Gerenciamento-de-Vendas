@@ -16,6 +16,21 @@
       "static/chunks/main-app.js",
       "static/chunks/app/inicio/page.js"
     ],
+    "/api/pegarValores/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/pegarValores/route.js"
+    ],
+    "/api/pegarGrafico/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/pegarGrafico/route.js"
+    ],
+    "/api/pegarUltimosPedidos/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/pegarUltimosPedidos/route.js"
+    ],
     "/compradores/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -31,25 +46,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/produtos/page.js"
     ],
+    "/logar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/logar/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/_not-found/page.js"
-    ],
-    "/api/pegarUltimosPedidos/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarUltimosPedidos/route.js"
-    ],
-    "/api/pegarGrafico/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarGrafico/route.js"
-    ],
-    "/api/pegarValores/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarValores/route.js"
     ]
   }
 }

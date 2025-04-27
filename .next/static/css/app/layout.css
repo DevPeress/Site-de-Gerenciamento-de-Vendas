@@ -274,12 +274,6 @@
   .top-15 {
     top: calc(var(--spacing) * 15);
   }
-  .top-18 {
-    top: calc(var(--spacing) * 18);
-  }
-  .top-20 {
-    top: calc(var(--spacing) * 20);
-  }
   .top-22 {
     top: calc(var(--spacing) * 22);
   }
@@ -304,20 +298,8 @@
   .top-60 {
     top: calc(var(--spacing) * 60);
   }
-  .top-80 {
-    top: calc(var(--spacing) * 80);
-  }
-  .top-125 {
-    top: calc(var(--spacing) * 125);
-  }
   .top-135 {
     top: calc(var(--spacing) * 135);
-  }
-  .top-150 {
-    top: calc(var(--spacing) * 150);
-  }
-  .top-155 {
-    top: calc(var(--spacing) * 155);
   }
   .top-\[5vw\] {
     top: 5vw;
@@ -330,12 +312,6 @@
   }
   .top-\[10vh\] {
     top: 10vh;
-  }
-  .top-\[15\%\] {
-    top: 15%;
-  }
-  .top-\[17\%\] {
-    top: 17%;
   }
   .top-\[20\%\] {
     top: 20%;
@@ -485,15 +461,6 @@
     width: calc(var(--spacing) * 1);
     height: calc(var(--spacing) * 1);
   }
-  .h-1\/2 {
-    height: calc(1/2 * 100%);
-  }
-  .h-1\/3 {
-    height: calc(1/3 * 100%);
-  }
-  .h-2\/3 {
-    height: calc(2/3 * 100%);
-  }
   .h-2\/5 {
     height: calc(2/5 * 100%);
   }
@@ -536,12 +503,6 @@
   .h-\[2\.5vw\] {
     height: 2.5vw;
   }
-  .h-\[5vw\] {
-    height: 5vw;
-  }
-  .h-\[10vw\] {
-    height: 10vw;
-  }
   .h-\[15vw\] {
     height: 15vw;
   }
@@ -568,9 +529,6 @@
   }
   .w-1\/5 {
     width: calc(1/5 * 100%);
-  }
-  .w-2\/3 {
-    width: calc(2/3 * 100%);
   }
   .w-4\/5 {
     width: calc(4/5 * 100%);
@@ -601,12 +559,6 @@
   }
   .w-20 {
     width: calc(var(--spacing) * 20);
-  }
-  .w-25 {
-    width: calc(var(--spacing) * 25);
-  }
-  .w-\[5vw\] {
-    width: 5vw;
   }
   .w-\[10vw\] {
     width: 10vw;
@@ -704,14 +656,8 @@
   .border-\[\#E6E8F0\] {
     border-color: #E6E8F0;
   }
-  .bg-\[\#\"\+color\"\] {
-    background-color: #"+color";
-  }
   .bg-\[\#1F2937\] {
     background-color: #1F2937;
-  }
-  .bg-\[\#14B8A6\] {
-    background-color: #14B8A6;
   }
   .bg-\[\#090E23\] {
     background-color: #090E23;
@@ -725,29 +671,17 @@
   .bg-\[\#111827\] {
     background-color: #111827;
   }
-  .bg-\[\#D14343\] {
-    background-color: #D14343;
-  }
   .bg-\[\#F3F4F6\] {
     background-color: #F3F4F6;
   }
   .bg-\[\#F9FAFC\] {
     background-color: #F9FAFC;
   }
-  .bg-\[\#FFB020\] {
-    background-color: #FFB020;
-  }
   .bg-\[\#FFFFFF\] {
     background-color: #FFFFFF;
   }
-  .bg-\[\#color\] {
-    background-color: #color;
-  }
   .bg-\[rgb\(255\,255\,255\,0\.04\)\] {
     background-color: rgb(255,255,255,0.04);
-  }
-  .bg-black {
-    background-color: var(--color-black);
   }
   .bg-white {
     background-color: var(--color-white);
