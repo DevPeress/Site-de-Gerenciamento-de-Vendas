@@ -25,7 +25,6 @@ export function SideBar() {
         { nome: "Configurações", off: "settings-d.svg", on:"settings-a.svg" },
         { nome: "Login", off: "login-d.svg", on:"login-a.svg" },
         { nome: "Registrar", off: "register-d.svg", on:"register-a.svg" },
-        { nome: "Erros", off: "error-d.svg", on:"error-a.svg" }
     ]
 
     useEffect(() => {

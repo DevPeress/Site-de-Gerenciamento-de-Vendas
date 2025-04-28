@@ -4,6 +4,12 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+interface Produto {
+  nome: string,
+  desc: string,
+  icone: string
+}
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const id = Number(searchParams.get("id"))
@@ -17,15 +23,17 @@ export async function GET(req: Request) {
       where: { idLoja: id }
     })
 
-    const produtos = vendas.map(async (row) => {
+    const produto: Produto[] = await Promise.all(
+      vendas.map(async (row) => {
         return {
           nome: row.produto,
-          desc: row.desc
+          desc: row.desc,
+          icone: row.icone
         };
       }
-    );
+    ))
 
-    return NextResponse.json(produtos);
+    return NextResponse.json(produto);
   } catch(err) {
     console.error("[GET Produtos]:", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })

@@ -11,25 +11,30 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/login/page": [
+    "/produtos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
+      "static/chunks/app/produtos/page.js"
     ],
-    "/api/verifyConta/route": [
+    "/api/pegarProdutos/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/verifyConta/route.js"
-    ],
-    "/api/login/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/login/route.js"
+      "static/chunks/app/api/pegarProdutos/route.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/_not-found/page.js"
+    ],
+    "/compradores/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/compradores/page.js"
+    ],
+    "/api/pegarCompradores/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/pegarCompradores/route.js"
     ],
     "/inicio/page": [
       "static/chunks/webpack.js",
@@ -51,15 +56,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/pegarUltimosPedidos/route.js"
     ],
-    "/compradores/page": [
+    "/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/compradores/page.js"
+      "static/chunks/app/login/page.js"
     ],
-    "/api/pegarCompradores/route": [
+    "/conta/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarCompradores/route.js"
+      "static/chunks/app/conta/page.js"
+    ],
+    "/api/pegarUsuario/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/pegarUsuario/route.js"
+    ],
+    "/registrar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/registrar/page.js"
     ]
   }
 }

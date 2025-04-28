@@ -31,7 +31,8 @@ model Produtos {
   id Int @id @default(autoincrement())
   idLoja  Int
   produto String
-  desc String
+  desc String @default("Dropbox is a file hosting service that offers cloud storage, file synchronization, a personal cloud.")
+  icone String
 }
 
 model Empresas {
@@ -42,7 +43,7 @@ model Empresas {
   customers Int @default(0)
   task Int @default(0)
   total Int @default(0)
-  grafico String @default({})
+  grafico String 
 }
 
 model Funcionarios {

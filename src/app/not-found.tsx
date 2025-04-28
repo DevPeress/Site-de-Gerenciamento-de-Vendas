@@ -21,7 +21,7 @@ export default function NotFound() {
                 priority
             />
 
-            <Link href="/dashboard" className="flex absolute items-center justify-center bottom-[10vw]">
+            <Link href="/inicio" className="flex absolute items-center justify-center bottom-[10vw]">
                 <div className="flex absolute w-[10vw] h-[2.5vw] bg-[#5048E5] items-center justify-center rounded-[.5vw] hover:scale-110">
                     <Image
                         className="absolute w-7 left-5"
