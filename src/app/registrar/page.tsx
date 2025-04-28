@@ -1,36 +1,17 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { useRouter } from 'next/navigation'
 import { Notify } from "@/components/notify"
 
 export default function Login() { 
     const [email,setEmail] = useState("")
-    const [senha,setSenha] = useState("")
-    const [etapa,setEtapa] = useState<"1" | "2" | "3">("1")
-    const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma" | "Cadastrar na Plataforma">("Inserir Email") 
-    const router = useRouter();
+    const id = 1
 
     useEffect(() =>{
-        document.title = "Login"
+        document.title = "Registrar"
     },[])
 
     const emailV = email.includes("@") && email.toLocaleLowerCase().includes(".com")
-    const senhaV = senha.length > 4
-
-    const verify = () => {
-        switch(etapa) {
-            case "1":
-                verifyEmail()
-                break
-            case "2":
-                verifyLogin()
-                break
-            case "3":
-                verifyRegister()
-                break
-        }
-    }
 
     const verifyEmail = () => {
         if (emailV) {
@@ -38,65 +19,22 @@ export default function Login() {
             .then(res => res.json())
             .then(data => { 
                 if (data) {
-                    setEtapa("2")
-                    setMensagem("Logar na Plataforma")
-                } else {
-                    setEtapa("3")
-                    setMensagem("Cadastrar na Plataforma")
-                }
+                    Notify("E-mail cadastrado em sua empresa!")
+                    fetch("/api/registerFuncionario",{
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            email,
+                            id
+                        })
+                    })
+                } 
             })
             .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
         } else {
-            Notify("E-mail está incorreto!")
-        }
-    }
-
-    const verifyLogin = () => {
-        if (emailV && senhaV) {
-            fetch(`/api/login?email=${email}&senha=${senha}`, {
-                method: "GET",
-                headers: {
-                  "Content-Type": "application/json",
-                }
-            })
-            .then(res => res.json())
-            .then(data => { 
-                console.log(data)
-                if (data) {
-                    router.push('/inicio');
-                } else {
-                    Notify("E-mail ou Senha estão incorretos!")
-                }
-            })
-            .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
-        } else {
-            Notify("E-mail ou senha estão incorretos!")
-        }
-    }
-
-    const verifyRegister = () => {
-        if (emailV && senhaV) {
-            fetch("/api/register",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    senha,
-                    email
-                })
-            })
-            .then(res => res.json())
-            .then(data => { 
-                if (data) {
-                    router.push('/inicio');
-                } else {
-                    Notify("Erro ao criar os Dados!")
-                }
-            })
-            .catch((err) => Notify("Não foi cadastrar a conta! Recarregue a Página"))
-        } else {
-            Notify("E-mail ou senha estão incorretos!")
+            Notify("E-mail está incorreto ou não registrado!");
         }
     }
 
@@ -106,22 +44,15 @@ export default function Login() {
                 <div className="flex absolute w-full min-h-screen bg-white items-center justify-center select-none">
                     <div className="flex absolute w-[400px] h-[441px]">
                         <h1 className="absolute top-10 text-[2vw] text-[#111827]">Bem-Vindo</h1>
-                        <h2 className="absolute top-22 text-[1vw] text-[#6B7280]">{mensagem}</h2>
+                        <h2 className="absolute top-22 text-[1vw] text-[#6B7280]">Insira o Email</h2>
 
                         <div className="absolute w-auto h-5 top-35 text-[.6vw] text-[#5048E5] border-b border-[#5048E5]">Email</div>
                         <div className="absolute w-full h-12 rounded top-45 border-[#D1D5DB] border-1 overflow-hidden">
                             <input className="absolute w-[98%] h-full outline-0 p-2" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </div>
-                        <h1 className="flex absolute w-18 top-43.5 left-2 text-[.5vw] text-[#6B7280] bg-white justify-center">Email</h1> 
-                        {etapa !== "1" ? 
-                        <>
-                            <div className="absolute w-full h-12 rounded top-60 border-[#D1D5DB] border-1 overflow-hidden">
-                                <input className="absolute w-[98%] h-full outline-0 p-2" type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
-                            </div>
-                            <h1 className="flex absolute w-18 top-58.5 left-2 text-[.5vw] text-[#6B7280] bg-white justify-center">Senha</h1> 
-                        </> : <></> }
+                        <h1 className="flex absolute w-18 top-43.5 left-2 text-[.5vw] text-[#6B7280] bg-white justify-center">Email</h1>    
 
-                        <button className="absolute bottom-20 w-full h-15 bg-[#5048E5] rounded text-[#FFFFFF] text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
+                        <button className="absolute bottom-20 w-full h-15 bg-[#5048E5] rounded text-[#FFFFFF] text-[1vw] items-center justify-center hover:scale-110" onClick={verifyEmail}>Registrar Funcionario</button>
                     </div>
                 </div>
             </div>
