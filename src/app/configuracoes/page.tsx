@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 export default function Config() {
     const router = useRouter();
     const [senha,setSenha] = useState("")
+    const [senhaN,setSenhaN] = useState("")
 
     useEffect(() => {
       document.title = "Configurações"
@@ -16,9 +17,10 @@ export default function Config() {
 
     const changePassword = () => {
         fetch(`/api/trocarSenha`,{
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify({
-                senha
+                senha,
+                senhaN
             })
         })
         .then(res => res.json())
