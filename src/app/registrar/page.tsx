@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
+import AuthGuard from "@/components/authguard"
+import { SideBar } from "@/components/sidebar"
 
 export default function Login() { 
     const [email,setEmail] = useState("")
@@ -19,7 +21,6 @@ export default function Login() {
             .then(res => res.json())
             .then(data => { 
                 if (data) {
-                    Notify("E-mail cadastrado em sua empresa!")
                     fetch("/api/registerFuncionario",{
                         method: "POST",
                         headers: {
@@ -30,6 +31,7 @@ export default function Login() {
                             id
                         })
                     })
+                    Notify("E-mail cadastrado em sua empresa!")
                 } 
             })
             .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
@@ -44,7 +46,7 @@ export default function Login() {
                 <div className="flex absolute w-full min-h-screen bg-white items-center justify-center select-none">
                     <div className="flex absolute w-[400px] h-[441px]">
                         <h1 className="absolute top-10 text-[2vw] text-[#111827]">Bem-Vindo</h1>
-                        <h2 className="absolute top-22 text-[1vw] text-[#6B7280]">Insira o Email</h2>
+                        <h2 className="absolute top-22 text-[1vw] text-[#6B7280]">Insira o Email do novo Funcionário</h2>
 
                         <div className="absolute w-auto h-5 top-35 text-[.6vw] text-[#5048E5] border-b border-[#5048E5]">Email</div>
                         <div className="absolute w-full h-12 rounded top-45 border-[#D1D5DB] border-1 overflow-hidden">
@@ -56,6 +58,8 @@ export default function Login() {
                     </div>
                 </div>
             </div>
+            <AuthGuard />
+            <SideBar />
         </>
     )
 }

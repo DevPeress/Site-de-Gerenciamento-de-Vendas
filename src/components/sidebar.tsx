@@ -23,7 +23,6 @@ export function SideBar() {
         { nome: "Produtos", off: "products-d.svg", on:"products-a.svg" },
         { nome: "Conta", off: "account-d.svg", on:"account-a.svg" },
         { nome: "Configuracoes", off: "settings-d.svg", on:"settings-a.svg" },
-        { nome: "Login", off: "login-d.svg", on:"login-a.svg" },
         { nome: "Registrar", off: "register-d.svg", on:"register-a.svg" },
     ]
 
