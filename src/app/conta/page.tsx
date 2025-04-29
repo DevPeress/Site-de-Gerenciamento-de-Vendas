@@ -14,8 +14,8 @@ interface Usuario {
   foto: string
 }
 
-export default function Products() {
-    const id = 1 
+export default function Conta() {
+    const id = 1 // PUXAR ID DA PESSOA POR REQUISIÇÃO
     const [dados,setDados] = useState<Usuario>()
     useEffect(() => {
       document.title = "Sua Conta"

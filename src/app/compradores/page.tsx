@@ -24,7 +24,7 @@ export default function Customers() {
 
     const [CompradoresData,setCompradoresData] = useState<Compradores[]>([ ]) 
 
-    const id = 1
+    const id = 1 // API PUXAR LOJA
 
     useEffect(() => {
         document.title = "Compradores"

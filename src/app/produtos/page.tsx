@@ -14,7 +14,7 @@ interface Produtos {
 }
 
 export default function Products() {
-    const id = 1 
+    const id = 1 // PUXAR ID DA LOJA POR REQUISIÇÃO
 
     const [produtosData,setprodutosData] = useState<Produtos[]>([]) 
 

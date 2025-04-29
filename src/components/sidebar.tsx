@@ -22,7 +22,7 @@ export function SideBar() {
         { nome: "Compradores", off: "customers-d.svg", on:"customers-a.svg" },
         { nome: "Produtos", off: "products-d.svg", on:"products-a.svg" },
         { nome: "Conta", off: "account-d.svg", on:"account-a.svg" },
-        { nome: "Configurações", off: "settings-d.svg", on:"settings-a.svg" },
+        { nome: "Configuracoes", off: "settings-d.svg", on:"settings-a.svg" },
         { nome: "Login", off: "login-d.svg", on:"login-a.svg" },
         { nome: "Registrar", off: "register-d.svg", on:"register-a.svg" },
     ]
@@ -39,7 +39,7 @@ export function SideBar() {
                 setNome(data.nome);
                 localStorage.setItem('nome', data.nome);
             })
-            .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"));
+            .catch((err) => Notify("Não foi possivel carregar toda a sidebar! Recarregue a Página"));
         }
     }, []);
 
@@ -70,6 +70,7 @@ export function SideBar() {
                     const isActive = urlSemBarraInicial === pagina;
                     const textColor = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
                     const iconSrc = isActive ? item.on : item.off;
+                    const config = item.nome === "Configuracoes" ? "Configurações" : item.nome
 
                     return (
                         <Link key={item.nome} href={pagina} className="flex relative w-4/5 h-10 items-center justify-center rounded-[.5vw] hover:scale-110">
@@ -81,7 +82,7 @@ export function SideBar() {
                                 height={38}
                                 priority
                             />
-                            <h1 className={`absolute left-12 text-[1vw] ${textColor}`}>{item.nome}</h1>
+                            <h1 className={`absolute left-12 text-[1vw] ${textColor}`}>{config}</h1>
                         </Link>
                     );
                 })}

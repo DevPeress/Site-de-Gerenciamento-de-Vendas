@@ -89,7 +89,7 @@ export default function Login() {
             .then(res => res.json())
             .then(data => { 
                 if (data) {
-                    router.push('/inicio');
+                    Notify("Peça para o dono registrar seu email!")
                 } else {
                     Notify("Erro ao criar os Dados!")
                 }

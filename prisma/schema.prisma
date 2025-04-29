@@ -49,6 +49,6 @@ model Empresas {
 model Funcionarios {
   id Int @id @default(autoincrement())
   idLoja  Int
-  nome String
+  email String
   cargo String
 }

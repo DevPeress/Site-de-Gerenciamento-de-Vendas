@@ -293,9 +293,6 @@
   .top-35 {
     top: calc(var(--spacing) * 35);
   }
-  .top-40 {
-    top: calc(var(--spacing) * 40);
-  }
   .top-43 {
     top: calc(var(--spacing) * 43);
   }
@@ -353,9 +350,6 @@
   .right-35 {
     right: calc(var(--spacing) * 35);
   }
-  .right-50 {
-    right: calc(var(--spacing) * 50);
-  }
   .right-60 {
     right: calc(var(--spacing) * 60);
   }
@@ -365,23 +359,11 @@
   .bottom-4 {
     bottom: calc(var(--spacing) * 4);
   }
-  .bottom-12 {
-    bottom: calc(var(--spacing) * 12);
-  }
   .bottom-12\.5 {
     bottom: calc(var(--spacing) * 12.5);
   }
-  .bottom-13 {
-    bottom: calc(var(--spacing) * 13);
-  }
-  .bottom-15 {
-    bottom: calc(var(--spacing) * 15);
-  }
   .bottom-20 {
     bottom: calc(var(--spacing) * 20);
-  }
-  .bottom-40 {
-    bottom: calc(var(--spacing) * 40);
   }
   .bottom-\[\.5vw\] {
     bottom: .5vw;
@@ -437,9 +419,6 @@
   .left-23 {
     left: calc(var(--spacing) * 23);
   }
-  .left-50 {
-    left: calc(var(--spacing) * 50);
-  }
   .left-60 {
     left: calc(var(--spacing) * 60);
   }
@@ -448,9 +427,6 @@
   }
   .left-\[5\%\] {
     left: 5%;
-  }
-  .left-\[10\%\] {
-    left: 10%;
   }
   .left-\[14\.583vw\] {
     left: 14.583vw;
@@ -558,20 +534,11 @@
   .h-40 {
     height: calc(var(--spacing) * 40);
   }
-  .h-50 {
-    height: calc(var(--spacing) * 50);
-  }
   .h-60 {
     height: calc(var(--spacing) * 60);
   }
-  .h-70 {
-    height: calc(var(--spacing) * 70);
-  }
   .h-80 {
     height: calc(var(--spacing) * 80);
-  }
-  .h-90 {
-    height: calc(var(--spacing) * 90);
   }
   .h-100 {
     height: calc(var(--spacing) * 100);
@@ -618,12 +585,6 @@
   .w-1\/5 {
     width: calc(1/5 * 100%);
   }
-  .w-2\/3 {
-    width: calc(2/3 * 100%);
-  }
-  .w-3\/4 {
-    width: calc(3/4 * 100%);
-  }
   .w-4 {
     width: calc(var(--spacing) * 4);
   }
@@ -632,9 +593,6 @@
   }
   .w-5 {
     width: calc(var(--spacing) * 5);
-  }
-  .w-5\/5 {
-    width: calc(5/5 * 100%);
   }
   .w-5\/6 {
     width: calc(5/6 * 100%);
@@ -654,14 +612,8 @@
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
-  .w-13 {
-    width: calc(var(--spacing) * 13);
-  }
   .w-15 {
     width: calc(var(--spacing) * 15);
-  }
-  .w-17 {
-    width: calc(var(--spacing) * 17);
   }
   .w-18 {
     width: calc(var(--spacing) * 18);
@@ -669,20 +621,11 @@
   .w-20 {
     width: calc(var(--spacing) * 20);
   }
-  .w-22 {
-    width: calc(var(--spacing) * 22);
-  }
   .w-25 {
     width: calc(var(--spacing) * 25);
   }
-  .w-50 {
-    width: calc(var(--spacing) * 50);
-  }
   .w-75 {
     width: calc(var(--spacing) * 75);
-  }
-  .w-100 {
-    width: calc(var(--spacing) * 100);
   }
   .w-120 {
     width: calc(var(--spacing) * 120);
@@ -704,9 +647,6 @@
   }
   .w-\[26vw\] {
     width: 26vw;
-  }
-  .w-\[80\%\] {
-    width: 80%;
   }
   .w-\[80vw\] {
     width: 80vw;
@@ -770,17 +710,11 @@
   .justify-center {
     justify-content: center;
   }
-  .gap-1 {
-    gap: calc(var(--spacing) * 1);
-  }
   .gap-5 {
     gap: calc(var(--spacing) * 5);
   }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
-  }
-  .gap-10 {
-    gap: calc(var(--spacing) * 10);
   }
   .truncate {
     overflow: hidden;
@@ -818,9 +752,6 @@
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
   }
-  .border-\[\#6B7280\] {
-    border-color: #6B7280;
-  }
   .border-\[\#5048E5\] {
     border-color: #5048E5;
   }
@@ -845,9 +776,6 @@
   .bg-\[\#111827\] {
     background-color: #111827;
   }
-  .bg-\[\#E6E8F0\] {
-    background-color: #E6E8F0;
-  }
   .bg-\[\#F3F4F6\] {
     background-color: #F3F4F6;
   }
@@ -857,14 +785,8 @@
   .bg-\[\#FFFFFF\] {
     background-color: #FFFFFF;
   }
-  .bg-\[\#\] {
-    background-color: #;
-  }
   .bg-\[rgb\(255\,255\,255\,0\.04\)\] {
     background-color: rgb(255,255,255,0.04);
-  }
-  .bg-black {
-    background-color: var(--color-black);
   }
   .bg-white {
     background-color: var(--color-white);
@@ -913,9 +835,6 @@
   }
   .text-\[\.75vw\] {
     font-size: .75vw;
-  }
-  .text-\[0\.4vw\] {
-    font-size: 0.4vw;
   }
   .text-\[0\.6vw\] {
     font-size: 0.6vw;

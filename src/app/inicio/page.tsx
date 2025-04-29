@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default async function DashBoard() {
     let budget, customers, task, total = 0
 
-    let id = 1
+    let id = 1 // PUXAR ID DA LOJA POR REQUISIÇÃO
 
     const resp = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/pegarValores?id=${id}`);
     const valores = await resp.json();

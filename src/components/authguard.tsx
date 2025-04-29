@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react';
 
 const AuthGuard = () => {
+    // API PARA IDENTIFICAR SE ESTÁ AUTENTICADO
     const auth = true
     const router = useRouter();
 
