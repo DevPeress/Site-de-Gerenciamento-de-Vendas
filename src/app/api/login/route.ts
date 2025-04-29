@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from '@prisma/client';
 import { Senhas } from "../senha";
-import { json } from "stream/consumers";
+import { Infos } from "../dados";
 
 const prisma = new PrismaClient();
 
@@ -10,12 +10,8 @@ export async function GET(req: Request) {
   const email = searchParams.get("email")
   const senha = searchParams.get("senha")
 
-  if (!email) {
-    return new NextResponse("Email inválido", { status: 400 });
-  }
-
-  if (!senha) {
-    return new NextResponse("Senha inválido", { status: 400 });
+  if (!email || !senha) {
+    return NextResponse.json({ status: 400, mensagem: "E-mail ou senha estão incorretos!" })
   }
 
   try {
@@ -24,12 +20,23 @@ export async function GET(req: Request) {
     })
 
     if (!conta) {
-        return new NextResponse("Conta não encontrada", { status: 400 });
+      return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
     }
 
-    const verify= await Senhas("Check",senha,conta.senha)
+    const funcionario = await prisma.funcionarios.findFirst({
+      where: { email: conta.email }
+    })
 
-    return NextResponse.json(verify)
+    if (!funcionario) {
+      return NextResponse.json({ status: 400, mensagem: "Conta não possui empresa!" })
+    }
+
+    const verify = await Senhas("Check",senha,conta.senha)
+    if (verify) {
+      const dados = await Infos("Alterar",conta.id)
+
+      return NextResponse.json(dados)
+    }
   } catch(err) {
     console.error("[GET Login]:", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })

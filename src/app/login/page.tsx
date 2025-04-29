@@ -13,6 +13,15 @@ export default function Login() {
 
     useEffect(() =>{
         document.title = "Login"
+        fetch(`/api/infos`)
+        .then(res => res.json())
+        .then(data => {
+            const userId = data.id;
+
+            if (userId && userId !== 0) {
+                router.push('/inicio');
+            } 
+        })
     },[])
 
     const emailV = email.includes("@") && email.toLocaleLowerCase().includes(".com")
@@ -57,13 +66,17 @@ export default function Login() {
                 method: "GET",
                 headers: {
                   "Content-Type": "application/json",
-                }
+                },
+                credentials: 'include',
             })
             .then(res => res.json())
             .then(data => { 
-                console.log(data)
                 if (data) {
-                    router.push('/inicio');
+                    if (data.status !== 400) {
+                        router.push('/inicio');
+                    } else {
+                        Notify(data.mensagem)
+                    }
                 } else {
                     Notify("E-mail ou Senha estão incorretos!")
                 }

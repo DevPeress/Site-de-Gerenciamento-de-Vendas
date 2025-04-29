@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image" 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from "react";
 import { Notify } from "./notify";
@@ -12,10 +12,10 @@ interface Escolhas {
 }
 
 export function SideBar() {
+    const router = useRouter();
     const pathname = usePathname();
     const urlSemBarraInicial = pathname.replace(/^\/+/, '');
     const [nome,setNome] = useState<string>('')
-    const id = 1
     
     const escolhas: Escolhas[] = [
         { nome: "Inicio", off: "dashboard-d.svg", on:"dashboard-a.svg" },
@@ -32,7 +32,17 @@ export function SideBar() {
         if (savedNome) {
             setNome(savedNome);
         } else {
-            fetch(`/api/pegarValores?id=${id}`)
+            fetch(`/api/infos`)
+            .then(res => res.json())
+            .then(data => {
+                const userId = data.id;
+
+                if (userId === 0) {
+                    router.push('/login');
+                } 
+
+                return fetch(`/api/pegarValores?id=${userId}`);
+            })
             .then(res => res.json())
             .then(data => {
                 setNome(data.nome);

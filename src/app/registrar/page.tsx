@@ -2,15 +2,27 @@
 
 import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
-import AuthGuard from "@/components/authguard"
 import { SideBar } from "@/components/sidebar"
+import { useRouter } from "next/navigation";
 
 export default function Login() { 
+    const router = useRouter();
     const [email,setEmail] = useState("")
-    const id = 1 // PUXAR ID DA LOJA POR REQUISIÇÃO
+    const [id,setID] = useState(0)
 
     useEffect(() =>{
         document.title = "Registrar"
+        fetch(`/api/infos`)
+        .then(res => res.json())
+        .then(data => {
+            const userId = data.idLoja;
+
+            if (!userId || userId === 0) {
+                router.push('/login');
+            } 
+
+            return setID(userId)
+        })
     },[])
 
     const emailV = email.includes("@") && email.toLocaleLowerCase().includes(".com")
@@ -58,7 +70,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            <AuthGuard />
             <SideBar />
         </>
     )
