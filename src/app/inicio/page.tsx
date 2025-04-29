@@ -12,19 +12,27 @@ export const metadata: Metadata = {
     description: 'Página inicial do projeto'
 }
 
+interface Valores {
+    budget: number;
+    customers: number;
+    task: any;
+    total: number;
+}
+
 export default async function DashBoard() {
-    let budget, customers, task, total = 0
+    let budget, customers, task: any, total = 0
 
     const cookieStore = await cookies();
     const auth = cookieStore.get("auth");
 
     if (!auth) return <AuthGuard />;
+    
     let valores = await JSON.parse(auth.value)
     let id = valores.id
     
     if (id > 0) {
         const resp = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/pegarValores?id=${id}`);
-        const valores = await resp.json();
+        const valores: Valores = await resp.json();
         
         if (valores) {
             budget = valores.budget
@@ -61,6 +69,12 @@ export default async function DashBoard() {
                                         height={38}
                                         priority
                                     />
+                                    {porc ? <>
+                                        <div className="absolute w-[90%] h-2 bottom-10 bg-[#FFFFFF] rounded overflow-hidden">
+                                            <div className="bg-[#5048E5] h-2" style={{ width:`${task}%`}}></div>
+                                        </div>
+                                        </>:<></>
+                                    }
                                 </div>
                             )
                         })}

@@ -16,13 +16,16 @@ interface Infos {
 }
 
 export function LastCostumers() {
-    // API PUXANDO O GRÁFICO PELA LOJA
-    const id = 1
-
     const [dado,setDados] = useState<Usuarios[]>([])
 
     useEffect(() => {
-        fetch(`/api/pegarUltimosPedidos?id=${id}`)
+        fetch(`/api/infos`)
+        .then(res => res.json())
+        .then(data => {
+            const userId = data.idLoja;
+
+            return  fetch(`/api/pegarUltimosPedidos?id=${userId}`)
+        })
         .then(res => res.json())
         .then(data => setDados(data))
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))

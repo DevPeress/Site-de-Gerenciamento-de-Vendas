@@ -359,6 +359,12 @@
   .bottom-4 {
     bottom: calc(var(--spacing) * 4);
   }
+  .bottom-5 {
+    bottom: calc(var(--spacing) * 5);
+  }
+  .bottom-10 {
+    bottom: calc(var(--spacing) * 10);
+  }
   .bottom-12\.5 {
     bottom: calc(var(--spacing) * 12.5);
   }
@@ -648,8 +654,14 @@
   .w-\[26vw\] {
     width: 26vw;
   }
+  .w-\[80\%\] {
+    width: 80%;
+  }
   .w-\[80vw\] {
     width: 80vw;
+  }
+  .w-\[85\%\] {
+    width: 85%;
   }
   .w-\[85\.417vw\] {
     width: 85.417vw;
@@ -775,6 +787,9 @@
   }
   .bg-\[\#111827\] {
     background-color: #111827;
+  }
+  .bg-\[\#AAAAAA\] {
+    background-color: #AAAAAA;
   }
   .bg-\[\#F3F4F6\] {
     background-color: #F3F4F6;

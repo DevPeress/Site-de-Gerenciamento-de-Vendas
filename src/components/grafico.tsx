@@ -11,13 +11,16 @@ interface Grafico {
 }
 
 export function MyBarChart() {
-  // API PUXANDO O GRÁFICO PELA LOJA
-  const id = 1
-
   const [data,setDados] = useState<Grafico[]>([])
 
   useEffect(() => {
-    fetch(`/api/pegarGrafico?id=${id}`)
+    fetch(`/api/infos`)
+    .then(res => res.json())
+    .then(data => {
+        const userId = data.idLoja;
+
+        return fetch(`/api/pegarGrafico?id=${userId}`)
+    })
     .then(res => res.json())
     .then(data => setDados(data))
     .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
