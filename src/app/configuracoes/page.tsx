@@ -5,11 +5,7 @@ import AuthGuard from "@/components/authguard";
 import { SideBar } from "@/components/sidebar";
 import { useEffect } from "react";
 
-<<<<<<< HEAD
 export default function Config() {
-=======
-export default function Products() {
->>>>>>> aa6644b7f6d10e7c8ec90123cf6ea0be868c0d06
     useEffect(() => {
       document.title = "Configurações"
     },[])
