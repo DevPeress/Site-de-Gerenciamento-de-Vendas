@@ -33,14 +33,14 @@ export async function PUT(req: Request) {
         return new NextResponse("Erro ao gerar senha", { status: 500 });
       }
 
-      const troca = await prisma.usuario.update({
+      await prisma.usuario.update({
         where: { id: id },
         data: {
           senha: senhaProtegida
         }
       })
 
-      return NextResponse.json(troca)
+      return NextResponse.json("Senha alterada com sucesso!")
     } else {
       return NextResponse.json({ status: 400, mensagem: "Senha errada!" })
     }

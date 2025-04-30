@@ -1,9 +1,4 @@
 {
-  "/api/infos/route": "app/api/infos/route.js",
   "/inicio/page": "app/inicio/page.js",
-  "/produtos/page": "app/produtos/page.js",
-  "/compradores/page": "app/compradores/page.js",
-  "/conta/page": "app/conta/page.js",
-  "/configuracoes/page": "app/configuracoes/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/configuracoes/page": "app/configuracoes/page.js"
 }

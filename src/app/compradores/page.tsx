@@ -89,7 +89,6 @@ export default function Customers() {
             <SideBar />
             <Pagina>
                 {loading ? 
-                    
                     <>  
                         <h1 className="text-center text-[1.5vw] text-gray-500">Carregando compradores...</h1>
                     </> 
