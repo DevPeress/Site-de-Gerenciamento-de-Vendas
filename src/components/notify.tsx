@@ -1,3 +1,5 @@
+'use client'
+
 export function Notify(msg: string) {
     const div = document.createElement("div");
   

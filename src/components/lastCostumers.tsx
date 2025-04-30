@@ -17,6 +17,7 @@ interface Infos {
 
 export function LastCostumers() {
     const [dado,setDados] = useState<Usuarios[]>([])
+    const [loading,setLoading] = useState(true)
 
     useEffect(() => {
         fetch(`/api/infos`)
@@ -27,7 +28,7 @@ export function LastCostumers() {
             return  fetch(`/api/pegarUltimosPedidos?id=${userId}`)
         })
         .then(res => res.json())
-        .then(data => setDados(data))
+        .then(data => { setDados(data), setLoading(false)} )
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
     }, []);
 
@@ -42,6 +43,12 @@ export function LastCostumers() {
         }
     };
 
+    if (loading) {
+        return(
+            <h1 className="text-center text-[1.5vw] text-gray-500">Carregando últimos compradores!</h1>
+        )
+    }
+    
     return (
 
         <table className="absolute w-full h-auto top-[20%]">
@@ -71,5 +78,5 @@ export function LastCostumers() {
                 })}
             </tbody>
         </table>
-  );
+    );
 }

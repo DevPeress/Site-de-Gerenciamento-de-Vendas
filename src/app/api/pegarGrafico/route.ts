@@ -1,14 +1,24 @@
 import { NextResponse } from "next/server";
 
 import { PrismaClient } from '@prisma/client';
+import { json } from "stream/consumers";
 
 const prisma = new PrismaClient();
 
-interface Usuarios {
-    ordem: number,
-    comprador: string,
-    data: string,
-    status: number
+
+const dadosJson = {
+  1: { name: "Janeiro", Previsto: 0, Atual: 0 },
+  2: { name: "Feveiro", Previsto: 0, Atual: 0 },
+  3: { name: "Maio", Previsto: 0, Atual: 0 },
+  4: { name: "Abril", Previsto: 0, Atual: 0 },
+  5: { name: "Março", Previsto: 0, Atual: 0 },
+  6: { name: "Junho", Previsto: 0, Atual: 0 },
+  7: { name: "Julho", Previsto: 0, Atual: 0 },
+  8: { name: "Agosto", Previsto: 0, Atual: 0 },
+  9: { name: "Setembro", Previsto: 0, Atual: 0 },
+  10: { name: "Outubro", Previsto: 0, Atual: 0 },
+  11: { name: "Novembro", Previsto: 0, Atual: 0 },
+  12: { name: "Dezembro", Previsto: 0, Atual: 0 },
 }
 
 export async function GET(req: Request) {
@@ -20,22 +30,25 @@ export async function GET(req: Request) {
   }
 
   try {
-    const dados = [
-        { name: 'Janeiro', Atual: 16000, Previsto: 11000 },
-        { name: 'Fevereiro', Atual: 4000, Previsto: 19000 },
-        { name: 'Maio', Atual: 17000, Previsto: 11000 },
-        { name: 'Abril', Atual: 21000, Previsto: 23000 },
-        { name: 'Março', Atual: 0, Previsto: 45000 },
-        { name: 'Junho', Atual: 0, Previsto: 35000 },
-        { name: 'Julho', Atual: 0, Previsto: 20000 },
-        { name: 'Agosto', Atual: 0, Previsto: 25000 },
-        { name: 'Setembro', Atual: 0, Previsto: 32000 },
-        { name: 'Outubro', Atual: 0, Previsto: 37500 },
-        { name: 'Novembro', Atual: 0, Previsto: 45000 },
-        { name: 'Dezembro', Atual: 0, Previsto: 50000 },
-    ]
+    const empresa = await prisma.empresas.findUnique({
+      where: { idLoja: id } 
+    })
 
-    return NextResponse.json(dados);
+    if (!empresa) {
+      return new NextResponse("ID inválido", { status: 400 });
+    }
+
+    const grafico = empresa.grafico
+    if(grafico && typeof grafico === "object" && Object.values(grafico).length > 4) {
+      return NextResponse.json(grafico);
+    } else {
+      await prisma.empresas.update({
+        where: { idLoja: id },
+        data: { grafico: dadosJson }
+      })
+
+      return NextResponse.json(dadosJson);
+    }
   } catch(err) {
     console.error("[GET Graficos]:", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })

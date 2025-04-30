@@ -1,12 +1,10 @@
 {
+  "/api/pegarValores/route": "app/api/pegarValores/route.js",
   "/api/infos/route": "app/api/infos/route.js",
-  "/api/pegarUsuario/route": "app/api/pegarUsuario/route.js",
+  "/api/pegarGrafico/route": "app/api/pegarGrafico/route.js",
+  "/api/pegarUltimosPedidos/route": "app/api/pegarUltimosPedidos/route.js",
   "/api/pegarCompradores/route": "app/api/pegarCompradores/route.js",
-  "/api/pegarProdutos/route": "app/api/pegarProdutos/route.js",
   "/inicio/page": "app/inicio/page.js",
   "/compradores/page": "app/compradores/page.js",
-  "/registrar/page": "app/registrar/page.js",
-  "/configuracoes/page": "app/configuracoes/page.js",
-  "/conta/page": "app/conta/page.js",
-  "/produtos/page": "app/produtos/page.js"
+  "/_not-found/page": "app/_not-found/page.js"
 }

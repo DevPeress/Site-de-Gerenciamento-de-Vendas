@@ -37,13 +37,11 @@ model Produtos {
 
 model Empresas {
   id Int @id @default(autoincrement())
-  idLoja  Int
+  idLoja  Int @unique
   nome String
   budget Int @default(0)
   customers Int @default(0)
-  task Int @default(0)
-  total Int @default(0)
-  grafico String 
+  grafico Json 
 }
 
 model Funcionarios {
