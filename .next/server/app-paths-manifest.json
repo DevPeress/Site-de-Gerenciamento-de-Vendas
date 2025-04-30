@@ -1,4 +1,12 @@
 {
+  "/api/infos/route": "app/api/infos/route.js",
+  "/api/pegarUsuario/route": "app/api/pegarUsuario/route.js",
+  "/api/pegarCompradores/route": "app/api/pegarCompradores/route.js",
+  "/api/pegarProdutos/route": "app/api/pegarProdutos/route.js",
   "/inicio/page": "app/inicio/page.js",
-  "/configuracoes/page": "app/configuracoes/page.js"
+  "/compradores/page": "app/compradores/page.js",
+  "/registrar/page": "app/registrar/page.js",
+  "/configuracoes/page": "app/configuracoes/page.js",
+  "/conta/page": "app/conta/page.js",
+  "/produtos/page": "app/produtos/page.js"
 }

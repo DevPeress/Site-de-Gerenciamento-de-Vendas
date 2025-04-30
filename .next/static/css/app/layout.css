@@ -639,12 +639,6 @@
   .w-150 {
     width: calc(var(--spacing) * 150);
   }
-  .w-350 {
-    width: calc(var(--spacing) * 350);
-  }
-  .w-\[8\.417vw\] {
-    width: 8.417vw;
-  }
   .w-\[10vw\] {
     width: 10vw;
   }
@@ -665,9 +659,6 @@
   }
   .w-\[80vw\] {
     width: 80vw;
-  }
-  .w-\[84\.417vw\] {
-    width: 84.417vw;
   }
   .w-\[85\.417vw\] {
     width: 85.417vw;
@@ -808,9 +799,6 @@
   }
   .bg-\[rgb\(255\,255\,255\,0\.04\)\] {
     background-color: rgb(255,255,255,0.04);
-  }
-  .bg-black {
-    background-color: var(--color-black);
   }
   .bg-white {
     background-color: var(--color-white);

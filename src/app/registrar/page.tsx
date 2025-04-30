@@ -32,6 +32,7 @@ export default function Login() {
             fetch(`/api/verifyConta?email=${email}`)
             .then(res => res.json())
             .then(data => { 
+                console.log(data)
                 if (data) {
                     fetch("/api/registerFuncionario",{
                         method: "POST",
@@ -39,12 +40,14 @@ export default function Login() {
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify({
-                            email,
-                            id
+                            id,
+                            email
                         })
                     })
                     Notify("E-mail cadastrado em sua empresa!")
-                } 
+                } else {
+                    Notify("E-mail não cadastrado  no sistema!")
+                }
             })
             .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
         } else {

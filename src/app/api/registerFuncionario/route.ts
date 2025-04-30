@@ -13,11 +13,11 @@ export async function POST(req: Request) {
 
   try {
     const user = await prisma.funcionarios.create({
-        data: {
-            idLoja: idLoja,
-            email: email,
-            cargo: "Funcionario"
-        },
+      data: {
+        idLoja: idLoja,
+        email: email,
+        cargo: "Funcionario"
+      },
     });
 
     return NextResponse.json(user)
