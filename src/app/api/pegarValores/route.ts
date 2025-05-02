@@ -32,9 +32,11 @@ export async function GET(req: Request) {
       valor.map((item: any) => {
         const atual = item.name.toLowerCase() === mesAtual
         if (atual) {
-          if (item.atual > 0) {
+
+          if (item.Atual > 0) {
             porc = Math.round((item.Atual / item.Previsto) * 100) 
           }
+
           total = item.Atual
         }
       })

@@ -35,7 +35,7 @@ export function MyBarChart() {
       {loading ? (
         <h1 className="text-center text-[1.5vw] text-gray-500">Carregando gráfico...</h1>
       ) : (
-        <ResponsiveContainer width="100%" height="90%">
+        <ResponsiveContainer width="100%" height="80%">
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
