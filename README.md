@@ -31,3 +31,21 @@ npx prisma migrate dev --name init
 
 # Inicie o servidor de desenvolvimento
 npm run dev
+ Funcionalidades
+ Cadastro e login de usuários com cookies (HttpOnly e Secure)
+
+ CRUD de produtos
+
+ CRUD de compradores
+
+ CRUD de vendas
+
+ Proteção de rotas
+
+ Dashboard com estatísticas e gráfico de vendas
+
+ Responsividade para dispositivos móveis
+
+ Filtro de busca nas listagens
+
+ Exportação de dados (em desenvolvimento)
