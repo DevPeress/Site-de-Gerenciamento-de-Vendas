@@ -1,3 +1,4 @@
+
 # Site de Gerenciamento de Vendas
 
 Sistema full-stack desenvolvido com **Next.js**, **Tailwind CSS**, **Prisma ORM**, **MySQL** e autenticação via **cookies**. A aplicação permite gerenciar compradores, produtos e vendas em um painel administrativo moderno, responsivo e seguro.
@@ -31,21 +32,54 @@ npx prisma migrate dev --name init
 
 # Inicie o servidor de desenvolvimento
 npm run dev
- Funcionalidades
- Cadastro e login de usuários com cookies (HttpOnly e Secure)
+```
 
- CRUD de produtos
+## ✅ Funcionalidades
 
- CRUD de compradores
+- [x] Cadastro e login de usuários com cookies (HttpOnly e Secure)
+- [x] CRUD de produtos
+- [x] CRUD de compradores
+- [x] CRUD de vendas
+- [x] Proteção de rotas
+- [x] Dashboard com estatísticas e gráfico de vendas
+- [x] Responsividade para dispositivos móveis
+- [x] Filtro de busca nas listagens
+- [ ] Exportação de dados (em desenvolvimento)
 
- CRUD de vendas
+## 🖼️ Preview
 
- Proteção de rotas
+![Preview do sistema](./public/preview.jpg)
 
- Dashboard com estatísticas e gráfico de vendas
+> O preview acima representa o dashboard com KPIs, gráfico e listagem de pedidos.
 
- Responsividade para dispositivos móveis
+## 🌐 Deploy
 
- Filtro de busca nas listagens
+A aplicação está disponível em produção via Vercel:  
+**[Acessar o sistema](https://site-de-gerenciamento-de-vendas.vercel.app/)**
 
- Exportação de dados (em desenvolvimento)
+> Algumas funcionalidades ainda podem depender de configuração local do banco.
+
+## 📁 Estrutura do Projeto
+
+```
+├── app/               # Páginas e rotas (Next.js)
+├── components/        # Componentes reutilizáveis
+├── lib/               # Funções auxiliares e autenticação
+├── prisma/            # Schema e migrations do banco de dados
+├── public/            # Assets públicos (imagens, ícones)
+├── styles/            # Estilizações globais (se necessário)
+└── types/             # Tipagens com TypeScript
+```
+
+## 👤 Autor
+
+Desenvolvido por [Peres](https://github.com/xPeres)
+
+- GitHub: [@xPeres](https://github.com/xPeres)
+- LinkedIn: [in/devperes](https://linkedin.com/in/devperes)
+- Instagram: [@fah.peres](https://instagram.com/fah.peres)
+- Discord: `PeresDev`
+
+---
+
+> Projeto desenvolvido para fins educacionais e de portfólio.
