@@ -50,7 +50,6 @@ export function LastCostumers() {
     }
     
     return (
-
         <table className="absolute w-full h-auto top-[20%]">
             <thead className="h-12 bg-[#F3F4F6] text-[.6vw] text-[#111827] text-center select-none">
                 <tr>

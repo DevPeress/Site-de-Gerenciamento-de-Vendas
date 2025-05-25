@@ -30,7 +30,6 @@ export default function Login() {
             fetch(`/api/verifyConta?email=${email}`)
             .then(res => res.json())
             .then(data => { 
-                console.log(data)
                 if (data) {
                     fetch("/api/registerFuncionario",{
                         method: "POST",
@@ -61,11 +60,11 @@ export default function Login() {
                     <>
                         <h1 className="text-center text-[1.5vw] text-gray-500">Carregando sua conta...</h1>
                     </> 
-                        
-                    : 
-                        
+                    :  
                     <>
-                        {!id || id === 0 ? <><Empresa /></> : 
+                        {!id || id === 0 ? 
+                            <> <Empresa /> </> 
+                            : 
                             <>
                                 <div className="flex absolute bg-white items-center justify-center select-none">
                                     <div className="flex absolute w-[400px] h-[441px]">

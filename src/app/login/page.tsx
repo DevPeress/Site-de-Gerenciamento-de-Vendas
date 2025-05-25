@@ -4,12 +4,23 @@ import { useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
 import { Notify } from "@/components/notify"
 
+interface Registros {
+    email: string,
+    senha: string
+}
+
 export default function Login() { 
-    const [email,setEmail] = useState("")
-    const [senha,setSenha] = useState("")
+    const [login,setLogin] = useState<Registros>({ email: "", senha: "" })
     const [etapa,setEtapa] = useState<"1" | "2" | "3">("1")
     const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma" | "Cadastrar na Plataforma">("Inserir Email") 
     const router = useRouter();
+
+    const alterarDados = (tipo: string, valor: string) => {
+        setLogin((prevDados) => ({
+            ...prevDados,
+            [tipo]: valor
+        }))
+    }
 
     useEffect(() =>{
         document.title = "Login"
@@ -24,6 +35,8 @@ export default function Login() {
         })
     },[])
 
+    const email = login.email
+    const senha = login.senha
     const emailV = email.includes("@") && email.toLocaleLowerCase().includes(".com")
     const senhaV = senha.length > 4
 
@@ -123,13 +136,13 @@ export default function Login() {
 
                         <div className="absolute w-auto h-5 top-35 text-[.6vw] text-[#5048E5] border-b border-[#5048E5]">Email</div>
                         <div className="absolute w-full h-12 rounded top-45 border-[#D1D5DB] border-1 overflow-hidden">
-                            <input className="absolute w-[98%] h-full outline-0 p-2" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input className="absolute w-[98%] h-full outline-0 p-2" type="email" value={login.email} onChange={(e) => alterarDados("email", e.target.value)} />
                         </div>
                         <h1 className="flex absolute w-18 top-43.5 left-2 text-[.5vw] text-[#6B7280] bg-white justify-center">Email</h1> 
                         {etapa !== "1" ? 
                         <>
                             <div className="absolute w-full h-12 rounded top-60 border-[#D1D5DB] border-1 overflow-hidden">
-                                <input className="absolute w-[98%] h-full outline-0 p-2" type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                                <input className="absolute w-[98%] h-full outline-0 p-2" type="password" value={login.senha} onChange={(e) => alterarDados("senha", e.target.value)} />
                             </div>
                             <h1 className="flex absolute w-18 top-58.5 left-2 text-[.5vw] text-[#6B7280] bg-white justify-center">Senha</h1> 
                         </> : <></> }

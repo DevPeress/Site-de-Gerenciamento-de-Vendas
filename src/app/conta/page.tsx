@@ -2,7 +2,6 @@
 
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
-import AuthGuard from "@/components/rota";
 import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
