@@ -7,9 +7,9 @@ import { Empresa } from "@/components/empresa";
 import Pagina from "@/components/pagina";
 
 export default function Login() { 
-    const [email,setEmail] = useState("")
-    const [id,setID] = useState(0)
-    const [loading,setLoading] = useState(true)
+    const [email,setEmail] = useState<string>("")
+    const [id,setID] = useState<number>(0)
+    const [loading,setLoading] = useState<boolean>(true)
 
     useEffect(() =>{
         document.title = "Registrar"

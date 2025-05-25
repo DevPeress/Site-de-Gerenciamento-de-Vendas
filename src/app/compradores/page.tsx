@@ -17,14 +17,14 @@ interface Compradores {
 }
 
 export default function Customers() {
-    const [lista,setLista] = useState(6)
-    const [total,setTotal] = useState(0)
-    const [id,setID] = useState(0)
+    const [lista,setLista] = useState<number>(6)
+    const [total,setTotal] = useState<number>(0)
+    const [id,setID] = useState<number>(0)
 
     const proximo = () => setLista((prev => (total - lista) > 6 ? prev + 6 : (total - lista) > 0 ? prev + (total - lista) : 6))
     const voltar = () => setLista((prev => (lista) / 2 > 6 ? prev - 6 : prev = 6))
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState<boolean>(true)
     const [CompradoresData,setCompradoresData] = useState<Compradores[]>([ ]) 
 
 

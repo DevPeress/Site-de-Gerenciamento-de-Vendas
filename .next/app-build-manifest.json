@@ -11,6 +11,26 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
+    "/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/login/page.js"
+    ],
+    "/api/infos/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/infos/route.js"
+    ],
+    "/api/verifyConta/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/verifyConta/route.js"
+    ],
+    "/api/login/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/login/route.js"
+    ],
     "/inicio/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -21,11 +41,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/pegarValores/route.js"
     ],
-    "/api/infos/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/infos/route.js"
-    ],
     "/api/pegarGrafico/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -35,46 +50,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/pegarUltimosPedidos/route.js"
-    ],
-    "/compradores/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/compradores/page.js"
-    ],
-    "/api/pegarCompradores/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarCompradores/route.js"
-    ],
-    "/produtos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/produtos/page.js"
-    ],
-    "/api/pegarProdutos/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarProdutos/route.js"
-    ],
-    "/conta/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/conta/page.js"
-    ],
-    "/api/pegarUsuario/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarUsuario/route.js"
-    ],
-    "/configuracoes/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/configuracoes/page.js"
-    ],
-    "/registrar/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/registrar/page.js"
     ]
   }
 }

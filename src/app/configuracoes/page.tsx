@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 
 export default function Config() {
     const router = useRouter();
-    const [senha,setSenha] = useState("")
-    const [senhaN,setSenhaN] = useState("")
+    const [senha,setSenha] = useState<string>("")
+    const [senhaN,setSenhaN] = useState<string>("")
 
     const verifySenhas = senha.length > 4 && senhaN.length > 4
 

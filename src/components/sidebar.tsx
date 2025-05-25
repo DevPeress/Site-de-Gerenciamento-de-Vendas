@@ -16,7 +16,7 @@ export function SideBar() {
     const router = useRouter();
     const pathname = usePathname();
     const urlSemBarraInicial = pathname.replace(/^\/+/, '');
-    const [nome,setNome] = useState<string>('')
+    const [nome,setNome] = useState<Escolhas['nome']>('')
     
     const escolhas: Escolhas[] = [
         { nome: "Inicio", off: "dashboard-d.svg", on:"dashboard-a.svg" },

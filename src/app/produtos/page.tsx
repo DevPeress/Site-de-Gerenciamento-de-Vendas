@@ -15,8 +15,8 @@ interface Produtos {
 
 export default function Products() {
   const [produtosData,setprodutosData] = useState<Produtos[]>([]) 
-  const [loading,setLoading] = useState(true)
-  const [id,setID] = useState(0)
+  const [loading,setLoading] = useState<boolean>(true)
+  const [id,setID] = useState<number>(0)
 
   useEffect(() => {
     document.title = "Produtos"

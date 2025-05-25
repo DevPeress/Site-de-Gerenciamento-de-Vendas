@@ -12,7 +12,7 @@ interface Grafico {
 
 export function MyBarChart() {
   const [data, setDados] = useState<Grafico[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch(`/api/infos`)
