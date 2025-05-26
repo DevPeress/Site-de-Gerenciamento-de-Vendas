@@ -5,7 +5,7 @@ export function Notify(msg: string) {
   
     div.innerText = msg;
     div.className = `
-      fixed top-5 left-1/2 transform -translate-x-1/2 bg-white text-[#111827] 
+      fixed top-[1vw] left-1/2 transform -translate-x-1/2 bg-white text-[#111827] 
       px-6 py-3 rounded shadow-lg border z-[9999] transition-opacity duration-300
     `;
   

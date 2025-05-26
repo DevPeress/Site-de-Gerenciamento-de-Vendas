@@ -6,7 +6,7 @@ export function Empresa() {
             <h1 className="absolute text-black text-[1.5vw] top-[5vw]">Sua empresa não foi localizada!</h1>
             <h2 className="absolute text-black text-[.8vw] top-[8vw]">Informe sua administração ou a do site para corrigir!</h2>
             <Image
-                className="absolute w-1/3"
+                className="absolute w-[50vw]"
                 src="/404.svg"
                 alt="Logo 404 erro"
                 width={180}

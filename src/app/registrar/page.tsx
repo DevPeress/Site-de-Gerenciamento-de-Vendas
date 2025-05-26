@@ -67,17 +67,17 @@ export default function Login() {
                             : 
                             <>
                                 <div className="flex absolute bg-white items-center justify-center select-none">
-                                    <div className="flex absolute w-[400px] h-[441px]">
-                                        <h1 className="absolute top-10 text-[2vw] text-[#111827]">Bem-Vindo</h1>
-                                        <h2 className="absolute top-22 text-[1vw] text-[#6B7280]">Insira o Email do novo Funcionário</h2>
+                                    <div className="flex absolute w-[20.833vw] h-[22.969vw]">
+                                        <h1 className="absolute top-[2vw] text-[2vw] text-[#111827]">Bem-Vindo</h1>
+                                        <h2 className="absolute top-[4.5vw] text-[1vw] text-[#6B7280]">Insira o Email do novo Funcionário</h2>
                         
-                                        <div className="absolute w-auto h-5 top-35 text-[.6vw] text-[#5048E5] border-b border-[#5048E5]">Email</div>
-                                        <div className="absolute w-full h-12 rounded top-45 border-[#D1D5DB] border-1 overflow-hidden">
+                                        <div className="absolute w-auto h-[1vw] top-[7vw] text-[.6vw] text-[#5048E5] border-b border-[#5048E5]">Email</div>
+                                        <div className="absolute w-full h-[2.5vw] rounded top-[9.5vw] border-[#D1D5DB] border-1 overflow-hidden">
                                             <input className="absolute w-[98%] h-full outline-0 p-2" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                         </div>
-                                        <h1 className="flex absolute w-18 top-43.5 left-2 text-[.5vw] text-[#6B7280] bg-[#F9FAFC] justify-center">Email</h1>    
+                                        <h1 className="flex absolute w-[4vw] top-[9.2vw] left-[.5vw] text-[.5vw] text-[#6B7280] bg-[#F9FAFC] justify-center">Email</h1>    
                         
-                                        <button className="absolute bottom-20 w-full h-15 bg-[#5048E5] rounded text-[#FFFFFF] text-[1vw] items-center justify-center hover:scale-110" onClick={verifyEmail}>Registrar Funcionario</button>
+                                        <button className="absolute bottom-[3vw] w-full h-[3vw] bg-[#5048E5] rounded text-[#FFFFFF] text-[1vw] items-center justify-center hover:scale-110" onClick={verifyEmail}>Registrar Funcionario</button>
                                     </div>
                                 </div>
                             </> 

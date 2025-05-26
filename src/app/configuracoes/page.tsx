@@ -18,7 +18,7 @@ interface Types {
 
 export default function Config() {
     const [senhas,setSenhas] = useState<Senhas>({ senhaA: "", senhaN: ""})
-    const [types,setTypes] = useState<Types>({ antiga: "text", nova: "text" })
+    const [types,setTypes] = useState<Types>({ antiga: "password", nova: "password" })
 
     const alterarSenha = (tipo: string, valor: string) => {
         setSenhas((prevDados) => ({
@@ -65,18 +65,18 @@ export default function Config() {
         <>
             <SideBar />
             <Pagina> 
-                <h1 className="absolute top-5 left-[2.7085vw] text-[2vw] text-[#111827] select-none">Configurações</h1>
-                <div className="flex absolute w-[40vw] h-80 top-20 left-[2.7085vw] bg-[#FFFFFF] items-center justify-center rounded-4xl select-none">
-                    <div className="flex absolute w-full h-15 top-0 border-b border-[#E6E8F0] items-center justify-center text-[#111827] font-bold">
-                        <h1 className="absolute left-20">Trocar Senha</h1>
+                <h1 className="absolute top-[1vw] left-[2.7085vw] text-[2vw] text-[#111827] select-none">Configurações</h1>
+                <div className="flex absolute w-[25vw] h-[18vw] top-[5vw] left-[2.7085vw] bg-[#FFFFFF] items-center justify-center rounded-4xl select-none">
+                    <div className="flex absolute w-[25vw] h-[3vw] top-0 border-b border-[#E6E8F0] items-center justify-center text-[#111827] font-bold">
+                        <h1 className="absolute left-[2.5vw] text-[.8vw]">Trocar Senha</h1>
                     </div>
                 
                     <div className="grid absolute grid-cols-1 w-full h-auto gap-5 p-10">
-                        <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                            <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Senha Atual</h1>
-                            <input type={types.antiga} className="w-[85%] h-full outline-none p-4" value={senhas.senhaA} onChange={(e) => alterarSenha('senhaA',e.target.value)} />
+                        <div className="relative w-full h-[3vw] border-1 border-[#E6E8F0] rounded-2xl items-center justify-center">
+                            <h1 className="flex absolute w-[6vw] bottom-[2.5vw] left-[1vw] bg-white text-[0.6vw] items-center justify-center">Senha Atual</h1>
+                            <input type={types.antiga} className="flex relative w-[92%] h-full outline-none p-4 text-[.8vw]" value={senhas.senhaA} onChange={(e) => alterarSenha('senhaA',e.target.value)} />
                             <Image
-                                className="flex absolute w-[1vw] top-5 right-20"
+                                className="flex absolute w-[1vw] top-[1vw] right-[1vw]"
                                 onClick={() => alterarTipo("antiga")}
                                 src="/Icon.svg"
                                 alt="Logo 404 erro"
@@ -85,11 +85,11 @@ export default function Config() {
                                 priority
                             />
                         </div>
-                        <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                            <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Senha nova</h1>
-                            <input type={types.nova} className="w-[85%] h-full outline-none p-4" value={senhas.senhaN} onChange={(e) => alterarSenha('senhaN',e.target.value)} />
+                        <div className="relative w-full h-[3vw] border-1 border-[#E6E8F0] rounded-2xl">
+                            <h1 className="flex absolute w-[6vw] bottom-[2.5vw] left-[1vw] bg-white text-[0.6vw] items-center justify-center">Senha nova</h1>
+                            <input type={types.nova} className="w-[92%] h-full outline-none p-4" value={senhas.senhaN} onChange={(e) => alterarSenha('senhaN',e.target.value)} />
                             <Image
-                                className="flex absolute w-[1vw] top-5 right-20"
+                                className="flex absolute w-[1vw] top-[1vw] right-[1vw]"
                                 onClick={() => alterarTipo("nova")}
                                 src="/Icon.svg"
                                 alt="Logo 404 erro"
@@ -100,8 +100,8 @@ export default function Config() {
                         </div>
                     </div>
                 
-                    <div className="flex absolute w-full h-15 bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[#5048E5]" onClick={changePassword}>
-                        <h1 className="flex absolute right-20 bg-[#5048E5] w-35 h-10 rounded-2xl text-[#FFFFFF] items-center justify-center hover:scale-110">Trocar Senha</h1>
+                    <div className="flex absolute w-[25vw] h-[3vw] bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[#5048E5]" onClick={changePassword}>
+                        <h1 className="flex absolute right-[2.5vw] bg-[#5048E5] w-[8vw] h-[2vw] rounded-2xl text-[#FFFFFF] text-[.8vw] items-center justify-center hover:scale-110">Trocar Senha</h1>
                     </div>
                 </div>
             </Pagina>

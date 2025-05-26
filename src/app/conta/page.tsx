@@ -106,33 +106,33 @@ export default function Conta() {
     <>
       <SideBar />
       <Pagina> 
-        <div className="flex absolute w-120 h-80 top-10 left-60 bg-[#FFFFFF] items-center justify-center rounded-4xl select-none">
+        <div className="flex absolute w-[25vw] h-[16.667vw] top-[2vw] left-[12.5vw] bg-[#FFFFFF] items-center justify-center rounded-4xl select-none">
           <Image
-            className="absolute w-20 top-10"
+            className="absolute w-[5vw] top-[1.5vw]"
             src={infos.foto}
             alt={`Ícone da conta`}
             width={180}
             height={38}
             priority
           />
-          <h1 className="absolute text-[#111827] text-2xl">{infos.nome}</h1>
-          <h2 className="absolute top-45 text-[#6B7280] text-[.75vw]">{infos.loc}</h2>
-          <h2 className="absolute top-50 text-[#6B7280] text-[.75vw]">{infos.horario}</h2>
-          <div className="flex absolute w-full h-15 bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[#5048E5] hover:scale-110">Trocar Foto</div>
+          <h1 className="absolute text-[#111827] text-[1.5vw]">{infos.nome}</h1>
+          <h2 className="absolute top-[9.5vw] text-[#6B7280] text-[.75vw]">{infos.loc}</h2>
+          <h2 className="absolute top-[10.5vw] text-[#6B7280] text-[.75vw]">{infos.horario}</h2>
+          <div className="flex absolute w-full h-[4vw] bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[1vw] text-[#5048E5] hover:scale-110">Trocar Foto</div>
         </div>
         
-        <div className="flex absolute w-170 h-120 top-10 right-40 bg-[#FFFFFF] items-center justify-center rounded-4xl select-none">
-          <div className="flex absolute w-full h-20 top-0 border-b border-[#E6E8F0] items-center justify-center text-[#111827] font-bold">
-            <h1 className="absolute left-20">Cabeçalho do cartão</h1>
+        <div className="flex absolute w-[35.417vw] h-[20vw] top-[2vw] right-[8vw] bg-[#FFFFFF] items-center justify-center rounded-4xl select-none">
+          <div className="flex absolute w-full h-[3vw] top-0 border-b border-[#E6E8F0] items-center justify-center text-[#111827] font-bold">
+            <h1 className="absolute left-[2.5vw] text-[0.8vw]">Cabeçalho do cartão</h1>
           </div>
         
-          <div className="grid absolute grid-cols-2 w-full h-auto gap-5 p-10">
+          <div className="grid absolute grid-cols-2 w-full h-auto gap-[1vw] p-10">
             {tipos.map((item, index) => {
                 const tipo = item.variavel
 
                 return (
-                  <div key={index} className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                    <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">{item.texto}</h1>
+                  <div key={index} className="relative w-full h-[3vw] border-1 border-[#E6E8F0] rounded-2xl text-[.8vw]">
+                    <h1 className="flex absolute w-[6vw] bottom-[2.45vw] left-[.5vw] bg-white items-center justify-center text-[.6vw]">{item.texto}</h1>
                     {tipo === "rg" ? 
                       <> 
                         <input className="w-full h-full outline-0 text-center" type="text" maxLength={12} value={infos[tipo]} onChange={(e) => alterarDado(tipo,e.target.value)} />
@@ -149,8 +149,8 @@ export default function Conta() {
             )}
           </div>
       
-          <div className="flex absolute w-full h-20 bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[#5048E5]">
-            <h1 className="flex absolute right-20 bg-[#5048E5] w-25 h-10 rounded-2xl text-[#FFFFFF] items-center justify-center hover:scale-110" onClick={salvar}>Salvar</h1>
+          <div className="flex absolute w-full h-[3vw] bottom-0 border-t border-[#E6E8F0] items-center justify-center">
+            <h1 className="flex absolute right-[2.5vw] bg-[#5048E5] w-[8vw] h-[2vw] rounded-2xl text-[#FFFFFF] text-[.8vw] items-center justify-center hover:scale-110" onClick={salvar}>Salvar</h1>
           </div>
         </div>
       </Pagina>

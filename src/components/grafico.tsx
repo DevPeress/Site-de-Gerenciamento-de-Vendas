@@ -31,7 +31,7 @@ export function MyBarChart() {
   }, []);
 
   return (
-    <div className="flex absolute top-5 justify-center items-center w-full h-full">
+    <div className="flex absolute top-[1vw] justify-center items-center w-full h-full">
       {loading ? (
         <h1 className="text-center text-[1.5vw] text-gray-500">Carregando gráfico...</h1>
       ) : (

@@ -51,24 +51,24 @@ export function SideBar() {
 
     return(
         <main className="flex fixed items-center justify-center bg-[#111827] w-[14.583vw] h-full select-none">
-            <div className="flex absolute w-full h-20 top-5 items-center justify-center">
+            <div className="flex absolute w-[12.1525vw] h-[8vh] top-[2vh] right-[2vw] items-center justify-center">
                 <Image
-                    className="absolute w-1/5 left-8"
+                    className="relative w-[3vw] mr-[3vw] top-[1.5vh]"
                     src="/P-Free.svg"
                     alt="Logo versão free"
                     width={180}
                     height={38}
                     priority
                 />
-                <div className="flex absolute items-center justify-center text-[#FFFFFF] text-[.45vw] bg-[#828DF8] w-12 h-6 rounded left-23 top-4">FREE</div>
+                <div className="flex relative items-center justify-center text-[#FFFFFF] text-[.5vw] bg-[#828DF8] w-[3.5vw] h-[1vw] right-[4vh] rounded">FREE</div>
             </div>
 
-            <div className="flex absolute top-30 bg-[rgb(255,255,255,0.04)] w-5/6 h-15 rounded items-center">
-                <h1 className="absolute top-2 left-5 text-[#FFFFFF] text-lg">{nome}</h1>
-                <h2 className="absolute top-8 left-5 text-[#9CA3AF] text-xs">Your tier: Premium</h2>
+            <div className="flex absolute top-[12vh] bg-[rgb(255,255,255,0.04)] w-[12.1525vw] h-[6vh] rounded items-center">
+                <h1 className="absolute top-[1vh] left-5 text-[#FFFFFF] text-[1vw]">{nome}</h1>
+                <h2 className="absolute top-[3.5vh] left-5 text-[#9CA3AF] text-[.5vw]">Your tier: Premium</h2>
             </div>
             
-            <div className="absolute top-60 w-full h-[0.1vw] bg-[#1F2937]"></div>
+            <div className="absolute top-[25vh] w-full h-[0.1vw] bg-[#1F2937]"></div>
 
             <div className="flex absolute w-full h-100 items-center justify-center flex-wrap">
                 {escolhas.map((item) => {
@@ -79,16 +79,16 @@ export function SideBar() {
                     const config: string = item.nome === "Configuracoes" ? "Configurações" : item.nome
 
                     return (
-                        <Link key={item.nome} href={pagina} className="flex relative w-4/5 h-10 items-center justify-center rounded-[.5vw] hover:scale-110">
+                        <Link key={item.nome} href={pagina} className="flex relative w-4/5 h-10 items-center rounded-[.5vw] hover:scale-110">
                             <Image
-                                className="absolute w-5 left-5"
+                                className="relative w-[1.2vw] mr-[1vw]"
                                 src={iconSrc}
                                 alt={`Ícone para ${item.nome}`}
                                 width={180}
                                 height={38}
                                 priority
                             />
-                            <h1 className={`absolute left-12 text-[1vw] ${textColor}`}>{config}</h1>
+                            <h1 className={`relative text-[1vw] ${textColor}`}>{config}</h1>
                         </Link>
                     );
                 })}

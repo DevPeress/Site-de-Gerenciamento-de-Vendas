@@ -51,7 +51,7 @@ export function LastCostumers() {
     
     return (
         <table className="absolute w-full h-auto top-[20%]">
-            <thead className="h-12 bg-[#F3F4F6] text-[.6vw] text-[#111827] text-center select-none">
+            <thead className="h-[2.5vw] bg-[#F3F4F6] text-[.6vw] text-[#111827] text-center select-none">
                 <tr>
                     <th>Ordem</th>
                     <th>Comprador</th>
@@ -65,12 +65,12 @@ export function LastCostumers() {
                     const statusInfo: Infos = getStatusInfo(item.status);
 
                     return (
-                        <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] text-[.7vw] h-15 hover:scale-101">
+                        <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] text-[.7vw] h-[3.2vw] hover:scale-101">
                             <td>{item.ordem}</td>
                             <td>{item.comprador}</td>
                             <td>{item.data}</td>
-                            <td className="flex relative w-auto h-15 items-center justify-center">
-                                <div className="flex relative w-1/3 h-8 items-center justify-center rounded text-[#FFFFFF] text-[.5vw]" style={{background: statusInfo.cor }}>{statusInfo.nome}</div>
+                            <td className="flex relative w-auto h-[2.5vw] items-center justify-center">
+                                <div className="flex relative w-[4vw] h-[1.5vw] items-center justify-center rounded text-[#FFFFFF] text-[.5vw]" style={{background: statusInfo.cor }}>{statusInfo.nome}</div>
                             </td>
                         </tr>
                     )
