@@ -24,6 +24,7 @@ export async function POST(req: Request) {
           nome: "Teste",
           email: email,
           senha: senhaHash,
+          idade: 21,
           loc: "Osasco, Brasil, São Paulo",
           cell: "(11) 999999999",
           rg: "99999999",
