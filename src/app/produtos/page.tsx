@@ -23,7 +23,7 @@ export default function Products() {
     fetch(`/api/infos`)
     .then(res => res.json())
     .then(data => {
-      const userId = data.idLoja;
+      const userId: number = data.idLoja;
       setID(userId)
       setLoading(false)
       return fetch(`/api/pegarProdutos?id=${userId}`);
@@ -34,6 +34,7 @@ export default function Products() {
   },[])
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
+
   const Pesquisar = (texto: string) => {
     const searchTerm = texto.toLowerCase()
     const table = tableRef.current

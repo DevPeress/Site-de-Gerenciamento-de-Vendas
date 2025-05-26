@@ -34,7 +34,7 @@ export default function Customers() {
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {
-            const userId = data.idLoja;
+            const userId: number = data.idLoja;
             setID(userId)
 
             return fetch(`/api/pegarCompradores?id=${userId}`);
@@ -55,14 +55,14 @@ export default function Customers() {
     
     const Pesquisar = (texto: string) => {
         total > 0 ? setTotal(0) : setTotal(total)
-        const searchTerm = texto.toLowerCase()
+        const searchTerm: string = texto.toLowerCase()
         const table = tableRef.current
 
         if (table) { 
             const rows = Array.from(table.getElementsByTagName('tr'));
           
             rows.forEach((row, index) => {
-              const loja = CompradoresData[index];
+              const loja: Compradores = CompradoresData[index];
           
               const searchContent = `
                 ${loja.nome.toLowerCase()}

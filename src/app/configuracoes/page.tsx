@@ -27,7 +27,7 @@ export default function Config() {
         fetch(`/api/infos`)
             .then(res => res.json())
             .then(data => {
-            const userId = data.id;
+            const userId: number = data.id;
 
             if (!userId || userId === 0) {
                 router.push('/login');

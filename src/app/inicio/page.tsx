@@ -20,15 +20,13 @@ interface Valores {
 }
 
 export default async function DashBoard() {
-    let budget, customers, task: any, total = 0
-
     const cookieStore = await cookies();
     const auth = cookieStore.get("auth");
 
     if (!auth) return 
     
     let valores = await JSON.parse(auth.value)
-    let id = valores.id
+    let id: number = valores.id
 
     const resp = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/pegarValores?id=${id}`);
     if (resp.status !== 200) {
@@ -41,16 +39,11 @@ export default async function DashBoard() {
        return
     }
 
-    budget = valores2.budget
-    customers = valores2.customers
-    task = valores2.task
-    total = valores2.total
-
     const tipos = [
-        { n: "ORÇAMENTO", i: "budge.svg", v: budget },
-        { n: "CLIENTES TOTAIS", i: "customers.svg", v: customers },
-        { n: "PROGRESSO DA TAREFA", i: "task.svg", v: task },
-        { n: "LUCRO TOTAL", i: "profit.svg", v: total }
+        { n: "ORÇAMENTO", i: "budge.svg", v: valores2.budget },
+        { n: "CLIENTES TOTAIS", i: "customers.svg", v: valores2.customers },
+        { n: "PROGRESSO DA TAREFA", i: "task.svg", v: valores2.task },
+        { n: "LUCRO TOTAL", i: "profit.svg", v: valores2.total }
     ]
 
     return (
@@ -76,7 +69,7 @@ export default async function DashBoard() {
                                 />
                                 {porc ? <>
                                     <div className="absolute w-[90%] h-2 bottom-10 bg-[#FFFFFF] rounded overflow-hidden">
-                                        <div className="bg-[#5048E5] h-2" style={{ width:`${task}%`}}></div>
+                                        <div className="bg-[#5048E5] h-2" style={{ width:`${valores2.task}%`}}></div>
                                     </div>
                                     </>:<></>
                                 }

@@ -14,8 +14,8 @@ interface Escolhas {
 
 export function SideBar() {
     const router = useRouter();
-    const pathname = usePathname();
-    const urlSemBarraInicial = pathname.replace(/^\/+/, '');
+    const pathname: string = usePathname();
+    const urlSemBarraInicial: string = pathname.replace(/^\/+/, '');
     const [nome,setNome] = useState<Escolhas['nome']>('')
     
     const escolhas: Escolhas[] = [
@@ -76,11 +76,11 @@ export function SideBar() {
 
             <div className="flex absolute w-full h-100 items-center justify-center flex-wrap">
                 {escolhas.map((item) => {
-                    const pagina = item.nome.toLowerCase()
-                    const isActive = urlSemBarraInicial === pagina;
-                    const textColor = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
-                    const iconSrc = isActive ? item.on : item.off;
-                    const config = item.nome === "Configuracoes" ? "Configurações" : item.nome
+                    const pagina: string = item.nome.toLowerCase()
+                    const isActive: boolean = urlSemBarraInicial === pagina;
+                    const textColor: string = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
+                    const iconSrc: string = isActive ? item.on : item.off;
+                    const config: string = item.nome === "Configuracoes" ? "Configurações" : item.nome
 
                     return (
                         <Link key={item.nome} href={pagina} className="flex relative w-4/5 h-10 items-center justify-center rounded-[.5vw] hover:scale-110">

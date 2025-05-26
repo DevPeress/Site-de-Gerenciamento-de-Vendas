@@ -62,7 +62,7 @@ export function LastCostumers() {
 
             <tbody >
                 {dado.map((item,index) => {
-                    const statusInfo = getStatusInfo(item.status);
+                    const statusInfo: Infos = getStatusInfo(item.status);
 
                     return (
                         <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] text-[.7vw] h-15 hover:scale-101">

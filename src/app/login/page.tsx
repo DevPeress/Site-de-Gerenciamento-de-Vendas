@@ -27,7 +27,7 @@ export default function Login() {
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {
-            const userId = data.id;
+            const userId: number = data.id;
 
             if (userId && userId !== 0) {
                 router.push('/inicio');
@@ -35,10 +35,11 @@ export default function Login() {
         })
     },[])
 
-    const email = login.email
-    const senha = login.senha
-    const emailV = email.includes("@") && email.toLocaleLowerCase().includes(".com")
-    const senhaV = senha.length > 4
+    const email: string = login.email
+    const senha: string = login.senha
+
+    const emailV: boolean = email.includes("@") && email.toLocaleLowerCase().includes(".com")
+    const senhaV: boolean = senha.length > 4
 
     const verify = () => {
         switch(etapa) {
@@ -55,75 +56,75 @@ export default function Login() {
     }
 
     const verifyEmail = () => {
-        if (emailV) {
-            fetch(`/api/verifyConta?email=${email}`)
-            .then(res => res.json())
-            .then(data => { 
-                if (data) {
-                    setEtapa("2")
-                    setMensagem("Logar na Plataforma")
-                } else {
-                    setEtapa("3")
-                    setMensagem("Cadastrar na Plataforma")
-                }
-            })
-            .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
-        } else {
+        if (!emailV) {
             Notify("E-mail está incorreto!")
         }
+
+        fetch(`/api/verifyConta?email=${email}`)
+        .then(res => res.json())
+        .then(data => { 
+            if (data) {
+                setEtapa("2")
+                setMensagem("Logar na Plataforma")
+            } else {
+                setEtapa("3")
+                setMensagem("Cadastrar na Plataforma")
+            }
+        })
+        .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
     }
 
     const verifyLogin = () => {
         if (emailV && senhaV) {
-            fetch(`/api/login?email=${email}&senha=${senha}`, {
-                method: "GET",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                credentials: 'include',
-            })
-            .then(res => res.json())
-            .then(data => { 
-                if (data) {
-                    if (data.status !== 400) {
-                        router.push('/inicio');
-                    } else {
-                        Notify(data.mensagem)
-                    }
-                } else {
-                    Notify("E-mail ou Senha estão incorretos!")
-                }
-            })
-            .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
-        } else {
             Notify("E-mail ou senha estão incorretos!")
         }
+
+        fetch(`/api/login?email=${email}&senha=${senha}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: 'include',
+        })
+        .then(res => res.json())
+        .then(data => { 
+            if (data) {
+                if (data.status !== 400) {
+                    router.push('/inicio');
+                } else {
+                    Notify(data.mensagem)
+                }
+            } else {
+                Notify("E-mail ou Senha estão incorretos!")
+            }
+         })
+        .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
     }
 
     const verifyRegister = () => {
-        if (emailV && senhaV) {
-            fetch("/api/register",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    senha,
-                    email
-                })
-            })
-            .then(res => res.json())
-            .then(data => { 
-                if (data) {
-                    Notify("Peça para o dono registrar seu email!")
-                } else {
-                    Notify("Erro ao criar os Dados!")
-                }
-            })
-            .catch((err) => Notify("Não foi cadastrar a conta! Recarregue a Página"))
-        } else {
+        if (!emailV && !senhaV) {
             Notify("E-mail ou senha estão incorretos!")
         }
+            
+        fetch("/api/register",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                senha,
+                email
+            })
+        })
+        .then(res => res.json())
+        .then(data => { 
+            if (data) {
+                Notify("Peça para o dono registrar seu email!")
+            } else {
+                Notify("Erro ao criar os Dados!")
+            }
+        })
+        .catch((err) => Notify("Não foi cadastrar a conta! Recarregue a Página"))
     }
 
     return (

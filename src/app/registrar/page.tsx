@@ -16,40 +16,40 @@ export default function Login() {
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {
-            const userId = data.idLoja;
+            const userId: number = data.idLoja;
             setID(userId)
 
             return setLoading(false)
         })
     },[])
 
-    const emailV = email.includes("@") && email.toLocaleLowerCase().includes(".com")
+    const emailV: boolean = email.includes("@") && email.toLocaleLowerCase().includes(".com")
 
     const verifyEmail = () => {
-        if (emailV) {
-            fetch(`/api/verifyConta?email=${email}`)
-            .then(res => res.json())
-            .then(data => { 
-                if (data) {
-                    fetch("/api/registerFuncionario",{
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            id,
-                            email
-                        })
-                    })
-                    Notify("E-mail cadastrado em sua empresa!")
-                } else {
-                    Notify("E-mail não cadastrado  no sistema!")
-                }
-            })
-            .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
-        } else {
+        if (!emailV) {
             Notify("E-mail está incorreto ou não registrado!");
         }
+
+        fetch(`/api/verifyConta?email=${email}`)
+        .then(res => res.json())
+        .then(data => { 
+            if (data) {
+                fetch("/api/registerFuncionario",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        id,
+                        email
+                    })
+                })
+                Notify("E-mail cadastrado em sua empresa!")
+            } else {
+                Notify("E-mail não cadastrado  no sistema!")
+            }
+        })
+        .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
     }
 
     return (
