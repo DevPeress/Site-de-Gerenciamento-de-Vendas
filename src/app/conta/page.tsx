@@ -27,7 +27,6 @@ interface Infos {
 }
 
 export default function Conta() {
-  const router = useRouter();
   const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "Avatar.svg"})
 
   const tipos = [

@@ -80,7 +80,7 @@ export default function Login() {
             <div className="flex absolute w-full h-full bg-white items-center justify-center select-none">
                 <div className="flex absolute w-[85.417vw] h-[441px] items-center justify-center">
                     <h1 className="absolute top-0 text-[2vw] text-[#111827]">Bem-Vindo</h1>
-                    <h2 className="absolute top-12 text-[1vw] text-[#6B7280]">Insira o Email do novo Funcionário</h2>
+                    <h2 className="absolute top-12 text-[1vw] text-[#6B7280]">Efetue seu cadastro!</h2>
 
                     <div className="grid grid-cols-2 absolute top-25 w-[50vw] h-55">
                         <div>
@@ -92,7 +92,7 @@ export default function Login() {
 
                         <div>
                             <div className="flex relative w-[21.25vw] h-12 rounded border-[#D1D5DB] border-1 overflow-hidden">
-                                <input className="absolute w-[90%] h-full outline-0 p-2 text-center" type={type} value={registro.senha} onChange={(e) => alterarDados('senha',e.target.value)} />
+                                <input className="absolute w-[98%] h-full outline-0 p-2 text-center" type={type} value={registro.senha} onChange={(e) => alterarDados('senha',e.target.value)} />
                             </div>
                             <h1 className="flex relative w-18 bottom-14 left-2 text-[.5vw] text-[#6B7280] bg-white justify-center">Senha</h1>  
                             <Image
