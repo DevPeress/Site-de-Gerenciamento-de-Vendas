@@ -20,6 +20,10 @@ export async function GET(req: Request) {
     const dados = {
         nome: usuario.nome,
         loc: usuario.loc,
+        email: usuario.email,
+        idade: "21",
+        rg: usuario.rg,
+        celular: usuario.cell,
         horario: "GTM-5",
         foto: usuario.foto
     }

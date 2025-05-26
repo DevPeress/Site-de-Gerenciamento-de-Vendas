@@ -20,13 +20,15 @@ interface Infos {
   email: string,
   idade: string,
   rg: string,
-  cep: string,
-  celular: string
+  loc: string,
+  celular: string,
+  horario: string,
+  foto: string
 }
 
 export default function Conta() {
   const router = useRouter();
-  const [dados,setDados] = useState<Usuario>()
+  const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: ""})
 
   useEffect(() => {
     document.title = "Sua Conta"
@@ -43,18 +45,21 @@ export default function Conta() {
       return fetch(`/api/pegarUsuario?id=${userId}`);
     })
     .then(res => res.json())
-    .then(data =>  { setDados(data) })
+    .then(data =>  {
+      setInfos({
+        nome: data.nome, email: data.email, idade: data.idade, rg: data.rg, loc: data.loc, celular: data.celular, horario: data.horario, foto: data.foto
+      })
+    })
     .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página") })
   },[])
 
-  const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", cep: "", celular: ""})
   const tipos = [
     { texto: "Primeiro Nome", variavel: "nome" },
     { texto: "Email", variavel: "email" },
     { texto: "RG", variavel: "rg" },
     { texto: "Celular", variavel: "celular" },
     { texto: "Idade", variavel: "idade" },
-    { texto: "Endereço", variavel: "cep" },
+    { texto: "Endereço", variavel: "loc" },
   ]
 
   const alterarDado = (tipo: string, valor: string) => {
@@ -65,24 +70,42 @@ export default function Conta() {
     }))
   }
 
+  const salvar = () => {
+    fetch(`/api/atualizarUsuario`,{
+      method: "PUT",
+      body: JSON.stringify({
+        nome: infos.nome,
+        email: infos.email,
+        loc: infos.loc,
+        cell: infos.celular,
+        rg: infos.rg,
+        idade: infos.idade
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      Notify(data.mensagem)
+    })
+  }
+
   return (
     <>
       <SideBar />
       <Pagina> 
-        {dados ? 
+        
           <>
             <div className="flex absolute w-120 h-80 top-10 left-60 bg-[#FFFFFF] items-center justify-center rounded-4xl select-none">
               <Image
                 className="absolute w-20 top-10"
-                src={dados.foto}
+                src={infos.foto}
                 alt={`Ícone da conta`}
                 width={180}
                 height={38}
                 priority
               />
-              <h1 className="absolute text-[#111827] text-2xl">{dados.nome}</h1>
-              <h2 className="absolute top-45 text-[#6B7280] text-[.75vw]">{dados.loc}</h2>
-              <h2 className="absolute top-50 text-[#6B7280] text-[.75vw]">{dados.horario}</h2>
+              <h1 className="absolute text-[#111827] text-2xl">{infos.nome}</h1>
+              <h2 className="absolute top-45 text-[#6B7280] text-[.75vw]">{infos.loc}</h2>
+              <h2 className="absolute top-50 text-[#6B7280] text-[.75vw]">{infos.horario}</h2>
               <div className="flex absolute w-full h-15 bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[#5048E5] hover:scale-110">Trocar Foto</div>
             </div>
         
@@ -106,7 +129,7 @@ export default function Conta() {
               </div>
         
               <div className="flex absolute w-full h-20 bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[#5048E5]">
-                <h1 className="flex absolute right-20 bg-[#5048E5] w-25 h-10 rounded-2xl text-[#FFFFFF] items-center justify-center hover:scale-110">Salvar</h1>
+                <h1 className="flex absolute right-20 bg-[#5048E5] w-25 h-10 rounded-2xl text-[#FFFFFF] items-center justify-center hover:scale-110" onClick={salvar}>Salvar</h1>
               </div>
             </div>
           </> 
@@ -116,7 +139,7 @@ export default function Conta() {
               <h1 className="text-center text-[1.5vw] text-gray-500">Carregando sua conta...</h1>
             </> 
           </>
-        }
+    
       </Pagina>
     </>
   )
