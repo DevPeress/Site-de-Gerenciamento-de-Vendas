@@ -64,11 +64,8 @@ A aplicação está disponível em produção via Vercel:
 ```
 ├── app/               # Páginas e rotas (Next.js)
 ├── components/        # Componentes reutilizáveis
-├── lib/               # Funções auxiliares e autenticação
 ├── prisma/            # Schema e migrations do banco de dados
 ├── public/            # Assets públicos (imagens, ícones)
-├── styles/            # Estilizações globais (se necessário)
-└── types/             # Tipagens com TypeScript
 ```
 
 ## 👤 Autor
