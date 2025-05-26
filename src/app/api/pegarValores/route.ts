@@ -10,10 +10,6 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const id: number = Number(searchParams.get("id"))
 
-  if (isNaN(id)) {
-    return new NextResponse("ID inválido", { status: 400 });
-  }
-
   try {
     const valores = await prisma.empresas.findMany({
       where: { idLoja: id }

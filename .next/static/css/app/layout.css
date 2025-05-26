@@ -788,9 +788,6 @@
   .bg-\[\#111827\] {
     background-color: #111827;
   }
-  .bg-\[\#D1D5DB\] {
-    background-color: #D1D5DB;
-  }
   .bg-\[\#F3F4F6\] {
     background-color: #F3F4F6;
   }
@@ -799,9 +796,6 @@
   }
   .bg-\[\#FFFFFF\] {
     background-color: #FFFFFF;
-  }
-  .bg-\[\#\] {
-    background-color: #;
   }
   .bg-\[rgb\(255\,255\,255\,0\.04\)\] {
     background-color: rgb(255,255,255,0.04);
@@ -1332,4 +1326,3 @@ body {
     }
   }
 }
-

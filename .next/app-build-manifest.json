@@ -66,16 +66,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/pegarUsuario/route.js"
     ],
-    "/configuracoes/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/configuracoes/page.js"
-    ],
-    "/registrar/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/registrar/page.js"
-    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

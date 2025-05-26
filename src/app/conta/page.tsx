@@ -14,6 +14,16 @@ interface Usuario {
   foto: string
 }
 
+interface Infos {
+  [x: string]: string | number | readonly string[] | undefined;
+  nome: string,
+  email: string,
+  idade: string,
+  rg: string,
+  cep: string,
+  celular: string
+}
+
 export default function Conta() {
   const router = useRouter();
   const [dados,setDados] = useState<Usuario>()
@@ -36,6 +46,24 @@ export default function Conta() {
     .then(data =>  { setDados(data) })
     .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página") })
   },[])
+
+  const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", cep: "", celular: ""})
+  const tipos = [
+    { texto: "Primeiro Nome", variavel: "nome" },
+    { texto: "Email", variavel: "email" },
+    { texto: "RG", variavel: "rg" },
+    { texto: "Celular", variavel: "celular" },
+    { texto: "Idade", variavel: "idade" },
+    { texto: "Endereço", variavel: "cep" },
+  ]
+
+  const alterarDado = (tipo: string, valor: string) => {
+    console.log(tipo)
+    setInfos((prevDados) => ({
+      ...prevDados,
+      [tipo]: valor
+    }))
+  }
 
   return (
     <>
@@ -64,24 +92,17 @@ export default function Conta() {
               </div>
         
               <div className="grid absolute grid-cols-2 w-full h-auto gap-5 p-10">
-                <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                  <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Primeiro Nome</h1>
-                </div>
-                <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                  <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Segundo Nome</h1>
-                </div>
-                <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                  <h1 className="flex absolute w-12 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Email</h1>
-                </div>
-                <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                  <h1 className="flex absolute w-12 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Idade</h1>
-                </div>
-                <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                  <h1 className="flex absolute w-12 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">País</h1>
-                </div>
-                <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
-                  <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Estado/Cidade</h1>
-                </div>
+                {tipos.map((item) => {
+                    const tipo = item.variavel
+
+                    return (<>
+                      <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
+                        <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">{item.texto}</h1>
+                        <input className="w-full h-full outline-0" type="text" value={infos.tipo} onChange={(e) => alterarDado(tipo,e.target.value)} />
+                      </div>
+                    </>)
+                  }
+                )}
               </div>
         
               <div className="flex absolute w-full h-20 bottom-0 border-t border-[#E6E8F0] items-center justify-center text-[#5048E5]">
