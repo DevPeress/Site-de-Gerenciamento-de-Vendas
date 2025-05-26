@@ -58,7 +58,7 @@ export default function Login() {
             <Pagina>
                 {loading ? 
                     <>
-                        <h1 className="text-center text-[1.5vw] text-gray-500">Carregando sua empres...</h1>
+                        <h1 className="text-center text-[1.5vw] text-gray-500">Carregando sua empresa...</h1>
                     </> 
                     :  
                     <>
