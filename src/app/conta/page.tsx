@@ -133,7 +133,16 @@ export default function Conta() {
                 return (
                   <div key={index} className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
                     <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">{item.texto}</h1>
-                    <input className="w-full h-full outline-0 text-center" type="text" value={infos[tipo]} onChange={(e) => alterarDado(tipo,e.target.value)} />
+                    {tipo === "rg" ? 
+                      <> 
+                        <input className="w-full h-full outline-0 text-center" type="text" maxLength={12} value={infos[tipo]} onChange={(e) => alterarDado(tipo,e.target.value)} />
+                      </> : tipo === "celular" ? 
+                      <>
+                        <input className="w-full h-full outline-0 text-center" type="text" maxLength={15} value={infos[tipo]} onChange={(e) => alterarDado(tipo,e.target.value)} />
+                      </> : <>
+                        <input className="w-full h-full outline-0 text-center" type="text" value={infos[tipo]} onChange={(e) => alterarDado(tipo,e.target.value)} />
+                      </>
+                    }
                   </div>
                 )
               }
