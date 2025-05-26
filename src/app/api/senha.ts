@@ -11,11 +11,12 @@ const CheckPassword = async (enteredPassword: string, hashedPassword: string) =>
     return isMatch;
 };
 
-export function Senhas(tipo: string, senha: string, senha2: string) {
-    switch(tipo) {
-        case "Hash":
-            return hashPassword(senha)
-        case "Check":
-            return CheckPassword(senha,senha2)
+export function Senhas(tipo: string, senha: string, senha2?: string) {
+    if (tipo === "Hash") {
+        return hashPassword(senha)
+    }
+
+    if (tipo === "Check" && senha2) {
+        return CheckPassword(senha,senha2)
     }
 }

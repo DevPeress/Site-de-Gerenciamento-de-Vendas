@@ -30,29 +30,6 @@ export default function Conta() {
   const router = useRouter();
   const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "Avatar.svg"})
 
-  useEffect(() => {
-    document.title = "Sua Conta"
-
-    fetch(`/api/infos`)
-    .then(res => res.json())
-    .then(data => {
-      const userId: number = data.id;
-
-      if (!userId || userId === 0) {
-        router.push('/login');
-      } 
-
-      return fetch(`/api/pegarUsuario?id=${userId}`);
-    })
-    .then(res => res.json())
-    .then(data =>  {
-      setInfos({
-        nome: data.nome, email: data.email, idade: data.idade, rg: data.rg, loc: data.loc, celular: data.celular, horario: data.horario, foto: data.foto
-      })
-    })
-    .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página") })
-  },[])
-
   const tipos = [
     { texto: "Primeiro Nome", variavel: "nome" },
     { texto: "Email", variavel: "email" },
@@ -62,7 +39,27 @@ export default function Conta() {
     { texto: "Endereço", variavel: "loc" },
   ]
 
+  function formatNumero(value: string) {
+    const numericValue = value.replace(/\D/g, "");
+
+    return numericValue.replace(/(\d{1})(\d)/, "($1$2) ").replace(/(\d{5})(\d)/, "$1-$2")
+  }
+
+  function formatRg(value: string) {
+    const numericValue = value.replace(/\D/g, "");
+
+    return numericValue.replace(/(\d{1})(\d)/, "$1$2.").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1-$2")
+  }
+
   const alterarDado = (tipo: string, valor: string) => {
+    if (tipo === "celular") {
+      valor = formatNumero(valor)
+    }
+
+    if (tipo === "rg") {
+      valor = formatRg(valor)
+    }
+
     setInfos((prevDados) => ({
       ...prevDados,
       [tipo]: valor
@@ -86,6 +83,29 @@ export default function Conta() {
       Notify(data.mensagem)
     })
   }
+
+  useEffect(() => {
+    document.title = "Sua Conta"
+
+    fetch(`/api/infos`)
+    .then(res => res.json())
+    .then(data => {
+      const userId: number = data.id;
+
+      if (!userId || userId === 0) {
+        router.push('/login');
+      } 
+
+      return fetch(`/api/pegarUsuario?id=${userId}`);
+    })
+    .then(res => res.json())
+    .then(data =>  {
+      setInfos({
+        nome: data.nome, email: data.email, idade: data.idade, rg: formatRg(data.rg), loc: data.loc, celular: formatNumero(data.celular), horario: data.horario, foto: data.foto
+      })
+    })
+    .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página") })
+  },[])
 
   return (
     <>

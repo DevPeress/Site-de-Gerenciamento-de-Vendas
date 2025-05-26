@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
 import Image from "next/image"
+import { Senhas } from "../api/senha"
 
 interface Registro {
     email: string,
@@ -15,39 +16,35 @@ interface Registro {
 
 export default function Login() { 
     const [registro,setRegistro] = useState<Registro>({email: "", senha: "", nome: "", idade: 0, celular: "", rg: ""})
-    const [id,setID] = useState<number>(0)
     const [type,setType] = useState<"text" | "password">("password")
 
     useEffect(() =>{
         document.title = "Registrar"
-        fetch(`/api/infos`)
-        .then(res => res.json())
-        .then(data => {
-            const userId: number = data.idLoja;
-            setID(userId)
-        })
     },[])
 
     const email = registro.email
     const emailV: boolean = email.includes("@") && email.toLocaleLowerCase().includes(".com")
 
     const verifyEmail = () => { 
-        if (!emailV) {  // AJUSTADO
+        if (!emailV) {  
             Notify("E-mail está incorreto!");
         }
-        //AJUSTAR E CRIAR API
+
         fetch("/api/criarConta",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                id,
-                email
+                email: registro.email,
+                senha: registro.senha,
+                nome: registro.nome,
+                idade: registro.idade,
+                celular: registro.celular,
+                rg: registro.rg
             })
         })
 
-        //  AJUSTADO
         Notify("Você foi registrado em nosso sistema, agora peça o registro do email pela empresa!")
     }
 

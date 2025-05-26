@@ -6,14 +6,10 @@ const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { senha, email } = body;
-
-  if (!senha || !email) {
-    return new NextResponse("Erro ao cadastrar", { status: 400 });
-  }
+  const { email, senha, nome, idade, celular, rg } = body;
 
   try {
-    const senhaHash = await Senhas("Hash", senha, "");
+    const senhaHash = await Senhas("Hash", senha);
 
     if (typeof senhaHash !== "string") {
       return new NextResponse("Erro ao gerar senha", { status: 500 });
@@ -21,20 +17,20 @@ export async function POST(req: Request) {
 
     const user = await prisma.usuario.create({
         data: {
-          nome: "Teste",
+          nome: nome,
           email: email,
           senha: senhaHash,
-          idade: 21,
+          idade: idade,
           loc: "Osasco, Brasil, São Paulo",
-          cell: "(11) 999999999",
-          rg: "99999999",
+          cell: celular,
+          rg: rg,
           foto: "Avatar.svg"
         },
     });
 
     return NextResponse.json(user)
   } catch(err) {
-    console.error("[PUT Register Conta]:", err)
+    console.error("[POST Register Conta]:", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })
   } finally {
     await prisma.$disconnect()
