@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
-
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const email = searchParams.get("email")
+  const email: string | null = searchParams.get("email")
 
   if (!email) {
     return new NextResponse("Email inválido", { status: 400 });

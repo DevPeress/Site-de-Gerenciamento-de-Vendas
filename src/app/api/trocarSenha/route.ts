@@ -13,7 +13,7 @@ export async function PUT(req: Request) {
     return NextResponse.json({ status: 400, mensagem: "Ocorreu um erro!" })
   }
   
-  const dados = await Infos("Dados",0)
+  const dados = await Infos("Dados")
   const id: number = dados.json().id
 
   try {

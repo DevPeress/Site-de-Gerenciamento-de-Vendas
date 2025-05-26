@@ -7,8 +7,8 @@ const prisma = new PrismaClient();
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const email = searchParams.get("email")
-  const senha = searchParams.get("senha")
+  const email: string | null = searchParams.get("email")
+  const senha: string | null = searchParams.get("senha")
 
   if (!email || !senha) {
     return NextResponse.json({ status: 400, mensagem: "E-mail ou senha estão incorretos!" })

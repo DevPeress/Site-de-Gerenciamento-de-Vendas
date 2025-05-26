@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 
 const prisma = new PrismaClient();
 
-export async function Infos(tipo: string, usuario: number) {
+export async function Infos(tipo: string, usuario?: number) {
     const cookieStore = await cookies(); 
 
     switch (tipo) {

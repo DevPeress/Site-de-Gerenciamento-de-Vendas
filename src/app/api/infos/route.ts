@@ -7,10 +7,8 @@ const prisma = new PrismaClient();
 export async function GET() {
   try {
 
-    const dados = await Infos("Dados",0)
-    
+    const dados = await Infos("Dados")
     return NextResponse.json(dados)
-
   } catch(err) {
     return new NextResponse("Erro ao encontrar dados", { status: 500 })
   } finally {
