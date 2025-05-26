@@ -11,8 +11,8 @@ interface Registros {
 
 export default function Login() { 
     const [login,setLogin] = useState<Registros>({ email: "", senha: "" })
-    const [etapa,setEtapa] = useState<"1" | "2" | "3">("1")
-    const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma" | "Cadastrar na Plataforma">("Inserir Email") 
+    const [etapa,setEtapa] = useState<"1" | "2">("1")
+    const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma">("Inserir Email") 
     const router = useRouter();
 
     const alterarDados = (tipo: string, valor: string) => {
@@ -49,9 +49,6 @@ export default function Login() {
             case "2":
                 verifyLogin()
                 break
-            case "3":
-                verifyRegister()
-                break
         }
     }
 
@@ -67,8 +64,7 @@ export default function Login() {
                 setEtapa("2")
                 setMensagem("Logar na Plataforma")
             } else {
-                setEtapa("3")
-                setMensagem("Cadastrar na Plataforma")
+                router.push('/cadastro');
             }
         })
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
@@ -99,32 +95,6 @@ export default function Login() {
             }
          })
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
-    }
-
-    const verifyRegister = () => {
-        if (!emailV && !senhaV) {
-            Notify("E-mail ou senha estão incorretos!")
-        }
-            
-        fetch("/api/register",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                senha,
-                email
-            })
-        })
-        .then(res => res.json())
-        .then(data => { 
-            if (data) {
-                Notify("Peça para o dono registrar seu email!")
-            } else {
-                Notify("Erro ao criar os Dados!")
-            }
-        })
-        .catch((err) => Notify("Não foi cadastrar a conta! Recarregue a Página"))
     }
 
     return (
