@@ -6,12 +6,21 @@ import { SideBar } from "@/components/sidebar";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+interface Senhas {
+    senhaA: string,
+    senhaN: string
+}
+
 export default function Config() {
     const router = useRouter();
-    const [senha,setSenha] = useState<string>("")
-    const [senhaN,setSenhaN] = useState<string>("")
+    const [senhas,setSenhas] = useState<Senhas>({ senhaA: "", senhaN: ""})
 
-    const verifySenhas = senha.length > 4 && senhaN.length > 4
+    const alterarSenha = (tipo: string, valor: string) => {
+        setSenhas((prevDados) => ({
+            ...prevDados,
+            [tipo]: valor
+        }))
+    }
 
     useEffect(() => {
         document.title = "Configurações"
@@ -27,21 +36,25 @@ export default function Config() {
     },[])
 
     const changePassword = () => {
-        if (verifySenhas) {
-            fetch(`/api/trocarSenha`,{
-                method: "PUT",
-                body: JSON.stringify({
-                    senha,
-                    senhaN
-                })
-            })
-            .then(res => res.json())
-            .then(data => {
-              Notify(data.mensagem)
-            })
-        } else {
-            Notify("Senhas precisam conter 4 caracteres pelo menos!")
+        if (senhas.senhaA.length < 4) {
+            Notify("Senha antiga precisa conter 4 caracteres pelo menos!")
         }
+
+        if (senhas.senhaN.length < 4) {
+            Notify("Senha nova precisa conter 4 caracteres pelo menos!")
+        }
+
+        fetch(`/api/trocarSenha`,{
+            method: "PUT",
+            body: JSON.stringify({
+                senha: senhas.senhaA,
+                senhaN: senhas.senhaN
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+          Notify(data.mensagem)
+        })
     }
 
     return (
@@ -57,11 +70,11 @@ export default function Config() {
                     <div className="grid absolute grid-cols-1 w-full h-auto gap-5 p-10">
                         <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
                             <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Senha Atual</h1>
-                            <input type="password" className="w-full h-full outline-none p-4" value={senha} onChange={(e) => setSenha(e.target.value)} />
+                            <input type="password" className="w-full h-full outline-none p-4" value={senhas.senhaA} onChange={(e) => alterarSenha('senhaA',e.target.value)} />
                         </div>
                         <div className="relative w-full h-15 border-1 border-[#E6E8F0] rounded-2xl">
                             <h1 className="flex absolute w-25 bottom-12.5 left-5 bg-white text-[0.6vw] items-center justify-center">Senha nova</h1>
-                            <input type="password" className="w-full h-full outline-none p-4" value={senhaN} onChange={(e) => setSenhaN(e.target.value)} />
+                            <input type="password" className="w-full h-full outline-none p-4" value={senhas.senhaN} onChange={(e) => alterarSenha('senhaN',e.target.value)} />
                         </div>
                     </div>
                 

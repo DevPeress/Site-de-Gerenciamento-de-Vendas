@@ -52,6 +52,7 @@ export default function Customers() {
     }, []);
 
     const tableRef = useRef<HTMLTableSectionElement>(null);
+    
     const Pesquisar = (texto: string) => {
         total > 0 ? setTotal(0) : setTotal(total)
         const searchTerm = texto.toLowerCase()

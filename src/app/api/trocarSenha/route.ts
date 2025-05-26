@@ -14,7 +14,7 @@ export async function PUT(req: Request) {
   }
   
   const dados = await Infos("Dados",0)
-  const id = dados.json().id
+  const id: number = dados.json().id
 
   try {
     const conta = await prisma.usuario.findFirst({

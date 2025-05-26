@@ -23,7 +23,7 @@ const dadosJson = {
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const id = Number(searchParams.get("id"))
+  const id: number = Number(searchParams.get("id"))
 
   if (isNaN(id)) {
     return new NextResponse("ID inválido", { status: 400 });
