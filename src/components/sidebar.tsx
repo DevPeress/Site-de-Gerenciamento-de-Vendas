@@ -38,10 +38,6 @@ export function SideBar() {
             .then(data => {
                 const userId = data.id;
 
-                if (userId === 0) {
-                    router.push('/login');
-                } 
-
                 return fetch(`/api/pegarValores?id=${userId}`);
             })
             .then(res => res.json())

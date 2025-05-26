@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
 import Image from "next/image"
-import { Senhas } from "../api/senha"
 
 interface Registro {
     email: string,

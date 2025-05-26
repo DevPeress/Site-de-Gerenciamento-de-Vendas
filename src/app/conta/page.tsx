@@ -92,10 +92,6 @@ export default function Conta() {
     .then(data => {
       const userId: number = data.id;
 
-      if (!userId || userId === 0) {
-        router.push('/login');
-      } 
-
       return fetch(`/api/pegarUsuario?id=${userId}`);
     })
     .then(res => res.json())
