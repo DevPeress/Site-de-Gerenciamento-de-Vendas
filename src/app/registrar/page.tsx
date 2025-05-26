@@ -46,7 +46,7 @@ export default function Login() {
                 })
                 Notify("E-mail cadastrado em sua empresa!")
             } else {
-                Notify("E-mail não cadastrado  no sistema!")
+                Notify("E-mail não cadastrado no sistema!")
             }
         })
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
@@ -58,7 +58,7 @@ export default function Login() {
             <Pagina>
                 {loading ? 
                     <>
-                        <h1 className="text-center text-[1.5vw] text-gray-500">Carregando sua conta...</h1>
+                        <h1 className="text-center text-[1.5vw] text-gray-500">Carregando sua empres...</h1>
                     </> 
                     :  
                     <>

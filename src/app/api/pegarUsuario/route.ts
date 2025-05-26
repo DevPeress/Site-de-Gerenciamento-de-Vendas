@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   
   try {
     const usuario = await prisma.usuario.findUnique({
-        where: { id: id }
+      where: { id: id }
     })
 
     if (!usuario) {
@@ -18,14 +18,14 @@ export async function GET(req: Request) {
     }
 
     const dados = {
-        nome: usuario.nome,
-        loc: usuario.loc,
-        email: usuario.email,
-        idade: "21",
-        rg: usuario.rg,
-        celular: usuario.cell,
-        horario: "GTM-5",
-        foto: usuario.foto
+      nome: usuario.nome,
+      loc: usuario.loc,
+      email: usuario.email,
+      idade: "21",
+      rg: usuario.rg,
+      celular: usuario.cell,
+      horario: "GTM-5",
+      foto: usuario.foto
     }
 
     return NextResponse.json(dados);

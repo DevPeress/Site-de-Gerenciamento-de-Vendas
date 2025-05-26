@@ -36,6 +36,21 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/pegarUltimosPedidos/route.js"
     ],
+    "/conta/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/conta/page.js"
+    ],
+    "/api/pegarUsuario/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/pegarUsuario/route.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
+    ],
     "/compradores/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -56,20 +71,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/pegarProdutos/route.js"
     ],
-    "/conta/page": [
+    "/configuracoes/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/conta/page.js"
+      "static/chunks/app/configuracoes/page.js"
     ],
-    "/api/pegarUsuario/route": [
+    "/registrar/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/pegarUsuario/route.js"
+      "static/chunks/app/registrar/page.js"
     ],
-    "/_not-found/page": [
+    "/api/trocarSenha/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/api/trocarSenha/route.js"
+    ],
+    "/cadastro/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/cadastro/page.js"
     ]
   }
 }

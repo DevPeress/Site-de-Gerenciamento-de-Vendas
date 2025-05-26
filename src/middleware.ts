@@ -4,7 +4,7 @@ export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
     const auth = request.cookies.get('auth');
 
-    if (pathname === '/' && auth) {
+    if ((pathname === '/' || pathname === '/cadastro' ) && auth) {
         return NextResponse.redirect(new URL('/inicio', request.url));
     }
 
@@ -16,5 +16,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/inicio', '/conta', '/configuracoes', '/compradores', '/registrar'],
+  matcher: ['/', '/inicio', '/conta', '/configuracoes', '/compradores', '/registrar', '/cadastro'],
 };

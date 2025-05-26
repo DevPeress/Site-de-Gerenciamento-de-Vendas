@@ -37,11 +37,11 @@ export default function Config() {
 
     const changePassword = () => {
         if (senhas.senhaA.length < 4) {
-            Notify("Senha antiga precisa conter 4 caracteres pelo menos!")
+            return Notify("Senha antiga precisa conter 4 caracteres pelo menos!")
         }
 
         if (senhas.senhaN.length < 4) {
-            Notify("Senha nova precisa conter 4 caracteres pelo menos!")
+            return Notify("Senha nova precisa conter 4 caracteres pelo menos!")
         }
 
         fetch(`/api/trocarSenha`,{
