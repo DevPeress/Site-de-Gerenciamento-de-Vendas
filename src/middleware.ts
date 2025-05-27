@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/inicio', request.url));
     }
 
-    if (pathname !== '/login' && !auth) {
+    if ((pathname === '/cadastro' || pathname !== '/login') && !auth) {
         return NextResponse.redirect(new URL('/login', request.url));
     }
 
