@@ -93,7 +93,7 @@ export default function Login() {
                         <h1 className="absolute md:top-[-2vw] lg:top-[2vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF]">Bem-Vindo</h1>
                         <h2 className="absolute md:top-[2vw] lg:top-[5vw] md:text-[1.5vw] lg:text-[1vw] text-[#6B7280] dark:text-[#CAFF33]">{mensagem}</h2>
 
-                        <div className="absolute w-auto md:top-[5vw] lg:top-[7vw] md:text-[1.2vw] lg:text-[.6vw] text-[#5048E5] dark:text-[#CAFF33] border-b border-[#5048E5]">Email</div>
+                        <div className="absolute w-auto md:top-[5vw] lg:top-[7vw] md:text-[1.2vw] lg:text-[.6vw] text-[#5048E5] dark:text-[#FFFFFF] border-b border-[#5048E5] dark:border-[#CAFF33]">Email</div>
                         <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded top-[9vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
                             <input className="absolute w-[98%] h-full outline-0 p-2 md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="email" value={login.email} onChange={(e) => alterarDados("email", e.target.value)} />
                         </div>
