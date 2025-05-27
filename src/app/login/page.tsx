@@ -116,7 +116,7 @@ export default function Login() {
                 <div className="flex absolute w-[2vw] h-full right-[5vw] items-center justify-center" onClick={toggleTheme}>
                     <Image
                         className="w-auto"
-                        src={dark ? 'noite.svg' : 'dia.svg'}
+                        src={dark ? '/noite.svg' : '/dia.svg'}
                         alt={`Ícone para do tema`}
                         width={180}
                         height={38}

@@ -24,7 +24,7 @@ export async function POST(req: Request) {
           loc: "Osasco, Brasil, São Paulo",
           cell: celular,
           rg: rg,
-          foto: "Avatar.svg"
+          foto: "/Avatar.svg"
         },
     });
 

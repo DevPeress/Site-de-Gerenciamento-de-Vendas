@@ -41,10 +41,10 @@ export default async function DashBoard() {
     }
 
     const tipos = [
-        { n: "ORÇAMENTO", i: "budge.svg", v: valores2.budget },
-        { n: "CLIENTES TOTAIS", i: "customers.svg", v: valores2.customers },
-        { n: "PROGRESSO DA TAREFA", i: "task.svg", v: valores2.task },
-        { n: "LUCRO TOTAL", i: "profit.svg", v: valores2.total }
+        { n: "ORÇAMENTO", i: "/budge.svg", v: valores2.budget },
+        { n: "CLIENTES TOTAIS", i: "/customers.svg", v: valores2.customers },
+        { n: "PROGRESSO DA TAREFA", i: "/task.svg", v: valores2.task },
+        { n: "LUCRO TOTAL", i: "/profit.svg", v: valores2.total }
     ]
 
     return (

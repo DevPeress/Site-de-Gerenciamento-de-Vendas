@@ -18,12 +18,12 @@ export function SideBar() {
     const [nome,setNome] = useState<Escolhas['nome']>('')
     
     const escolhas: Escolhas[] = [
-        { nome: "Inicio", off: "dashboard-d.svg", on:"dashboard-a.svg" },
-        { nome: "Compradores", off: "customers-d.svg", on:"customers-a.svg" },
-        { nome: "Produtos", off: "products-d.svg", on:"products-a.svg" },
-        { nome: "Conta", off: "account-d.svg", on:"account-a.svg" },
-        { nome: "Configuracoes", off: "settings-d.svg", on:"settings-a.svg" },
-        { nome: "Registrar", off: "register-d.svg", on:"register-a.svg" },
+        { nome: "Inicio", off: "/dashboard-d.svg", on:"/dashboard-a.svg" },
+        { nome: "Compradores", off: "/customers-d.svg", on:"/customers-a.svg" },
+        { nome: "Produtos", off: "/products-d.svg", on:"/products-a.svg" },
+        { nome: "Conta", off: "/account-d.svg", on:"/account-a.svg" },
+        { nome: "Configuracoes", off: "/settings-d.svg", on:"/settings-a.svg" },
+        { nome: "Registrar", off: "/register-d.svg", on:"/register-a.svg" },
     ]
 
     useEffect(() => {

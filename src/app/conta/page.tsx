@@ -27,7 +27,7 @@ interface Infos {
 }
 
 export default function Conta() {
-  const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "Avatar.svg"})
+  const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "/Avatar.svg"})
 
   const tipos = [
     { texto: "Primeiro Nome", variavel: "nome" },

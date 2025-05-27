@@ -106,7 +106,7 @@ export default function Customers() {
                                         <div className="flex absolute md:w-[8vw] lg:w-[4.5vw] left-[.5vw] md:bottom-[2.3vw] lg:bottom-[1.8vw] bg-[#FFFFFF] dark:bg-[#191919] md:text-[.8vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] items-center justify-center">Search customer</div>
                                         <Image
                                             className="absolute md:w-[1.5vw] lg:w-[1vw] left-[.8vw]"
-                                            src="lupa.svg"
+                                            src="/lupa.svg"
                                             alt={`Ícone para lupa`}
                                             width={180}
                                             height={38}
@@ -157,7 +157,7 @@ export default function Customers() {
                                         <Image
                                             onClick={voltar}
                                             className="md:w-[4vw] lg:w-[2.5vw]"
-                                            src="seta.svg"
+                                            src="/seta.svg"
                                             alt={`Ícone para Seta`}
                                             width={180}
                                             height={38}
@@ -167,7 +167,7 @@ export default function Customers() {
                                         <Image
                                             onClick={proximo}
                                             className="md:w-[4vw] lg:w-[2.5vw] rotate-180"
-                                            src="seta.svg"
+                                            src="/seta.svg"
                                             alt={`Ícone para Seta`}
                                             width={180}
                                             height={38}
