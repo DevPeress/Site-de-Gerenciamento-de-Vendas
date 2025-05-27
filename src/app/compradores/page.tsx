@@ -131,7 +131,7 @@ export default function Customers() {
                                         <tbody ref={tableRef}>
                                             {CompradoresData.slice(lista-6,lista).map((item, index) => (
                                                 <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] md:text-[1vw] lg:text-[.7vw] md:h-[8vw] lg:h-[4.2vw] hover:scale-101">
-                                                    <td className="flex absolute items-center justify-center w-auto md:h-[8vw] ld:h-[4.2vw]">
+                                                    <td className="flex absolute items-center justify-center w-auto md:h-[8vw] lg:h-[4.2vw]">
                                                         <Image
                                                             className="md:w-[2.5vw] lg:w-[2vw] ml-[1vw] mr-[1vw]"
                                                             src={item.foto}
