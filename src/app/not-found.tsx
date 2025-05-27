@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
     return(
-        <div className="flex absolute w-full h-full top-0 bottom-0 left-0 right-0 m-auto items-center justify-center select-none">
+        <div className="flex absolute w-full h-full dark:bg-black top-0 bottom-0 left-0 right-0 m-auto items-center justify-center select-none">
             <h1 className="absolute text-black text-[1.5vw] top-[5vw]">404: Página não encontrada!</h1>
             <h2 className="absolute text-black text-[.8vw] top-[8vw]">Ou você tentou alguma rota suspeita ou chegou aqui por engano. Seja qual for, tente usar a navegação</h2>
             <Image

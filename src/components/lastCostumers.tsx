@@ -45,13 +45,13 @@ export function LastCostumers() {
 
     if (loading) {
         return(
-            <h1 className="text-center text-[1.5vw] text-gray-500">Carregando últimos compradores!</h1>
+            <h1 className="text-center text-[1.5vw] text-gray-500 dark:text-white">Carregando últimos compradores!</h1>
         )
     }
     
     return (
         <table className="absolute w-full h-auto top-[20%]">
-            <thead className="md:h-[4.2vw] lg:h-[2.5vw] bg-[#F3F4F6] md:text-[1.2vw] lg:text-[.6vw] text-[#111827] text-center select-none">
+            <thead className="md:h-[4.2vw] lg:h-[2.5vw] bg-[#F3F4F6] dark:bg-[#656567] md:text-[1.2vw] lg:text-[.6vw] text-[#111827] dark:text-[#CAFF33] text-center select-none">
                 <tr>
                     <th>Ordem</th>
                     <th>Comprador</th>
@@ -65,12 +65,12 @@ export function LastCostumers() {
                     const statusInfo: Infos = getStatusInfo(item.status);
 
                     return (
-                        <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] md:text-[1.4vw] lg:text-[.7vw] md:h-[5.3vw] lg:h-[3.2vw] hover:scale-101">
+                        <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] dark:text-[#FFFFFF] md:text-[1.4vw] lg:text-[.7vw] md:h-[5.3vw] lg:h-[3.2vw] hover:scale-101">
                             <td>{item.ordem}</td>
                             <td>{item.comprador}</td>
                             <td>{item.data}</td>
                             <td className="flex relative w-auto md:h-[4.8vw] lg:h-[2.5vw] items-center justify-center">
-                                <div className="flex relative md:w-[7vw] lg:w-[4vw] md:h-[2.75vw] lg:h-[1.5vw] items-center justify-center rounded text-[#FFFFFF] md:text-[1.2vw] lg:text-[.5vw]" style={{background: statusInfo.cor }}>{statusInfo.nome}</div>
+                                <div className="flex relative md:w-[7vw] lg:w-[4vw] md:h-[2.75vw] lg:h-[1.5vw] items-center justify-center rounded dark:text-[#000] md:text-[1.2vw] lg:text-[.5vw]" style={{background: statusInfo.cor }}>{statusInfo.nome}</div>
                             </td>
                         </tr>
                     )
