@@ -1,10 +1,10 @@
 'use client'
 
+import Header from "@/components/header";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
 import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Usuario {
@@ -105,6 +105,7 @@ export default function Conta() {
   return (
     <>
       <SideBar />
+      <Header />
       <Pagina> 
         <div className="flex absolute md:w-[30vw] lg:w-[25vw] md:h-[25vw] lg:h-[16.667vw] top-[2vw] md:left-[5vw] lg:left-[12.5vw] bg-[#FFFFFF] dark:bg-[#191919] items-center justify-center rounded-4xl select-none">
           <Image

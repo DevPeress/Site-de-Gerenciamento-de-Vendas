@@ -1,6 +1,7 @@
 'use client'
 
 import { Empresa } from "@/components/empresa";
+import Header from "@/components/header";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
 import { SideBar } from "@/components/sidebar";
@@ -85,6 +86,7 @@ export default function Customers() {
     return (
         <>
             <SideBar />
+            <Header />
             <Pagina>
                 {loading ? 
                     <>  
@@ -100,7 +102,7 @@ export default function Customers() {
                             <>
                                 <h1 className="absolute top-[1vw] left-[2.7085vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF] select-none">Customers</h1>
                                 <div className="flex absolute w-[80vw] md:h-[6vw] lg:h-[4vw] md:top-[7vw] lg:top-[5vw] left-[2.7085vw] bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center select-none">
-                                    <div className="flex absolute w-[15vw] md:h-[3vw] lg:h-[2.25vw] left-[1vw] border-1 border-[#D1D5DB] dark:border-[#CAFF33] dark:border-[#CAFF33] rounded items-center justify-center">
+                                    <div className="flex absolute w-[15vw] md:h-[3vw] lg:h-[2.25vw] left-[1vw] border-1 border-[#D1D5DB] dark:border-[#CAFF33] rounded items-center justify-center">
                                         <div className="flex absolute md:w-[8vw] lg:w-[4.5vw] left-[.5vw] md:bottom-[2.3vw] lg:bottom-[1.8vw] bg-[#FFFFFF] dark:bg-[#191919] md:text-[.8vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] items-center justify-center">Search customer</div>
                                         <Image
                                             className="absolute md:w-[1.5vw] lg:w-[1vw] left-[.8vw]"

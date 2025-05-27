@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
 import { Notify } from "@/components/notify"
 import { useTheme } from "@/app/context/ThemeContext";
+import Image from "next/image" 
 
 interface Registros {
     email: string,
@@ -11,11 +12,11 @@ interface Registros {
 }
 
 export default function Login() { 
+    const { dark, toggleTheme } = useTheme()
     const [login,setLogin] = useState<Registros>({ email: "", senha: "" })
     const [etapa,setEtapa] = useState<"1" | "2">("1")
     const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma">("Inserir Email") 
     const router = useRouter();
-    var dark = useTheme().dark
 
     const alterarDados = (tipo: string, valor: string) => {
         setLogin((prevDados) => ({
@@ -87,7 +88,7 @@ export default function Login() {
     return (
         <>
             <div className="absolute w-full min-h-screen overflow-hidden">
-                <div className="flex absolute w-full min-h-screen items-center justify-center select-none" style={{ background: dark ? '#000' : '#F9FAFC' }}>
+                <div className="flex absolute w-full min-h-screen items-center justify-center select-none" style={{ background: dark ? '#0B0A0A' : '#F9FAFC' }}>
                     <div className="flex absolute md:w-[45vw] md:h-[22.969vw] lg:w-[20.833vw]">
                         <h1 className="absolute md:top-[-2vw] lg:top-[2vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF]">Bem-Vindo</h1>
                         <h2 className="absolute md:top-[2vw] lg:top-[5vw] md:text-[1.5vw] lg:text-[1vw] text-[#6B7280] dark:text-[#CAFF33]">{mensagem}</h2>
@@ -96,18 +97,31 @@ export default function Login() {
                         <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded top-[9vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
                             <input className="absolute w-[98%] h-full outline-0 p-2 md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="email" value={login.email} onChange={(e) => alterarDados("email", e.target.value)} />
                         </div>
-                        <h1 className="flex absolute w-[4vw] md:top-[8.35vw] lg:top-[8.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-white dark:bg-[#0B0A0A] justify-center">Email</h1> 
+                        <h1 className="flex absolute w-[4vw] md:top-[8.35vw] lg:top-[8.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Email</h1> 
                         {etapa !== "1" ? 
                             <>
                                 <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded md:top-[14vw] lg:top-[12vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
                                     <input className="absolute w-[98%] h-full outline-0 p-2 md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="password" value={login.senha} onChange={(e) => alterarDados("senha", e.target.value)} />
                                 </div>
-                                <h1 className="flex absolute w-[4vw] md:top-[13.35vw] lg:top-[11.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-white justify-center">Senha</h1> 
+                                <h1 className="flex absolute w-[4vw] md:top-[13.35vw] lg:top-[11.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] justify-center">Senha</h1> 
                             </> : <></> 
                         }
 
-                        <button className="absolute md:top-[20vw] lg:top-[16vw] w-full md:h-[4vw] lg:h-[3vw] bg-[#5048E5] dark:bg-[#333333] rounded text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
+                        <button className="absolute md:top-[20vw] lg:top-[16vw] w-full md:h-[4vw] lg:h-[3vw] bg-[#5048E5] dark:bg-[#333333] rounded text-[#000000] dark:text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
                     </div>
+                </div>
+            </div>
+
+            <div className="flex absolute w-[85.417vw] h-[10vh] top-[0vh] left-[14.583vw]">
+                <div className="flex absolute w-[2vw] h-full right-[5vw] items-center justify-center" onClick={toggleTheme}>
+                    <Image
+                        className="w-auto"
+                        src={dark ? 'noite.svg' : 'dia.svg'}
+                        alt={`Ícone para do tema`}
+                        width={180}
+                        height={38}
+                        priority
+                    />
                 </div>
             </div>
         </>

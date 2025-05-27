@@ -70,7 +70,7 @@ export function SideBar() {
             
             <div className="absolute top-[25vh] w-full h-[0.1vw] bg-[#1F2937]"></div>
 
-            <div className="flex absolute w-full items-center justify-center flex-wrap">
+            <nav className="flex absolute w-full items-center justify-center flex-wrap">
                 {escolhas.map((item) => {
                     const pagina: string = item.nome.toLowerCase()
                     const isActive: boolean = urlSemBarraInicial === pagina;
@@ -92,7 +92,7 @@ export function SideBar() {
                         </Link>
                     );
                 })}
-            </div>
+            </nav>
         </main>
     )
 }

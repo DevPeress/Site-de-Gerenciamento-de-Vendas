@@ -1,5 +1,6 @@
 'use client'
 
+import Header from "@/components/header";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
 import { SideBar } from "@/components/sidebar";
@@ -64,6 +65,7 @@ export default function Config() {
     return (
         <>
             <SideBar />
+            <Header />
             <Pagina> 
                 <h1 className="absolute top-[1vw] left-[2.7085vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF] select-none">Configurações</h1>
                 <div className="flex absolute md:w-[30vw] lg:w-[25vw] md:h-[25vw] lg:h-[18vw] md:top-[7vw] lg:top-[5vw] left-[2.7085vw] bg-[#FFFFFF] dark:bg-[#191919] items-center justify-center rounded-4xl select-none">

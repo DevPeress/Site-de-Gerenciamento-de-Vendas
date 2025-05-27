@@ -6,6 +6,7 @@ import { LastCostumers } from "@/components/lastCostumers";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Empresa } from "@/components/empresa";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
     title: 'Ínicio',
@@ -49,6 +50,7 @@ export default async function DashBoard() {
     return (
         <>
             <SideBar />
+            <Header />
             <Pagina>
                 <div className="flex absolute left-[2.7085vw] top-[0.2vw] w-[80vw] md:h-[12vw] lg:h-[8vw] items-center justify-between select-none">
                     {tipos.map((item, index) => {

@@ -1,6 +1,7 @@
 'use client'
 
 import { Empresa } from "@/components/empresa";
+import Header from "@/components/header";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
 import { SideBar } from "@/components/sidebar";
@@ -62,10 +63,11 @@ export default function Products() {
   return (
     <>
       <SideBar />
+      <Header />
       <Pagina> 
         {loading ? 
           <>  
-            <h1 className="text-center text-[1.5vw] text-gray-500 dark:text-white dark:text-white">Carregando produtos...</h1>
+            <h1 className="text-center text-[1.5vw] text-gray-50 dark:text-white">Carregando produtos...</h1>
           </> 
 
           : 

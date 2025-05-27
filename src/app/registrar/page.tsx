@@ -79,7 +79,7 @@ export default function Login() {
                                         </div>
                                         <h1 className="flex absolute w-[4vw] md:top-[10.4vw] lg:top-[9.2vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Email</h1>    
                         
-                                        <button className="absolute md:bottom-[2vw] lg:bottom-[3vw] w-full md:h-[5vw] lg:h-[3vw] bg-[#5048E5] dark:bg-[#333333] rounded text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verifyEmail}>Registrar Funcionario</button>
+                                        <button className="absolute md:bottom-[2vw] lg:bottom-[3vw] w-full md:h-[5vw] lg:h-[3vw] bg-[#5048E5] dark:bg-[#333333] rounded text-[#000000] dark:text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verifyEmail}>Registrar Funcionario</button>
                                     </div>
                                 </div>
                             </> 

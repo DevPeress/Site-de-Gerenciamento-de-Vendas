@@ -70,7 +70,7 @@ export function LastCostumers() {
                             <td>{item.comprador}</td>
                             <td>{item.data}</td>
                             <td className="flex relative w-auto md:h-[4.8vw] lg:h-[2.5vw] items-center justify-center">
-                                <div className="flex relative md:w-[7vw] lg:w-[4vw] md:h-[2.75vw] lg:h-[1.5vw] items-center justify-center rounded dark:text-[#000] md:text-[1.2vw] lg:text-[.5vw]" style={{background: statusInfo.cor }}>{statusInfo.nome}</div>
+                                <div className="flex relative md:w-[7vw] lg:w-[4vw] md:h-[2.75vw] lg:h-[1.5vw] items-center justify-center rounded dark:text-[#0B0A0A] md:text-[1.2vw] lg:text-[.5vw]" style={{background: statusInfo.cor }}>{statusInfo.nome}</div>
                             </td>
                         </tr>
                     )
