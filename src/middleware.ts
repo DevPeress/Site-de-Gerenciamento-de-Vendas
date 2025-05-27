@@ -9,12 +9,12 @@ export async function middleware(request: NextRequest) {
     }
 
     if ((pathname === '/cadastro' || pathname !== '/login') && !auth) {
-        return NextResponse.redirect(new URL('/login', request.url));
+        return NextResponse.redirect(new URL(pathname, request.url));
     }
 
     return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/', '/inicio', '/conta', '/configuracoes', '/compradores', '/registrar'],
+  matcher: ['/', '/inicio', '/conta', '/configuracoes', '/compradores', '/registrar', '/cadastro', '/login'],
 };
