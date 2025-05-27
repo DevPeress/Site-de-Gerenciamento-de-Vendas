@@ -74,12 +74,12 @@ export default function Products() {
             {!id || id === 0 ? <><Empresa /></> 
               : 
               <>
-                <h1 className="absolute top-[1vw] left-[2.7085vw] text-[2vw] text-[#111827] select-none">Products</h1>
-                <div className="flex absolute w-[80vw] h-[4vw] top-[5vw] left-[2.7085vw] bg-[#FFFFFF] rounded items-center justify-center select-none">
-                  <div className="flex absolute w-[15vw] h-[2.25vw] left-[1vw] border-1 border-[#D1D5DB] rounded items-center justify-center">
-                    <div className="flex absolute w-[4.5vw] left-[.5vw] bottom-[1.8vw] bg-[#FFFFFF] text-[.5vw] text-[#6B7280] items-center justify-center">Search product</div>
+                <h1 className="absolute top-[1vw] left-[2.7085vw] md:text-[3vw] lg:text-[2vw] text-[#111827] select-none">Products</h1>
+                <div className="flex absolute w-[80vw] md:h-[6vw] lg:h-[4vw] md:top-[7vw] lg:top-[5vw] left-[2.7085vw] bg-[#FFFFFF] rounded items-center justify-center select-none">
+                  <div className="flex absolute w-[15vw] md:h-[3vw] lg:h-[2.25vw] left-[1vw] border-1 border-[#D1D5DB] rounded items-center justify-center">
+                    <div className="flex absolute md:w-[8vw] lg:w-[4.5vw] left-[.5vw] md:bottom-[2.3vw] lg:bottom-[1.8vw] bg-[#FFFFFF] md:text-[.8vw] lg:text-[.5vw] text-[#6B7280] items-center justify-center">Search product</div>
                       <Image
-                        className="absolute w-[1vw] left-[.8vw]"
+                        className="absolute md:w-[1.5vw] lg:w-[1vw] left-[.8vw]"
                         src="lupa.svg"
                         alt={`Ícone para lupa`}
                         width={180}
@@ -87,47 +87,47 @@ export default function Products() {
                         priority
                       />
 
-                      <input type="text" className="absolute left-[2vw] outline-0" onChange={(e) => Pesquisar(e.target.value)}/>
+                      <input type="text" className="absolute md:left-[3vw] lg:left-[2vw] outline-0 md:text-[1.5vw] lg:text-[.8vw]" onChange={(e) => Pesquisar(e.target.value)}/>
                     </div>
                   </div>
 
-                  <div ref={tableRef} className="absolute w-[80vw] grid grid-cols-3 top-[12.5vw] left-[2.7085vw] rounded items-center justify-between select-none overflow-hidden gap-8 ">
+                  <div ref={tableRef} className="absolute w-[80vw] grid md:grid-cols-2 lg:grid-cols-3 md:top-[15vw] lg:top-[12.5vw] left-[2.7085vw] rounded items-center justify-between select-none overflow-hidden gap-8">
                     {produtosData.map((item, index) => (
                       <main key={index}>
-                        <div className="flex relative w-[26vw] h-[13vw] bg-[#FFFFFF] rounded items-center justify-center hover:scale-105">
+                        <div className="flex relative md:w-[35vw] lg:w-[26vw] md:h-[18vw] lg:h-[13vw] bg-[#FFFFFF] rounded items-center justify-center hover:scale-105">
                           <Image
-                            className="absolute w-[2vw] top-[2vw]"
+                            className="absolute md:w-[4vw] lg:w-[2vw] top-[2vw]"
                             src={item.icone}
                             alt={`Ícone do produto`}
                             width={180}
                             height={38}
                             priority
                           />
-                          <h1 className="absolute top-[4vw] text-[#111827] text-[1vw] font-bold">{item.nome}</h1>
-                          <h2 className="absolute top-[7vw] text-[#111827] text-[.6vw] text-center w-[20vw]">{item.desc}</h2>
-                          <div className="flex absolute w-full h-[3vw] bottom-0 border-t border-[#E6E8F0] items-center justify-center">
+                          <h1 className="absolute md:top-[6vw] lg:top-[4vw] text-[#111827] md:text-[1.5vw] lg:text-[1vw] font-bold">{item.nome}</h1>
+                          <h2 className="absolute md:top-[8.5vw] lg:top-[7vw] text-[#111827] md:text-[1vw] lg:text-[.6vw] text-center md:w-[30vw] lg:w-[20vw]">{item.desc}</h2>
+                          <div className="flex absolute w-full md:h-[4vw] lg:h-[3vw] bottom-0 border-t border-[#E6E8F0] items-center justify-center">
                             <div className="flex absolute w-[85%] h-full left-[5%] items-center justify-between">
                               <div className="flex relative w-auto h-full items-center justify-center">
                                 <Image
-                                  className="w-[1vw]"
+                                  className="md:w-[1.5vw] lg:w-[1vw]"
                                   src="relogio.svg"
                                   alt={`Ícone do relogio`}
                                   width={180}
                                   height={38}
                                   priority
                                 />
-                                <h1 className="text-[#6B7280] text-[.8vw]">Updated 2 hr ago</h1>
+                                <h1 className="text-[#6B7280] md:text-[1.2vw] lg:text-[.8vw]">Updated 2 hr ago</h1>
                               </div>
                               <div className="flex relative w-auto h-fullitems-center justify-center">
                                 <Image
-                                  className="w-[1vw]"
+                                  className="md:w-[1.5vw] lg:w-[1vw]"
                                   src="baixar.svg"
                                   alt={`Ícone do baixar`}
                                   width={180}
                                   height={38}
                                   priority
                                 />
-                                <h1 className="text-[#6B7280] text-[.8vw]">Updated 2 hr ago</h1>
+                                <h1 className="text-[#6B7280] md:text-[1.2vw] lg:text-[.8vw]">Updated 2 hr ago</h1>
                             </div>
                           </div>
                         </div>

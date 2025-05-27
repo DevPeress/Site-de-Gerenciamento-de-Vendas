@@ -50,17 +50,17 @@ export default async function DashBoard() {
         <>
             <SideBar />
             <Pagina>
-                <div className="flex absolute left-[2.7085vw] top-[0.2vw] w-[80vw] h-[8vw] items-center justify-between select-none">
+                <div className="flex absolute left-[2.7085vw] top-[0.2vw] w-[80vw] md:h-[12vw] lg:h-[8vw] items-center justify-between select-none">
                     {tipos.map((item, index) => {
                         const cifrao = item.n === "PROGRESSO DA TAREFA" || item.n === "CLIENTES TOTAIS" ? "" : "R$"
                         const porc = item.n === "PROGRESSO DA TAREFA" ? "%" : ""
 
                         return (
                             <div key={index} className="flex relative w-[22.5%] h-full bg-[#FFFFFF] rounded items-center justify-center">
-                                <h1 className="absolute top-[2.5vw] left-[1vw] text-[#6B7280] text-[.5vw] font-bold">{item.n}</h1>
-                                <div className="absolute top-[3vw] left-[1vw] text-[#111827] text-[2vw] font-bold">{cifrao}{item.v}{porc}</div>
+                                <h1 className="absolute md:top-[4vw] lg:top-[2.5vw] left-[1vw] text-[#6B7280] md:text-[.8vw] lg:text-[.5vw] font-bold">{item.n}</h1>
+                                <div className="absolute md:top-[5vw] lg:top-[3vw] left-[1vw] text-[#111827] md:text-[2.5vw] lg:text-[2vw] font-bold">{cifrao}{item.v}{porc}</div>
                                 <Image
-                                    className="absolute w-[3vw] top-[2.5vw] right-[1vw]"
+                                    className="absolute w-[3vw] right-[1vw]"
                                     src={item.i}
                                     alt={`Ícone para profit`}
                                     width={180}
@@ -68,7 +68,7 @@ export default async function DashBoard() {
                                     priority
                                 />
                                 {porc ? <>
-                                    <div className="absolute w-[90%] h-[.5vw] bottom-[1.5vw] bg-[#FFFFFF] rounded overflow-hidden">
+                                    <div className="absolute w-[90%] md:h-[1vw] lg:h-[.5vw] md:bottom-[2vw] lg:bottom-[1.5vw] bg-[#FFFFFF] rounded overflow-hidden">
                                         <div className="bg-[#5048E5] h-full" style={{ width:`${valores2.task}%`}}></div>
                                     </div>
                                     </>:<></>
@@ -78,13 +78,13 @@ export default async function DashBoard() {
                     })}
                 </div>
 
-                <div className="flex absolute left-[2.7085vw] top-[9vw] w-[80vw] h-[18vw] bg-[#FFFFFF] rounded items-center justify-center select-none">
-                    <h1 className="absolute top-[1vw] left-[1vw] text-[#111827] text-[1vw] font-bold">ÚLTIMAS VENDAS</h1>
+                <div className="flex absolute left-[2.7085vw] md:top-[15vw] lg:top-[9vw] w-[80vw] md:h-[50vw] lg:h-[18vw] bg-[#FFFFFF] rounded items-center justify-center select-none">
+                    <h1 className="absolute top-[1vw] left-[1vw] text-[#111827] md:text-[1.5vw] lg:text-[1vw] font-bold">ÚLTIMAS VENDAS</h1>
                     <MyBarChart />
                 </div>
 
-                <div className="flex absolute left-[2.7085vw] top-[27.5vw] w-[80vw] h-[15vw] bg-[#FFFFFF] rounded items-center justify-center overflow-hidden">
-                    <h1 className="absolute top-[1vw] left-[1vw] text-[#111827] text-[1vw] font-bold select-none">ÚLTIMOS PEDIDOS</h1>
+                <div className="flex absolute left-[2.7085vw] md:top-[67.5vw] lg:top-[27.5vw] w-[80vw] md:h-[25vw] lg:h-[15vw] bg-[#FFFFFF] rounded items-center justify-center overflow-hidden">
+                    <h1 className="absolute top-[1vw] left-[1vw] text-[#111827] md:text-[1.5vw] lg:text-[1vw] font-bold select-none">ÚLTIMOS PEDIDOS</h1>
                     <LastCostumers />
                 </div>
             </Pagina>

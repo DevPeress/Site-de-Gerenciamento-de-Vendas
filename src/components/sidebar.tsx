@@ -53,24 +53,24 @@ export function SideBar() {
         <main className="flex fixed items-center justify-center bg-[#111827] w-[14.583vw] h-full select-none">
             <div className="flex absolute w-[12.1525vw] h-[8vh] top-[2vh] right-[2vw] items-center justify-center">
                 <Image
-                    className="relative w-[3vw] mr-[3vw] top-[1.5vh]"
+                    className="relative w-[5vw] lg:w-[3vw] lg:mr-[3vw] top-[1.5vh]"
                     src="/P-Free.svg"
                     alt="Logo versão free"
                     width={180}
                     height={38}
                     priority
                 />
-                <div className="flex relative items-center justify-center text-[#FFFFFF] text-[.5vw] bg-[#828DF8] w-[3.5vw] h-[1vw] right-[4vh] rounded">FREE</div>
+                <div className="flex relative items-center justify-center text-[#FFFFFF] md:text-[1vw] lg:text-[.5vw] bg-[#828DF8] md:w-[5vw] lg:w-[3.5vw] md:h-[2vw] lg:h-[1vw] lg:right-[4vh] rounded">FREE</div>
             </div>
 
             <div className="flex absolute top-[12vh] bg-[rgb(255,255,255,0.04)] w-[12.1525vw] h-[6vh] rounded items-center">
-                <h1 className="absolute top-[1vh] left-5 text-[#FFFFFF] text-[1vw]">{nome}</h1>
-                <h2 className="absolute top-[3.5vh] left-5 text-[#9CA3AF] text-[.5vw]">Your tier: Premium</h2>
+                <h1 className="absolute md:top-[2vw] lg:top-[1vh] left-[1vw] text-[#FFFFFF] text-[1vw]">{nome}</h1>
+                <h2 className="absolute md:top-[3.5vw] lg:top-[3.5vh] left-[1vw] text-[#9CA3AF] md:text-[.8vw] lg:text-[.5vw]">Your tier: Premium</h2>
             </div>
             
             <div className="absolute top-[25vh] w-full h-[0.1vw] bg-[#1F2937]"></div>
 
-            <div className="flex absolute w-full h-100 items-center justify-center flex-wrap">
+            <div className="flex absolute w-full items-center justify-center flex-wrap">
                 {escolhas.map((item) => {
                     const pagina: string = item.nome.toLowerCase()
                     const isActive: boolean = urlSemBarraInicial === pagina;
@@ -79,7 +79,7 @@ export function SideBar() {
                     const config: string = item.nome === "Configuracoes" ? "Configurações" : item.nome
 
                     return (
-                        <Link key={item.nome} href={pagina} className="flex relative w-4/5 h-10 items-center rounded-[.5vw] hover:scale-110">
+                        <Link key={item.nome} href={pagina} className="flex relative w-4/5 md:h-[3vw] lg:h-[2vw] items-center hover:scale-110">
                             <Image
                                 className="relative w-[1.2vw] mr-[1vw]"
                                 src={iconSrc}
@@ -88,7 +88,7 @@ export function SideBar() {
                                 height={38}
                                 priority
                             />
-                            <h1 className={`relative text-[1vw] ${textColor}`}>{config}</h1>
+                            <h1 className={`relative md:text-[1.25vw] lg:text-[1vw] ${textColor}`}>{config}</h1>
                         </Link>
                     );
                 })}

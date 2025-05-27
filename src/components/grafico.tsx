@@ -33,7 +33,7 @@ export function MyBarChart() {
   return (
     <div className="flex absolute top-[1vw] justify-center items-center w-full h-full">
       {loading ? (
-        <h1 className="text-center text-[1.5vw] text-gray-500">Carregando gráfico...</h1>
+        <h1 className="text-center text-[2vw] lg:text-[1.5vw] text-gray-500">Carregando gráfico...</h1>
       ) : (
         <ResponsiveContainer width="100%" height="80%">
           <BarChart data={data}>

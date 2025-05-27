@@ -45,7 +45,7 @@ export default function Login() {
 
     const verifyEmail = () => {
         if (!emailV) {
-            Notify("E-mail está incorreto!")
+            return Notify("E-mail está incorreto!")
         }
 
         fetch(`/api/verifyConta?email=${email}`)
@@ -62,27 +62,21 @@ export default function Login() {
     }
 
     const verifyLogin = () => {
-        if (emailV && senhaV) {
-            Notify("E-mail ou senha estão incorretos!")
+        if (!emailV || !senhaV) {
+            return Notify("E-mail ou senha estão incorretos!")
         }
 
-        fetch(`/api/login?email=${email}&senha=${senha}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            credentials: 'include',
-        })
+        fetch(`/api/login?email=${email}&senha=${senha}`)
         .then(res => res.json())
         .then(data => { 
             if (data) {
                 if (data.status !== 400) {
                     router.push('/inicio');
                 } else {
-                    Notify(data.mensagem)
+                    return Notify(data.mensagem)
                 }
             } else {
-                Notify("E-mail ou Senha estão incorretos!")
+                return Notify("E-mail ou Senha estão incorretos!")
             }
          })
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
@@ -92,24 +86,25 @@ export default function Login() {
         <>
             <div className="absolute w-full min-h-screen bg-[#090E23] overflow-hidden">
                 <div className="flex absolute w-full min-h-screen bg-white items-center justify-center select-none">
-                    <div className="flex absolute w-[20.833vw] h-[22.969vw]">
-                        <h1 className="absolute top-[2vw] text-[2vw] text-[#111827]">Bem-Vindo</h1>
-                        <h2 className="absolute top-[5vw] text-[1vw] text-[#6B7280]">{mensagem}</h2>
+                    <div className="flex absolute md:w-[45vw] md:h-[22.969vw] lg:w-[20.833vw]">
+                        <h1 className="absolute md:top-[-2vw] lg:top-[2vw] md:text-[3vw] lg:text-[2vw] text-[#111827]">Bem-Vindo</h1>
+                        <h2 className="absolute md:top-[2vw] lg:top-[5vw] md:text-[1.5vw] lg:text-[1vw] text-[#6B7280]">{mensagem}</h2>
 
-                        <div className="absolute w-auto h-[1vw] top-[7vw] text-[.6vw] text-[#5048E5] border-b border-[#5048E5]">Email</div>
-                        <div className="absolute w-full h-[2.5vw] rounded top-[9vw] border-[#D1D5DB] border-1 overflow-hidden">
-                            <input className="absolute w-[98%] h-full outline-0 p-2" type="email" value={login.email} onChange={(e) => alterarDados("email", e.target.value)} />
+                        <div className="absolute w-auto md:top-[5vw] lg:top-[7vw] md:text-[1.2vw] lg:text-[.6vw] text-[#5048E5] border-b border-[#5048E5]">Email</div>
+                        <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded top-[9vw] border-[#D1D5DB] border-1 overflow-hidden">
+                            <input className="absolute w-[98%] h-full outline-0 p-2 md:text-[1.6vw] lg:text-[.8vw]" type="email" value={login.email} onChange={(e) => alterarDados("email", e.target.value)} />
                         </div>
-                        <h1 className="flex absolute w-[4vw] top-[8.6vw] left-[.5vw] text-[.5vw] text-[#6B7280] bg-white justify-center">Email</h1> 
+                        <h1 className="flex absolute w-[4vw] md:top-[8.35vw] lg:top-[8.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] bg-white justify-center">Email</h1> 
                         {etapa !== "1" ? 
-                        <>
-                            <div className="absolute w-full h-[2.5vw] rounded top-[12vw] border-[#D1D5DB] border-1 overflow-hidden">
-                                <input className="absolute w-[98%] h-full outline-0 p-2" type="password" value={login.senha} onChange={(e) => alterarDados("senha", e.target.value)} />
-                            </div>
-                            <h1 className="flex absolute w-[4vw] top-[11.6vw] left-[.5vw] text-[.5vw] text-[#6B7280] bg-white justify-center">Senha</h1> 
-                        </> : <></> }
+                            <>
+                                <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded md:top-[14vw] lg:top-[12vw] border-[#D1D5DB] border-1 overflow-hidden">
+                                    <input className="absolute w-[98%] h-full outline-0 p-2 md:text-[1.6vw] lg:text-[.8vw]" type="password" value={login.senha} onChange={(e) => alterarDados("senha", e.target.value)} />
+                                </div>
+                                <h1 className="flex absolute w-[4vw] md:top-[13.35vw] lg:top-[11.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] bg-white justify-center">Senha</h1> 
+                            </> : <></> 
+                        }
 
-                        <button className="absolute top-[16vw] w-full h-[3vw] bg-[#5048E5] rounded text-[#FFFFFF] text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
+                        <button className="absolute md:top-[20vw] lg:top-[16vw] w-full md:h-[4vw] lg:h-[3vw] bg-[#5048E5] rounded text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
                     </div>
                 </div>
             </div>
