@@ -11,6 +11,16 @@ const Header = () => {
     const [logado,setLogado] = useState<boolean>(false)
 
     useEffect(() => {
+        const savedDark = localStorage.getItem('tema');
+        if (!savedDark) {
+            localStorage.setItem('tema', dark ? "escuro" : "claro");
+        } else {
+            if (dark) {
+                savedDark === "escuro" ? "" : toggleTheme
+            } else {
+                savedDark === "claro" ? toggleTheme : ""
+            }
+        }
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {

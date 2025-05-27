@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image" 
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from "react";
 import { Notify } from "./notify";
@@ -13,7 +13,6 @@ interface Escolhas {
 }
 
 export function SideBar() {
-    const router = useRouter();
     const pathname: string = usePathname();
     const urlSemBarraInicial: string = pathname.replace(/^\/+/, '');
     const [nome,setNome] = useState<Escolhas['nome']>('')
