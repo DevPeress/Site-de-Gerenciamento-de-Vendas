@@ -6,6 +6,8 @@ import { Notify } from "@/components/notify"
 import { useTheme } from "@/app/context/ThemeContext";
 import Image from "next/image" 
 
+import noite from '../../../public/Noite.svg'
+
 interface Registros {
     email: string,
     senha: string
@@ -116,7 +118,7 @@ export default function Login() {
                 <div className="flex absolute w-[2vw] h-full right-[5vw] items-center justify-center" onClick={toggleTheme}>
                     <Image
                         className="w-auto"
-                        src={dark ? '/Noite.svg' : '/Dia.svg'}
+                        src={dark ? '../../../public/Noite.svg' : '../../../public/Dia.svg'}
                         alt={`Ícone para do tema`}
                         width={180}
                         height={38}
