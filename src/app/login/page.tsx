@@ -92,31 +92,31 @@ export default function Login() {
         <>
             <div className="absolute w-full min-h-screen overflow-hidden">
                 <div className="flex absolute w-full min-h-screen items-center justify-center select-none" style={{ background: dark ? '#0B0A0A' : '#F9FAFC' }}>
-                    <div className="flex absolute md:w-[45vw] md:h-[22.969vw] lg:w-[20.833vw]">
-                        <h1 className="absolute md:top-[-2vw] lg:top-[2vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF]">Bem-Vindo</h1>
-                        <h2 className="absolute md:top-[2vw] lg:top-[5vw] md:text-[1.5vw] lg:text-[1vw] text-[#6B7280] dark:text-[#CAFF33]">{mensagem}</h2>
+                    <div className="flex absolute w-[80vw] md:w-[45vw] h-[30vw] md:h-[22.969vw] lg:w-[20.833vw]">
+                        <h1 className="absolute top-[-25vw] md:top-[-2vw] lg:top-[2vw] text-[9vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF]">Bem-Vindo</h1>
+                        <h2 className="absolute top-[-15vw] md:top-[2vw] lg:top-[5vw] text-[4vw] md:text-[1.5vw] lg:text-[1vw] text-[#6B7280] dark:text-[#CAFF33]">{mensagem}</h2>
 
-                        <div className="absolute w-auto md:top-[5vw] lg:top-[7vw] md:text-[1.2vw] lg:text-[.6vw] text-[#5048E5] dark:text-[#FFFFFF] border-b border-[#5048E5] dark:border-[#CAFF33]">Email</div>
-                        <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded top-[9vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
-                            <input className="absolute w-[98%] h-full outline-0 p-2 md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="email" value={login.email} onChange={(e) => alterarDados("email", e.target.value)} />
+                        <div className="absolute w-auto top-[-5vw] md:top-[5vw] lg:top-[7vw] text-[2.5vw] md:text-[1.2vw] lg:text-[.6vw] text-[#5048E5] dark:text-[#FFFFFF] border-b border-[#5048E5] dark:border-[#CAFF33]">Email</div>
+                        <div className="absolute w-full h-[15vw] md:h-[4vw] lg:h-[2.5vw] rounded top-[9vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
+                            <input className="absolute w-[98%] h-full outline-0 p-2 text-[4vw] md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="email" value={login.email} onChange={(e) => alterarDados("email", e.target.value)} />
                         </div>
-                        <h1 className="flex absolute w-[4vw] md:top-[8.35vw] lg:top-[8.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Email</h1> 
+                        <h1 className="flex absolute w-[15vw] md:w-[4vw] top-[7vw] md:top-[8.35vw] lg:top-[8.6vw] left-[3vw] md:left-[.5vw] text-[2.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Email</h1> 
                         {etapa !== "1" ? 
                             <>
-                                <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded md:top-[14vw] lg:top-[12vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
-                                    <input className="absolute w-[98%] h-full outline-0 p-2 md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="password" value={login.senha} onChange={(e) => alterarDados("senha", e.target.value)} />
+                                <div className="absolute w-full h-[15vw] md:h-[4vw] lg:h-[2.5vw] rounded top-[30vw] md:top-[14vw] lg:top-[12vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
+                                    <input className="absolute w-[98%] h-full outline-0 p-2 text-[4vw] md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="password" value={login.senha} onChange={(e) => alterarDados("senha", e.target.value)} />
                                 </div>
-                                <h1 className="flex absolute w-[4vw] md:top-[13.35vw] lg:top-[11.6vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] justify-center">Senha</h1> 
+                                <h1 className="flex absolute w-[15vw] md:w-[4vw] top-[29vw] md:top-[13.35vw] lg:top-[11.6vw] left-[3vw] md:left-[.5vw] text-[2.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Senha</h1> 
                             </> : <></> 
                         }
 
-                        <button className="absolute md:top-[20vw] lg:top-[16vw] w-full md:h-[4vw] lg:h-[3vw] bg-[#5048E5] dark:bg-[#333333] rounded text-[#000000] dark:text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
+                        <button className="absolute top-[50vw] md:top-[20vw] lg:top-[16vw] w-full h-[15vw] md:h-[4vw] lg:h-[3vw] bg-[#5048E5] dark:bg-[#333333] rounded text-[#000000] dark:text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
                     </div>
                 </div>
             </div>
 
-            <div className="flex absolute w-[85.417vw] h-[10vh] top-[0vh] left-[14.583vw]">
-                <div className="flex absolute w-[2vw] h-full right-[5vw] items-center justify-center" onClick={toggleTheme}>
+            <div className="flex absolute w-[85.417vw] md:w-[85.417vw] h-[10vh] md:h-[10vh] top-[0vh] md:top-[0vh] left-[14.583vw] md:left-[14.583vw]">
+                <div className="flex absolute w-[8vw] md:w-[2vw] h-full right-[20vw] md:right-[5vw] items-center justify-center" onClick={toggleTheme}>
                     <Image
                         className="w-auto"
                         src={dark ? '/Noite.svg' : '/Dia.svg'}
