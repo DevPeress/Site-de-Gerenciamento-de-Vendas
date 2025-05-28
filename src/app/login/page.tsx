@@ -7,6 +7,7 @@ import { useTheme } from "@/app/context/ThemeContext";
 import Image from "next/image" 
 
 import noite from '../../../public/Noite.svg'
+import dia from '../../../public/Dia.svg'
 
 interface Registros {
     email: string,
@@ -118,7 +119,7 @@ export default function Login() {
                 <div className="flex absolute w-[2vw] h-full right-[5vw] items-center justify-center" onClick={toggleTheme}>
                     <Image
                         className="w-auto"
-                        src={dark ? '../../../public/Noite.svg' : '../../../public/Dia.svg'}
+                        src={dark ? noite : dia}
                         alt={`Ícone para do tema`}
                         width={180}
                         height={38}
