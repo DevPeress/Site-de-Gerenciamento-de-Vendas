@@ -86,7 +86,7 @@ export default function Config() {
                             />
                         </div>
                         <div className="flex relative w-[80vw] md:w-full h-[15vw] md:h-[4vw] lg:h-[3vw] left-[5vw] md:left-0 border-1 border-[#E6E8F0] rounded-2xl items-center justify-center">
-                            <h1 className="flex absolute w-[20vw] bottom-[12vw] md:bottom-[3vw] lg:bottom-[2.5vw] left-[4vw] md:left-[1.5vw] lg:left-[1vw] bg-white dark:bg-[#191919] dark:text-[#CAFF33] text-[3vw] md:text-[1vw] lg:text-[.6vw] items-center justify-center">Senha nova</h1>
+                            <h1 className="flex absolute w-[20vw] md:w-[6vw] bottom-[12vw] md:bottom-[3vw] lg:bottom-[2.5vw] left-[4vw] md:left-[1.5vw] lg:left-[1vw] bg-white dark:bg-[#191919] dark:text-[#CAFF33] text-[3vw] md:text-[1vw] lg:text-[.6vw] items-center justify-center">Senha nova</h1>
                             <input type={types.nova} className="w-[80%] md:w-[92%] h-full outline-none left-[-2.5vw] md:left-0 md:p-4 text-[5vw] md:text-[1vw] lg:text-[.8vw] text-black dark:text-white" value={senhas.senhaN} onChange={(e) => alterarSenha('senhaN',e.target.value)} />
                             <Image
                                 className="flex absolute w-[5vw] md:w-[1vw] right-[5vw] md:right-[1vw]"

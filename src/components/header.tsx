@@ -97,7 +97,7 @@ const Header = () => {
                     }
                 </div>
 
-                <div className="hidden md:flex absolute md:w-[2vw] md:right-[5vw] h-full items-center justify-center" onClick={toggleTheme}>
+                <div className="hidden md:flex absolute md:w-[3vw] md:right-[6vw] h-full items-center justify-center" onClick={toggleTheme}>
                     <Image
                         className="w-auto"
                         src={dark ? '/Noite.svg' : '/Dia.svg'}
@@ -120,7 +120,7 @@ const Header = () => {
                 </div>
                 {logado ? 
                     <>
-                        <div className="hidden md:flex absolute w-[2vw] h-full right-[2vw] items-center justify-center">
+                        <div className="hidden md:flex absolute w-[3vw] h-full right-[2vw] items-center justify-center">
                             <Image
                                 className="w-auto"
                                 src={foto}

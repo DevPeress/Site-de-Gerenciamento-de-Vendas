@@ -150,7 +150,7 @@ export default function Conta() {
           </div>
       
           <div className="flex absolute w-full h-[15vw] md:h-[4vw] lg:h-[3vw] bottom-0 border-t border-[#E6E8F0] items-center justify-center">
-            <h1 className="flex absolute right-[2.5vw] bg-[#5048E5] dark:bg-[#333333] w-[25vw] md:h-[2.5vw] lg:h-[2vw] rounded-2xl text-[#FFFFFF] text-[5vw] md:text-[1.6vw] lg:text-[0.8vw] items-center justify-center hover:scale-110" onClick={salvar}>Salvar</h1>
+            <h1 className="flex absolute right-[2.5vw] bg-[#5048E5] dark:bg-[#333333] w-[25vw] md:w-[15vw] lg:w-[10vw] md:h-[2.5vw] lg:h-[2vw] rounded-2xl text-[#FFFFFF] text-[5vw] md:text-[1.6vw] lg:text-[0.8vw] items-center justify-center hover:scale-110" onClick={salvar}>Salvar</h1>
           </div>
         </div>
       </Pagina>

@@ -58,7 +58,7 @@ export default async function DashBoard() {
                         return (
                             <div key={index} className="flex relative w-full md:w-[15vw] h-[13.5vh] md:h-full bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center">
                                 <h1 className="absolute top-[5vw] md:top-[4vw] lg:top-[2.5vw] left-[8vw] md:left-[1vw] text-[#6B7280] dark:text-[#CAFF33] text-[4.5vw] md:text-[.8vw] lg:text-[.5vw] font-bold">{item.n}</h1>
-                                <div className="absolute md:top-[5vw] lg:top-[3vw] left-[8vw] md:left-[1vw] text-[#111827] dark:text-[#FFFFFF] text-[5vw] md:text-[2.5vw] lg:text-[2vw] font-bold">{cifrao}{item.v}{porc}</div>
+                                <div className="absolute md:top-[5vw] lg:top-[3vw] left-[8vw] md:left-[1vw] text-[#111827] dark:text-[#FFFFFF] text-[5vw] md:text-[2vw] lg:text-[2vw] font-bold">{cifrao}{item.v}{porc}</div>
                                 <Image
                                     className="absolute w-[18vw] md:w-[3vw] right-[5vw] md:right-[1vw]"
                                     src={item.i}
@@ -77,12 +77,12 @@ export default async function DashBoard() {
                         )
                     })}
 
-                     <div className="flex absolute md:left-[2.7085vw] top-[160vw] md:top-[15vw] lg:top-[9vw] w-[90vw] md:w-[80vw] h-[80vw] md:h-[50vw] lg:h-[18vw] bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center select-none">
+                     <div className="flex absolute top-[160vw] md:top-[15vw] lg:top-[9vw] w-[90vw] md:w-[75vw] h-[80vw] md:h-[50vw] lg:h-[18vw] bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center select-none">
                         <h1 className="absolute top-[1vw] left-[1vw] text-[#111827] dark:text-[#FFFFFF] text-[4vw] md:text-[1.5vw] lg:text-[1vw] font-bold">ÚLTIMAS VENDAS</h1>
                         <MyBarChart />
                     </div>
 
-                    <div className="flex absolute md:left-[2.7085vw] top-[245vw] md:top-[67.5vw] lg:top-[27.5vw] w-[90vw] md:w-[80vw] h-[62vw] md:h-[25vw] lg:h-[15vw] bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center overflow-hidden">
+                    <div className="flex absolute top-[245vw] md:top-[67.5vw] lg:top-[27.5vw] w-[90vw] md:w-[75vw] h-[62vw] md:h-[25vw] lg:h-[15vw] bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center overflow-hidden">
                         <h1 className="absolute top-[1vw] left-[1vw] text-[#111827] dark:text-[#FFFFFF] text-[4vw] md:text-[1.5vw] lg:text-[1vw] font-bold select-none">ÚLTIMOS PEDIDOS</h1>
                         <LastCostumers />
                     </div>
