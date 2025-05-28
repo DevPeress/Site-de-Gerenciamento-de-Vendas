@@ -49,7 +49,7 @@ export function SideBar() {
     }, []);
 
     return(
-        <main className="flex fixed items-center justify-center bg-[#111827] w-[14.583vw] h-full select-none">
+        <main className="hidden md:flex fixed items-center justify-center bg-[#111827] w-[14.583vw] h-full select-none">
             <div className="flex absolute w-[12.1525vw] h-[8vh] top-[2vh] right-[2vw] items-center justify-center">
                 <Image
                     className="relative w-[5vw] lg:w-[3vw] lg:mr-[3vw] top-[1.5vh]"
