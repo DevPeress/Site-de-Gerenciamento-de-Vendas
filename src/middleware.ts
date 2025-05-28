@@ -1,24 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
-    const { pathname } = request.nextUrl;
-    const auth = request.cookies.get('auth');
+  const { pathname } = request.nextUrl;
+  const auth = request.cookies.get('auth');
 
-    if ((pathname === '/' || pathname === '/cadastro' || pathname === '/login') && auth) {
-        return NextResponse.redirect(new URL('/inicio', request.url));
-    }
+  const isAuthPage = pathname === '/login' || pathname === '/cadastro';
+  const isPublicPage = pathname === '/' || isAuthPage;
+  const isProtectedPage = !isPublicPage;
 
-    if (pathname === '/login' && !auth) {
-        return NextResponse.redirect(new URL('/login', request.url));
-    }
+  if (isPublicPage && auth) {
+    return NextResponse.redirect(new URL('/inicio', request.url));
+  }
 
-     if (pathname === '/cadastro' && !auth) {
-        return NextResponse.redirect(new URL('/cadastro', request.url));
-    }
+  if (isProtectedPage && !auth) {
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
 
-    return NextResponse.next()
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/', '/inicio', '/conta', '/configuracoes', '/compradores', '/registrar', '/cadastro', '/login'],
+  matcher: [
+    '/',
+    '/inicio',
+    '/conta',
+    '/configuracoes',
+    '/compradores',
+    '/registrar',
+    '/cadastro',
+    '/login'
+  ],
 };
