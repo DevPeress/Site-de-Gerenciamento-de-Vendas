@@ -79,4 +79,4 @@ Desenvolvido por [Peres](https://github.com/xPeres)
 
 ---
 
-> Projeto desenvolvido para fins educacionais e de portfólio.
+> Projeto desenvolvido para portfólio.
