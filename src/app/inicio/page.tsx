@@ -1,12 +1,10 @@
 import Pagina from "@/components/pagina";
-import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { MyBarChart } from "@/components/grafico";
 import { LastCostumers } from "@/components/lastCostumers";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Empresa } from "@/components/empresa";
-import Header from "@/components/header";
 
 export const metadata: Metadata = {
     title: 'Ínicio',
@@ -88,9 +86,6 @@ export default async function DashBoard() {
                     </div>
                 </div>
             </Pagina>
-
-            <SideBar />
-            <Header />
         </>
     )
 }

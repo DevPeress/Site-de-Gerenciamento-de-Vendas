@@ -1,10 +1,8 @@
 'use client'
 
 import { Empresa } from "@/components/empresa";
-import Header from "@/components/header";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
-import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -180,9 +178,6 @@ export default function Customers() {
                     </>
                 }
             </Pagina>
-
-            <SideBar />
-            <Header />
         </>
     )
 }

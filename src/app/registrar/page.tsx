@@ -2,10 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
-import { SideBar } from "@/components/sidebar"
 import { Empresa } from "@/components/empresa";
 import Pagina from "@/components/pagina";
-import Header from "@/components/header";
 
 export default function Login() { 
     const [email,setEmail] = useState<string>("")
@@ -100,9 +98,6 @@ export default function Login() {
                     </>
                 }
             </Pagina>
-
-            <SideBar />
-            <Header />
         </>
     )
 }

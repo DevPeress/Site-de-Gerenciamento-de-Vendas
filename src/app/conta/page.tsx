@@ -1,9 +1,7 @@
 'use client'
 
-import Header from "@/components/header";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
-import { SideBar } from "@/components/sidebar";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -154,9 +152,6 @@ export default function Conta() {
           </div>
         </div>
       </Pagina>
-
-      <SideBar />
-      <Header />
     </>
   )
 }

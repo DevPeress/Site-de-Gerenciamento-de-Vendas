@@ -7,5 +7,5 @@ body {
 }
 
 * {
-  @apply transition-colors duration-400
+  @apply transition-colors duration-300
 }

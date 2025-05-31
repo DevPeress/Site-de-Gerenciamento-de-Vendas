@@ -81,7 +81,7 @@ export default function Login() {
         <>
             <div className="flex absolute w-full h-full items-center justify-center select-none" style={{ background: dark ? '#0B0A0A' : '#F9FAFC' }}>
                 <div className="flex absolute w-[90vw] md:w-[90vw] lg:w-[85.417vw] h-[50vw] md:h-[35vw] lg:h-[22.969vw] items-center justify-center">
-                    <h1 className="absolute top-[-25vw] text-[9vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF]">Bem-Vindo</h1>
+                    <h1 className="absolute top-[-25vw] md:top-[-2vw] text-[9vw] md:text-[3vw] lg:text-[2vw] text-[#111827] dark:text-[#FFFFFF]">Bem-Vindo</h1>
                     <h2 className="absolute top-[-15vw] md:top-[2vw] lg:top-[1vw] text-[4vw] md:text-[1.5vw] lg:text-[1vw] text-[#6B7280] dark:text-[#CAFF33]">Efetue seu cadastro!</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 absolute top-[0vw] md:top-[7vw] lg:top-[5vw] w-[90vw] md:w-[60vw] lg:w-[50vw] h-[35vw] md:h-[20vw] lg:h-[12vw]">
