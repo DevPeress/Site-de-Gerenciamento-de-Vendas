@@ -3,17 +3,9 @@
 import { Empresa } from "@/components/empresa";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
+import { Compradores } from "@/types/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-interface Compradores {
-    nome: string,
-    email: string,
-    loc: string,
-    cell: string,
-    rg: string,
-    foto: string
-}
 
 export default function Customers() {
     const [lista,setLista] = useState<number>(6)

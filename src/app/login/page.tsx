@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/navigation'
 import { Notify } from "@/components/notify"
-import { useTheme } from "@/app/context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 import Image from "next/image" 
 
 import noite from '../../../public/Noite.svg'

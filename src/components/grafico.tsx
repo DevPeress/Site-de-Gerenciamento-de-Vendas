@@ -3,16 +3,11 @@
 import { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Notify } from './notify';
-
-interface Grafico {
-  name: string,
-  Atual: number,
-  Previsto: number
-}
+import { Grafico } from '@/types/types';
 
 export function MyBarChart() {
   const [data, setDados] = useState<Grafico[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<Grafico['verify']>(true);
 
   useEffect(() => {
     fetch(`/api/infos`)

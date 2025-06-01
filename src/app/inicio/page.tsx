@@ -5,17 +5,11 @@ import { LastCostumers } from "@/components/lastCostumers";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Empresa } from "@/components/empresa";
+import { Valores } from "@/types/types";
 
 export const metadata: Metadata = {
     title: 'Ínicio',
     description: 'Página inicial do projeto'
-}
-
-interface Valores {
-    budget: number;
-    customers: number;
-    task: any;
-    total: number;
 }
 
 export default async function DashBoard() {
@@ -25,7 +19,7 @@ export default async function DashBoard() {
     if (!auth) return 
     
     let valores = await JSON.parse(auth.value)
-    let id: number = valores.id
+    let id: Valores['total'] = valores.id
 
     const resp = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/pegarValores?id=${id}`);
     if (resp.status !== 200) {

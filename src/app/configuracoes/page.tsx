@@ -2,24 +2,15 @@
 
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
+import { Senhas, Types } from "@/types/types";
 import Image from "next/image"
 import { useEffect, useState } from "react";
-
-interface Senhas {
-    senhaA: string,
-    senhaN: string
-}
-
-interface Types {
-    antiga: string,
-    nova: string
-}
 
 export default function Config() {
     const [senhas,setSenhas] = useState<Senhas>({ senhaA: "", senhaN: ""})
     const [types,setTypes] = useState<Types>({ antiga: "password", nova: "password" })
 
-    const alterarSenha = (tipo: string, valor: string) => {
+    const alterarSenha = (tipo: Senhas['senhaA'], valor: Senhas['senhaA']) => {
         setSenhas((prevDados) => ({
             ...prevDados,
             [tipo]: valor

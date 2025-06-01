@@ -4,25 +4,26 @@ import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
 import { Empresa } from "@/components/empresa";
 import Pagina from "@/components/pagina";
+import { Escolhas } from "@/types/types";
 
 export default function Login() { 
-    const [email,setEmail] = useState<string>("")
-    const [id,setID] = useState<number>(0)
-    const [loading,setLoading] = useState<boolean>(true)
+    const [email,setEmail] = useState<Escolhas['nome']>("")
+    const [id,setID] = useState<Escolhas['number']>(0)
+    const [loading,setLoading] = useState<Escolhas['verify']>(true)
 
     useEffect(() =>{
         document.title = "Registrar"
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {
-            const userId: number = data.idLoja;
+            const userId: Escolhas['number'] = data.idLoja;
             setID(userId)
 
             return setLoading(false)
         })
     },[])
 
-    const emailV: boolean = email.includes("@") && email.toLocaleLowerCase().includes(".com")
+    const emailV: Escolhas['verify'] = email.includes("@") && email.toLocaleLowerCase().includes(".com")
 
     const verifyEmail = () => {
         if (!emailV) {

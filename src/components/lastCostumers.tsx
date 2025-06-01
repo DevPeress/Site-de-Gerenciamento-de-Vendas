@@ -2,22 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { Notify } from "./notify";
-
-interface Usuarios {
-    ordem: number,
-    comprador: string,
-    data: string,
-    status: number
-}
-
-interface Infos {
-    cor: string,
-    nome: string
-}
+import { Escolhas, Status, Usuarios } from "@/types/types";
 
 export function LastCostumers() {
     const [dado,setDados] = useState<Usuarios[]>([])
-    const [loading,setLoading] = useState<boolean>(true)
+    const [loading,setLoading] = useState<Usuarios['verify']>(true)
 
     useEffect(() => {
         fetch(`/api/infos`)
@@ -32,7 +21,7 @@ export function LastCostumers() {
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
     }, []);
 
-    const getStatusInfo = (status: number): Infos => {
+    const getStatusInfo = (status: Usuarios['status']): Status => {
         switch (status) {
             case 1:
                 return { cor: "#FFB020", nome: "Pendente" };
@@ -62,7 +51,7 @@ export function LastCostumers() {
 
             <tbody >
                 {dado.map((item,index) => {
-                    const statusInfo: Infos = getStatusInfo(item.status);
+                    const statusInfo: Status = getStatusInfo(item.status);
 
                     return (
                         <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] dark:text-[#FFFFFF] text-[4vw] md:text-[1.4vw] lg:text-[.7vw] md:h-[5.3vw] lg:h-[3.2vw] hover:scale-101">

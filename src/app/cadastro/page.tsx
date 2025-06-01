@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
 import Image from "next/image"
-import { useTheme } from "../context/ThemeContext"
+import { useTheme } from "../../context/ThemeContext"
 
 interface Registro {
     email: string,

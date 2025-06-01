@@ -2,27 +2,9 @@
 
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
+import { Infos } from "@/types/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-interface Usuario {
-  nome: string,
-  loc: string,
-  horario: string,
-  foto: string
-}
-
-interface Infos {
-  [x: string]: string | number | readonly string[] | undefined;
-  nome: string,
-  email: string,
-  idade: string,
-  rg: string,
-  loc: string,
-  celular: string,
-  horario: string,
-  foto: string
-}
 
 export default function Conta() {
   const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "/Avatar.svg"})

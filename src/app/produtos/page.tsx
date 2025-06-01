@@ -3,26 +3,21 @@
 import { Empresa } from "@/components/empresa";
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
+import { Produtos } from "@/types/types";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-interface Produtos {
-  nome: string,
-  desc: string,
-  icone: string
-}
-
 export default function Products() {
   const [produtosData,setprodutosData] = useState<Produtos[]>([]) 
-  const [loading,setLoading] = useState<boolean>(true)
-  const [id,setID] = useState<number>(0)
+  const [loading,setLoading] = useState<Produtos['verify']>(true)
+  const [id,setID] = useState<Produtos['number']>(0)
 
   useEffect(() => {
     document.title = "Produtos"
     fetch(`/api/infos`)
     .then(res => res.json())
     .then(data => {
-      const userId: number = data.idLoja;
+      const userId: Produtos['number'] = data.idLoja;
       setID(userId)
       setLoading(false)
       return fetch(`/api/pegarProdutos?id=${userId}`);
@@ -34,7 +29,7 @@ export default function Products() {
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
 
-  const Pesquisar = (texto: string) => {
+  const Pesquisar = (texto: Produtos['nome']) => {
     const searchTerm = texto.toLowerCase()
     const table = tableRef.current
 

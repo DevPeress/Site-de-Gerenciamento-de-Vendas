@@ -5,16 +5,11 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useEffect, useState } from "react";
 import { Notify } from "./notify";
-
-interface Escolhas {
-    nome: string,
-    off: string,
-    on: string
-}
+import { Escolhas } from "@/types/types";
 
 export function SideBar() {
-    const pathname: string = usePathname();
-    const urlSemBarraInicial: string = pathname.replace(/^\/+/, '');
+    const pathname: Escolhas['nome'] = usePathname();
+    const urlSemBarraInicial: Escolhas['nome'] = pathname.replace(/^\/+/, '');
     const [nome,setNome] = useState<Escolhas['nome']>('')
     
     const escolhas: Escolhas[] = [
@@ -71,11 +66,11 @@ export function SideBar() {
 
             <nav className="flex absolute w-full items-center justify-center flex-wrap">
                 {escolhas.map((item) => {
-                    const pagina: string = item.nome.toLowerCase()
-                    const isActive: boolean = urlSemBarraInicial === pagina;
-                    const textColor: string = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
-                    const iconSrc: string = isActive ? item.on : item.off;
-                    const config: string = item.nome === "Configuracoes" ? "Configurações" : item.nome
+                    const pagina: Escolhas['nome'] = item.nome.toLowerCase()
+                    const isActive: Escolhas['verify'] = urlSemBarraInicial === pagina;
+                    const textColor: Escolhas['nome'] = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
+                    const iconSrc: Escolhas['nome'] = isActive ? item.on : item.off;
+                    const config: Escolhas['nome'] = item.nome === "Configuracoes" ? "Configurações" : item.nome
 
                     return (
                         <Link key={item.nome} href={pagina} className="flex relative w-4/5 md:h-[3vw] lg:h-[2vw] items-center hover:scale-110">

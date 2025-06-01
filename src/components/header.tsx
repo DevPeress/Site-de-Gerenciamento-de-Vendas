@@ -1,25 +1,20 @@
 'use client'
 
-import { useTheme } from "@/app/context/ThemeContext";
+import { useTheme } from "@/context/ThemeContext";
 import Image from "next/image" 
 import { useEffect, useState } from "react";
 import { Notify } from "./notify";
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
-
-interface Escolhas {
-    nome: string,
-    off: string,
-    on: string
-}
+import { Escolhas } from "@/types/types";
 
 const Header = () => {
     const { dark, toggleTheme } = useTheme()
-    const [foto,setFoto] = useState<string>("/User.svg")
-    const [logado,setLogado] = useState<boolean>(false)
-    const pathname: string = usePathname();
-    const urlSemBarraInicial: string = pathname.replace(/^\/+/, '');
-    const [menu,setMenu] = useState<boolean>(false)
+    const [foto,setFoto] = useState<Escolhas['nome']>("/User.svg")
+    const [logado,setLogado] = useState<Escolhas['verify']>(false)
+    const pathname: Escolhas['nome'] = usePathname();
+    const urlSemBarraInicial: Escolhas['nome'] = pathname.replace(/^\/+/, '');
+    const [menu,setMenu] = useState<Escolhas['verify']>(false)
 
     const escolhas: Escolhas[] = [
         { nome: "Inicio", off: "/dashboard-d.svg", on:"/dashboard-a.svg" },
@@ -44,7 +39,7 @@ const Header = () => {
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {
-            const userId: number = data.id;
+            const userId: Escolhas['number'] = data.id;
         
             return fetch(`/api/pegarUsuario?id=${userId}`);
         })
@@ -69,11 +64,11 @@ const Header = () => {
                             <div className="flex absolute w-[45vw] bg-[#111827] h-[60vw] top-[-.3vw] right-[-.3vw] rounded">
                                 <nav className="flex absolute w-full h-full items-center justify-center flex-wrap">
                                     {escolhas.map((item) => {
-                                        const pagina: string = item.nome.toLowerCase()
-                                        const isActive: boolean = urlSemBarraInicial === pagina;
-                                        const textColor: string = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
-                                        const iconSrc: string = isActive ? item.on : item.off;
-                                        const config: string = item.nome === "Configuracoes" ? "Configurações" : item.nome
+                                        const pagina: Escolhas['nome'] = item.nome.toLowerCase()
+                                        const isActive: Escolhas['verify'] = urlSemBarraInicial === pagina;
+                                        const textColor: Escolhas['nome'] = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
+                                        const iconSrc: Escolhas['nome'] = isActive ? item.on : item.off;
+                                        const config: Escolhas['nome'] = item.nome === "Configuracoes" ? "Configurações" : item.nome
 
                                         return (
                                             <Link key={item.nome} href={pagina} className="flex relative w-full h-[5vw] items-center justify-center">
