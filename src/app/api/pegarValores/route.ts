@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from '@prisma/client';
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { prisma } from "@/lib/prisma";
 
-const prisma = new PrismaClient();
 const mesAtual = format(new Date(), 'MMMM', { locale: ptBR })
 
 export async function GET(req: Request) {

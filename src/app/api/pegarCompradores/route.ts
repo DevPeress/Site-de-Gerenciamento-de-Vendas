@@ -1,16 +1,6 @@
+import { prisma } from "@/lib/prisma";
+import { Compradores } from "@/types/types";
 import { NextResponse } from "next/server";
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
-interface Usuarios {
-  nome: string,
-  email: string,
-  loc: string,
-  cell: string,
-  rg: string,
-  foto: string
-}
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -21,7 +11,7 @@ export async function GET(req: Request) {
       where: { idLoja: id }
     })
 
-    const compradores: Usuarios[] = await Promise.all(
+    const compradores: Compradores[] = await Promise.all(
       vendas.map(async (row) => {
         const usuario = await prisma.usuario.findUnique({
           where: { id: row.comprador },

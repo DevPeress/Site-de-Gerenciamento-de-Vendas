@@ -1,10 +1,5 @@
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
-
-import { PrismaClient } from '@prisma/client';
-import { json } from "stream/consumers";
-
-const prisma = new PrismaClient();
-
 
 const dadosJson = {
   1: { name: "Janeiro", Previsto: 0, Atual: 0 },

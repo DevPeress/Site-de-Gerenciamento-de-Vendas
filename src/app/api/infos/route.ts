@@ -1,12 +1,9 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from '@prisma/client';
-import { Infos } from "../dados";
-
-const prisma = new PrismaClient();
+import { Infos } from "../../../lib/dados";
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
-
     const dados = await Infos("Dados")
     return NextResponse.json(dados)
   } catch(err) {

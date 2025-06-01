@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 import { cookies } from 'next/headers';
-
-const prisma = new PrismaClient();
 
 export async function Infos(tipo: string, usuario?: number) {
     const cookieStore = await cookies(); 

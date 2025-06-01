@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from '@prisma/client';
-import { Infos } from "../dados";
-
-const prisma = new PrismaClient();
+import { Infos } from "../../../lib/dados";
+import { prisma } from "@/lib/prisma";
 
 export async function PUT(req: Request) {
     const body = await req.json()
@@ -13,11 +11,11 @@ export async function PUT(req: Request) {
 
     try {
         const conta = await prisma.usuario.findFirst({
-        where: { id: id }
+            where: { id: id }
         })
 
         if (!conta) {
-        return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
+            return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
         }
 
         await prisma.usuario.update({

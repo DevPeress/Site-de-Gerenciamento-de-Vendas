@@ -1,14 +1,6 @@
+import { prisma } from "@/lib/prisma";
+import { Produtos } from "@/types/types";
 import { NextResponse } from "next/server";
-
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
-interface Produto {
-  nome: string,
-  desc: string,
-  icone: string
-}
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -19,7 +11,7 @@ export async function GET(req: Request) {
       where: { idLoja: id }
     })
 
-    const produto: Produto[] = await Promise.all(
+    const produto: Produtos[] = await Promise.all(
       vendas.map(async (row) => {
         return {
           nome: row.produto,
