@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
-import { Senhas } from "../../../lib/senha";
+import { hashPassword } from "../../../lib/senha";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { email, senha, nome, idade, celular, rg } = body;
+  const { email, senha, nome, idade, celular, rg } = body as { email: string, senha: string, nome: string, idade: string, celular: string, rg: string }
 
   try {
-    const senhaHash = await Senhas("Hash", senha);
+    const senhaHash = await hashPassword(senha);
 
     if (typeof senhaHash !== "string") {
       return new NextResponse("Erro ao gerar senha", { status: 500 });

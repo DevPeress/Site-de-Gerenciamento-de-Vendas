@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Senhas } from "../../../lib/senha";
+import { CheckPassword } from "../../../lib/senha";
 import { Infos } from "../../../lib/dados";
 import { prisma } from "@/lib/prisma";
 
@@ -29,7 +29,7 @@ export async function GET(req: Request) {
       return NextResponse.json({ status: 400, mensagem: "Conta não possui empresa!" })
     }
 
-    const verify = await Senhas("Check",senha,conta.senha)
+    const verify = await CheckPassword(senha,conta.senha)
     if (verify) {
       const dados = await Infos("Alterar",conta.id)
 
