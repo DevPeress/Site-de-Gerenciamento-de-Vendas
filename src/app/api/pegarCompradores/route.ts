@@ -12,7 +12,7 @@ export async function GET(req: Request) {
     })
 
     const compradores: Compradores[] = await Promise.all(
-      vendas.map(async (row) => {
+      vendas.map(async (row: { comprador: number; rg: string }) => {
         const usuario = await prisma.usuario.findUnique({
           where: { id: row.comprador },
         });

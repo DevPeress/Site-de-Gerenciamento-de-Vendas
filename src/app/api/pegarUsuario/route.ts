@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     })
 
     if (!usuario) {
-        return new NextResponse("Usuário não encontrado", { status: 400 });
+      return new NextResponse("Usuário não encontrado", { status: 400 });
     }
 
     const dados = {

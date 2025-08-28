@@ -12,7 +12,7 @@ export async function GET(req: Request) {
     })
 
     const produto: Produtos[] = await Promise.all(
-      vendas.map(async (row) => {
+      vendas.map(async (row: { produto: string; desc: string; icone: string; }) => {
         return {
           nome: row.produto,
           desc: row.desc,

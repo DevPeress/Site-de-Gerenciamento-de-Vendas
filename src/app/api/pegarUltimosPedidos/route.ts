@@ -13,7 +13,7 @@ export async function GET(req: Request) {
     })
 
     const compradores = await Promise.all(
-      vendas.map(async (row) => {
+      vendas.map(async (row: { comprador: number; order: string; rg: string; status: boolean; }) => {
         const usuario = await prisma.usuario.findUnique({
           where: { id: row.comprador },
         });

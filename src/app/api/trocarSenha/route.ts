@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Senhas } from "../../../lib/senha";
+import { CheckPassword, hashPassword } from "../../../lib/senha";
 import { Infos } from "../../../lib/dados";
 import { prisma } from "@/lib/prisma";
 
@@ -23,9 +23,9 @@ export async function PUT(req: Request) {
       return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
     }
 
-    const verify = await Senhas("Check",senha,conta.senha)
+    const verify = await CheckPassword(senha,conta.senha)
     if (verify) {
-      const senhaProtegida = await Senhas("Hash",senhaNova,senha)
+      const senhaProtegida = await hashPassword(senhaNova)
 
       if (typeof senhaProtegida !== "string") {
         return new NextResponse("Erro ao gerar senha", { status: 500 });

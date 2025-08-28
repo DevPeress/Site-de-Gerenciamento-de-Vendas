@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { idLoja, email } = body;
+  const { idLoja, email } = body as { idLoja: number, email: string };
 
   if (!idLoja || !email) {
     return new NextResponse("Erro ao cadastrar", { status: 400 })

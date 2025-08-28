@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 
 export async function PUT(req: Request) {
     const body = await req.json()
-    const { nome, email, loc, cell, rg, idade } = body
+    const { nome, email, loc, cell, rg, idade } = body as { nome: string, email: string, loc: string, cell: string, rg: string, idade: number }
     
     const dados = await Infos("Dados")
     const id: number = dados.json().id
