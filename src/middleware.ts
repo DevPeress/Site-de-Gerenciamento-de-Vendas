@@ -4,9 +4,9 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const auth = request.cookies.get('auth');
 
-  const isAuthPage = pathname === '/login' || pathname === '/cadastro';
-  const isPublicPage = pathname === '/' || isAuthPage;
-  const isProtectedPage = !isPublicPage;
+  const isAuthPage: boolean = pathname === '/login' || pathname === '/cadastro';
+  const isPublicPage: boolean = pathname === '/' || isAuthPage;
+  const isProtectedPage: boolean = !isPublicPage;
 
   if (isPublicPage && auth) {
     return NextResponse.redirect(new URL('/inicio', request.url));
