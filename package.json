@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.6.0",
+    "@prisma/client": "^6.15.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
     "cookies": "^0.9.1",
@@ -27,7 +27,6 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
-    "prisma": "^6.6.0",
     "tailwindcss": "^4.1.7",
     "typescript": "^5"
   }
