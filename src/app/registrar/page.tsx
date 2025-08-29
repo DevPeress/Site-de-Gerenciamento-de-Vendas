@@ -4,12 +4,11 @@ import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
 import { Empresa } from "@/components/empresa";
 import Pagina from "@/components/pagina";
-import { Escolhas } from "@/types/types";
 
 export default function Login() { 
     const [registro,setRegistro] = useState<{ email: string, id: number }>({ email: "", id: 0 })
-    const [loading,setLoading] = useState<Escolhas['verify']>(true)
-    const emailV: Escolhas['verify'] = registro['email'].includes("@") && registro['email'].toLocaleLowerCase().includes(".com")
+    const [loading,setLoading] = useState<boolean>(true)
+    const emailV: boolean = registro['email'].includes("@") && registro['email'].toLocaleLowerCase().includes(".com")
 
     const AlterarRegistro = (tipo: string, valor: string | number ) => {
         setRegistro((prevDados) => ({
@@ -53,7 +52,7 @@ export default function Login() {
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {
-            const userId: Escolhas['number'] = data.idLoja | 0;
+            const userId: number = data.idLoja | 0;
             AlterarRegistro("id", userId)
 
             return setLoading(false)

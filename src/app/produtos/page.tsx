@@ -9,22 +9,21 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Products() {
   const [produtosData,setprodutosData] = useState<Produtos[]>([]) 
-  const [loading,setLoading] = useState<Produtos['verify']>(true)
-  const [id,setID] = useState<Produtos['number']>(0)
+  const [loading,setLoading] = useState<boolean>(true)
+  const [id,setID] = useState<number>(0)
 
   useEffect(() => {
     document.title = "Produtos"
     fetch(`/api/infos`)
     .then(res => res.json())
     .then(data => {
-      const userId: Produtos['number'] = data.idLoja;
+      const userId: number = data.idLoja;
       setID(userId)
-      setLoading(false)
       return fetch(`/api/pegarProdutos?id=${userId}`);
     })
     .then(res => res.json())
-    .then(data =>  { setprodutosData(data) })
-    .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página"), setLoading(false) })
+    .then(data =>  { setprodutosData(data); setLoading(false) })
+    .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página"); setLoading(true) })
   },[])
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
