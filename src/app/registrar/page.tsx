@@ -4,10 +4,10 @@ import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
 import { Empresa } from "@/components/empresa";
 import Pagina from "@/components/pagina";
-import { LoginType } from "@/types/types";
+import { RegistrarType } from "@/types/types";
 
 export default function Login() { 
-    const [registro,setRegistro] = useState<LoginType>({ email: "", id: 0 })
+    const [registro,setRegistro] = useState<RegistrarType>({ email: "", id: 0 })
     const [loading,setLoading] = useState<boolean>(true)
     const emailV: boolean = registro['email'].includes("@") && registro['email'].toLocaleLowerCase().includes(".com")
 

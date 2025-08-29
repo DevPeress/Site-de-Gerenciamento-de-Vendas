@@ -79,3 +79,8 @@ export interface LoginType {
     email: string
     senha: string
 }
+
+export interface RegistrarType {
+    email: string
+    id: number
+}
