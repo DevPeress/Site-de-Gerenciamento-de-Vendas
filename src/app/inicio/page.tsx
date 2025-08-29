@@ -19,7 +19,7 @@ export default async function DashBoard() {
     if (!auth) return 
     
     let valores = await JSON.parse(auth.value)
-    let id: Valores['total'] = valores.id
+    let id: number = valores.id
 
     const resp = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/pegarValores?id=${id}`);
     if (resp.status !== 200) {
