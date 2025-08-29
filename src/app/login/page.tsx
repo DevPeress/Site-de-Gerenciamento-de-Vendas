@@ -6,9 +6,6 @@ import { Notify } from "@/components/notify"
 import { useTheme } from "@/context/ThemeContext";
 import Image from "next/image" 
 
-import noite from '../../../public/Noite.svg'
-import dia from '../../../public/Dia.svg'
-
 interface Registros {
     email: string,
     senha: string
@@ -21,22 +18,16 @@ export default function Login() {
     const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma">("Inserir Email") 
     const router = useRouter();
 
+    const email: string = login.email
+    const senha: string = login.senha
+    const emailV: boolean = email.includes("@") && email.toLocaleLowerCase().includes(".com")
+
     const alterarDados = (tipo: string, valor: string) => {
         setLogin((prevDados) => ({
             ...prevDados,
             [tipo]: valor
         }))
     }
-
-    useEffect(() =>{
-        document.title = "Login"
-    },[])
-
-    const email: string = login.email
-    const senha: string = login.senha
-
-    const emailV: boolean = email.includes("@") && email.toLocaleLowerCase().includes(".com")
-    const senhaV: boolean = senha.length > 4
 
     const verify = () => {
         switch(etapa) {
@@ -61,14 +52,14 @@ export default function Login() {
                 setEtapa("2")
                 setMensagem("Logar na Plataforma")
             } else {
-                router.push('/cadastro');
+                return router.push('/cadastro');
             }
         })
         .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
     }
 
     const verifyLogin = () => {
-        if (!emailV || !senhaV) {
+        if (!emailV || senha.length > 4) {
             return Notify("E-mail ou senha estão incorretos!")
         }
 
@@ -85,8 +76,15 @@ export default function Login() {
                 return Notify("E-mail ou Senha estão incorretos!")
             }
          })
-        .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
+        .catch((err) => {
+            Notify("Não foi encontrado os dados! Recarregue a Página")
+            console.error("Login: ", err)
+        })
     }
+
+    useEffect(() =>{
+        document.title = "Login"
+    },[])
 
     return (
         <>
