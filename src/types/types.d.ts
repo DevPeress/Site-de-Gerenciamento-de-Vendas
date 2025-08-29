@@ -71,3 +71,12 @@ export interface Compradores {
     rg: string
     foto: string
 }
+
+export interface Registro {
+    email: string,
+    senha: string,
+    nome: string,
+    idade: number,
+    celular: string,
+    rg: string
+}

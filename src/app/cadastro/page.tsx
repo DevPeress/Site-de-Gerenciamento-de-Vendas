@@ -4,31 +4,18 @@ import { useEffect, useState } from "react"
 import { Notify } from "@/components/notify"
 import Image from "next/image"
 import { useTheme } from "../../context/ThemeContext"
-
-interface Registro {
-    email: string,
-    senha: string,
-    nome: string,
-    idade: number,
-    celular: string,
-    rg: string
-}
+import { Registro } from "@/types/types"
 
 export default function Login() { 
-    const [registro,setRegistro] = useState<Registro>({email: "", senha: "", nome: "", idade: 0, celular: "", rg: ""})
-    const [type,setType] = useState<"text" | "password">("password")
     const { dark, toggleTheme } = useTheme()
-    
-    useEffect(() =>{
-        document.title = "Registrar"
-    },[])
-
-    const email = registro.email
+    const [registro,setRegistro] = useState<Registro>({ email: "", senha: "", nome: "", idade: 0, celular: "", rg: "" })
+    const [type,setType] = useState<"text" | "password">("password")
+    const email: string = registro.email
     const emailV: boolean = email.includes("@") && email.toLocaleLowerCase().includes(".com")
 
     const verifyEmail = () => { 
         if (!emailV) {  
-            Notify("E-mail está incorreto!");
+            return Notify("E-mail está incorreto!");
         }
 
         fetch("/api/criarConta",{
@@ -46,7 +33,7 @@ export default function Login() {
             })
         })
 
-        Notify("Você foi registrado em nosso sistema, agora peça o registro do email pela empresa!")
+        return Notify("Você foi registrado em nosso sistema, agora peça o registro do email pela empresa!")
     }
 
     function formatNumero(value: string) {
@@ -76,6 +63,10 @@ export default function Login() {
             [tipo]: texto
         }))
     }
+
+    useEffect(() =>{
+        document.title = "Registrar"
+    },[])
 
     return (
         <>
