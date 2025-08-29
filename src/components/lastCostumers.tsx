@@ -6,7 +6,7 @@ import { Status, Usuarios } from "@/types/types";
 
 export function LastCostumers() {
     const [dado,setDados] = useState<Usuarios[]>([])
-    const [loading,setLoading] = useState<Usuarios['verify']>(true)
+    const [loading,setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         fetch(`/api/infos`)
