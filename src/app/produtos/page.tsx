@@ -23,7 +23,11 @@ export default function Products() {
     })
     .then(res => res.json())
     .then(data =>  { setprodutosData(data); setLoading(false) })
-    .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página"); setLoading(true) })
+    .catch((err) => { 
+      Notify("Não foi encontrado os dados! Recarregue a Página"); 
+      setLoading(true)
+      console.error("Produtos: ", err)
+    })
   },[])
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
