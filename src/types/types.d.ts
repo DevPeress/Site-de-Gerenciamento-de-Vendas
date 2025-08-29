@@ -26,8 +26,6 @@ export interface Produtos {
   nome: string
   desc: string
   icone: string
-  verify?: boolean
-  number?: number
 }
 
 export interface Valores {

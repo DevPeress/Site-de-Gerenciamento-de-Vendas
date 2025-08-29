@@ -32,7 +32,7 @@ export default function Products() {
 
   const tableRef = useRef<HTMLTableSectionElement>(null);
 
-  const Pesquisar = (texto: Produtos['nome']) => {
+  const Pesquisar = (texto: string) => {
     const searchTerm = texto.toLowerCase()
     const table = tableRef.current
 
