@@ -2,7 +2,6 @@ export interface Escolhas {
     nome: string
     off: string
     on: string
-    verify?: boolean
     number?: number
 }
 
@@ -22,7 +21,6 @@ export interface Grafico {
     name: string
     Atual: number
     Previsto: number
-    verify?: boolean
 }
 
 export interface Produtos {

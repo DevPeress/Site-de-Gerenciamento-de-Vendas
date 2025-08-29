@@ -11,10 +11,10 @@ import { Escolhas } from "@/types/types";
 const Header = () => {
     const { dark, toggleTheme } = useTheme()
     const [foto,setFoto] = useState<Escolhas['nome']>("/User.svg")
-    const [logado,setLogado] = useState<Escolhas['verify']>(false)
+    const [logado,setLogado] = useState<boolean>(false)
     const pathname: Escolhas['nome'] = usePathname();
     const urlSemBarraInicial: Escolhas['nome'] = pathname.replace(/^\/+/, '');
-    const [menu,setMenu] = useState<Escolhas['verify']>(false)
+    const [menu,setMenu] = useState<boolean>(false)
 
     const escolhas: Escolhas[] = [
         { nome: "Inicio", off: "/dashboard-d.svg", on:"/dashboard-a.svg" },
@@ -65,7 +65,7 @@ const Header = () => {
                                 <nav className="flex absolute w-full h-full items-center justify-center flex-wrap">
                                     {escolhas.map((item) => {
                                         const pagina: Escolhas['nome'] = item.nome.toLowerCase()
-                                        const isActive: Escolhas['verify'] = urlSemBarraInicial === pagina;
+                                        const isActive: boolean = urlSemBarraInicial === pagina;
                                         const textColor: Escolhas['nome'] = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
                                         const iconSrc: Escolhas['nome'] = isActive ? item.on : item.off;
                                         const config: Escolhas['nome'] = item.nome === "Configuracoes" ? "Configurações" : item.nome

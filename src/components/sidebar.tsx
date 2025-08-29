@@ -67,7 +67,7 @@ export function SideBar() {
             <nav className="flex absolute w-full items-center justify-center flex-wrap">
                 {escolhas.map((item) => {
                     const pagina: Escolhas['nome'] = item.nome.toLowerCase()
-                    const isActive: Escolhas['verify'] = urlSemBarraInicial === pagina;
+                    const isActive: boolean = urlSemBarraInicial === pagina;
                     const textColor: Escolhas['nome'] = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
                     const iconSrc: Escolhas['nome'] = isActive ? item.on : item.off;
                     const config: Escolhas['nome'] = item.nome === "Configuracoes" ? "Configurações" : item.nome
