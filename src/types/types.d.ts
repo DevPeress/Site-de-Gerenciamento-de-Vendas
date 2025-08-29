@@ -11,7 +11,6 @@ export interface Usuarios {
     comprador: string
     data: string
     status: number
-    verify?: boolean
 }
 
 export interface Status {

@@ -7,7 +7,7 @@ import { Grafico } from '@/types/types';
 
 export function MyBarChart() {
   const [data, setDados] = useState<Grafico[]>([]);
-  const [loading, setLoading] = useState<Grafico['verify']>(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch(`/api/infos`)
