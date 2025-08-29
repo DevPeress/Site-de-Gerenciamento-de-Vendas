@@ -39,7 +39,7 @@ const Header = () => {
         fetch(`/api/infos`)
         .then(res => res.json())
         .then(data => {
-            const userId: Escolhas['number'] = data.id;
+            const userId: number = data.id;
         
             return fetch(`/api/pegarUsuario?id=${userId}`);
         })

@@ -2,7 +2,6 @@ export interface Escolhas {
     nome: string
     off: string
     on: string
-    number?: number
 }
 
 export interface Usuarios {
