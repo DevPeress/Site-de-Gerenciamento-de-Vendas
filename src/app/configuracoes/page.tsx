@@ -7,7 +7,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react";
 
 export default function Config() {
-    const [senhas,setSenhas] = useState<Senhas>({ senhaA: "", senhaN: ""})
+    const [senhas,setSenhas] = useState<Senhas>({ senhaA: "", senhaN: "" })
     const [types,setTypes] = useState<Types>({ antiga: "password", nova: "password" })
 
     const alterarSenha = (tipo: Senhas['senhaA'], valor: Senhas['senhaA']) => {
@@ -16,10 +16,6 @@ export default function Config() {
             [tipo]: valor
         }))
     }
-
-    useEffect(() => {
-        document.title = "Configurações"
-    },[])
 
     const changePassword = () => {
         if (senhas.senhaA.length < 4) {
@@ -39,9 +35,12 @@ export default function Config() {
         })
         .then(res => res.json())
         .then(data => {
-          Notify(data.mensagem)
+          return Notify(data.mensagem)
         })
-        .catch(() => Notify("Erro ao tentar trocar a senha."))
+        .catch((err) => {
+            Notify("Erro ao tentar trocar a senha.")
+            console.error("Configurações: ", err)
+        })
     }
 
     const alterarTipo = (variavel: keyof Types) => {
@@ -50,6 +49,10 @@ export default function Config() {
             [variavel]: types[variavel] === "password" ? "text" : "password"
         }))
     }
+
+    useEffect(() => {
+        document.title = "Configurações"
+    },[])
 
     return (
         <>
