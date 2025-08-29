@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 
 export async function PUT(req: Request) {
   const body = await req.json()
-  const { senha, senhaNova } = body
+  const { senha, senhaNova } = body as { senha: string, senhaNova: string }
 
   if (!senha || !senhaNova) {
     return NextResponse.json({ status: 400, mensagem: "Ocorreu um erro!" })
@@ -25,11 +25,7 @@ export async function PUT(req: Request) {
 
     const verify = await CheckPassword(senha,conta.senha)
     if (verify) {
-      const senhaProtegida = await hashPassword(senhaNova)
-
-      if (typeof senhaProtegida !== "string") {
-        return new NextResponse("Erro ao gerar senha", { status: 500 });
-      }
+      const senhaProtegida: string = await hashPassword(senhaNova)
 
       await prisma.usuario.update({
         where: { id: id },
