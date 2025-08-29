@@ -7,30 +7,23 @@ import Pagina from "@/components/pagina";
 import { Escolhas } from "@/types/types";
 
 export default function Login() { 
-    const [email,setEmail] = useState<Escolhas['nome']>("")
-    const [id,setID] = useState<Escolhas['number']>(0)
+    const [registro,setRegistro] = useState<{ email: string, id: number }>({ email: "", id: 0 })
     const [loading,setLoading] = useState<Escolhas['verify']>(true)
+    const emailV: Escolhas['verify'] = registro['email'].includes("@") && registro['email'].toLocaleLowerCase().includes(".com")
 
-    useEffect(() =>{
-        document.title = "Registrar"
-        fetch(`/api/infos`)
-        .then(res => res.json())
-        .then(data => {
-            const userId: Escolhas['number'] = data.idLoja;
-            setID(userId)
-
-            return setLoading(false)
-        })
-    },[])
-
-    const emailV: Escolhas['verify'] = email.includes("@") && email.toLocaleLowerCase().includes(".com")
+    const AlterarRegistro = (tipo: string, valor: string | number ) => {
+        setRegistro((prevDados) => ({
+            ...prevDados,
+            [tipo]: valor
+        }))
+    }
 
     const verifyEmail = () => {
         if (!emailV) {
-            Notify("E-mail está incorreto ou não registrado!");
+            return Notify("E-mail está incorreto ou não registrado!");
         }
 
-        fetch(`/api/verifyConta?email=${email}`)
+        fetch(`/api/verifyConta?email=${registro['email']}`)
         .then(res => res.json())
         .then(data => { 
             if (data) {
@@ -40,17 +33,32 @@ export default function Login() {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        id,
-                        email
+                        id: registro['id'],
+                        email: registro['email']
                     })
                 })
-                Notify("E-mail cadastrado em sua empresa!")
+                return Notify("E-mail cadastrado em sua empresa!")
             } else {
-                Notify("E-mail não cadastrado no sistema!")
+                return Notify("E-mail não cadastrado no sistema!")
             }
         })
-        .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
+        .catch((err) => {
+            Notify("Não foi encontrado os dados! Recarregue a Página")
+            console.error("Registrar: ", err)
+        })
     }
+
+    useEffect(() =>{
+        document.title = "Registrar"
+        fetch(`/api/infos`)
+        .then(res => res.json())
+        .then(data => {
+            const userId: Escolhas['number'] = data.idLoja | 0;
+            AlterarRegistro("id", userId)
+
+            return setLoading(false)
+        })
+    },[])
 
     return (
         <>
@@ -61,7 +69,7 @@ export default function Login() {
                     </> 
                     :  
                     <>
-                        {!id || id === 0 ? 
+                        {!registro['id'] || registro['id'] === 0 ? 
                             <> <Empresa /> </> 
                             : 
                             <>
@@ -72,7 +80,7 @@ export default function Login() {
                         
                                         <div className="absolute w-auto top-[7vw] md:text-[1vw] lg:text-[.6vw] text-[#5048E5] border-b border-[#5048E5] dark:text-[#FFFFFF] dark:border-[#CAFF33]">Email</div>
                                         <div className="absolute w-full md:h-[4vw] lg:h-[2.5vw] rounded md:top-[11vw] lg:top-[9.5vw] border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
-                                            <input className="absolute w-[98%] h-full outline-0 p-2 text-black dark:text-white" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                            <input className="absolute w-[98%] h-full outline-0 p-2 text-black dark:text-white" type="email" value={registro['email']} onChange={(e) => AlterarRegistro("Email",e.target.value)} />
                                         </div>
                                         <h1 className="flex absolute w-[4vw] md:top-[10.4vw] lg:top-[9.2vw] left-[.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Email</h1>    
                         
@@ -87,7 +95,7 @@ export default function Login() {
                         
                                         <div className="absolute w-auto top-[25vw] text-[3vw] text-[#5048E5] border-b border-[#5048E5] dark:text-[#FFFFFF] dark:border-[#CAFF33]">Email</div>
                                         <div className="absolute w-full top-[36vw] h-[12vw] rounded border-[#D1D5DB] dark:border-[#CAFF33] border-1 overflow-hidden">
-                                            <input className="absolute w-[98%] h-full outline-0 p-2 text-black dark:text-white" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                            <input className="absolute w-[98%] h-full outline-0 p-2 text-black dark:text-white" type="email" value={registro['email']} onChange={(e) => AlterarRegistro("Email",e.target.value)} />
                                         </div>
                                         <h1 className="flex absolute w-[15vw] top-[34vw] left-[2vw] text-[#6B7280] text-[3vw] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Email</h1>    
                         

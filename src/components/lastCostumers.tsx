@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Notify } from "./notify";
-import { Escolhas, Status, Usuarios } from "@/types/types";
+import { Status, Usuarios } from "@/types/types";
 
 export function LastCostumers() {
     const [dado,setDados] = useState<Usuarios[]>([])
