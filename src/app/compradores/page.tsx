@@ -11,13 +11,11 @@ export default function Customers() {
     const [lista,setLista] = useState<number>(6)
     const [total,setTotal] = useState<number>(0)
     const [id,setID] = useState<number>(0)
-
-    const proximo = () => setLista((prev => (total - lista) > 6 ? prev + 6 : (total - lista) > 0 ? prev + (total - lista) : 6))
-    const voltar = () => setLista((prev => (lista) / 2 > 6 ? prev - 6 : prev = 6))
-
     const [loading, setLoading] = useState<boolean>(true)
     const [CompradoresData,setCompradoresData] = useState<Compradores[]>([ ]) 
 
+    const proximo = () => setLista((prev => (total - lista) > 6 ? prev + 6 : (total - lista) > 0 ? prev + (total - lista) : 6))
+    const voltar = () => setLista((prev => (lista) / 2 > 6 ? prev - 6 : prev = 6))
 
     useEffect(() => {
         document.title = "Compradores"
@@ -34,11 +32,11 @@ export default function Customers() {
         .then(data => {
             setCompradoresData(data);
             setTotal(data.length);
-            setLoading(false); 
+            return setLoading(false); 
         })
-        .catch(() => {
+        .catch((err) => {
             Notify("Não foi encontrado os dados! Recarregue a Página");
-            setLoading(false); 
+            console.error("Compradores: ", err)
         });
     }, []);
 
@@ -47,7 +45,7 @@ export default function Customers() {
     const Pesquisar = (texto: string) => {
         total > 0 ? setTotal(0) : setTotal(total)
         const searchTerm: string = texto.toLowerCase()
-        const table = tableRef.current
+        const table: HTMLTableSectionElement | null = tableRef.current
 
         if (table) { 
             const rows = Array.from(table.getElementsByTagName('tr'));
