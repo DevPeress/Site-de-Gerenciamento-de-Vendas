@@ -74,3 +74,8 @@ export interface Registro {
     celular: string,
     rg: string
 }
+
+export interface LoginType {
+    email: string
+    senha: string
+}

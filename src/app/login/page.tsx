@@ -5,15 +5,11 @@ import { useRouter } from 'next/navigation'
 import { Notify } from "@/components/notify"
 import { useTheme } from "@/context/ThemeContext";
 import Image from "next/image" 
-
-interface Registros {
-    email: string,
-    senha: string
-}
+import { LoginType } from "@/types/types";
 
 export default function Login() { 
     const { dark, toggleTheme } = useTheme()
-    const [login,setLogin] = useState<Registros>({ email: "", senha: "" })
+    const [login,setLogin] = useState<LoginType>({ email: "", senha: "" })
     const [etapa,setEtapa] = useState<"1" | "2">("1")
     const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma">("Inserir Email") 
     const router = useRouter();
