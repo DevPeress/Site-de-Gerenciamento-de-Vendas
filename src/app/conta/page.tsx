@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Conta() {
-  const [infos,setInfos] = useState<Infos>({nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "/Avatar.svg"})
+  const [infos,setInfos] = useState<Infos>({ nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "/Avatar.svg" })
 
   const tipos = [
     { texto: "Primeiro Nome", variavel: "nome" },
@@ -59,7 +59,11 @@ export default function Conta() {
     })
     .then(res => res.json())
     .then(data => {
-      Notify(data.mensagem)
+      return Notify(data.mensagem)
+    })
+    .catch((err) => {
+      Notify("Erro ao Salvar!")
+      console.error("Conta Salvar: ", err)
     })
   }
 
@@ -79,7 +83,10 @@ export default function Conta() {
         nome: data.nome, email: data.email, idade: data.idade, rg: formatRg(data.rg), loc: data.loc, celular: formatNumero(data.celular), horario: data.horario, foto: data.foto
       })
     })
-    .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página") })
+    .catch((err) => { 
+      Notify("Não foi encontrado os dados! Recarregue a Página")
+      console.error("Conta: ", err)
+     })
   },[])
 
   return (
