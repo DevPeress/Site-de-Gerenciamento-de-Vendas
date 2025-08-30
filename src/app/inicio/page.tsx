@@ -5,7 +5,7 @@ import { LastCostumers } from "@/components/lastCostumers";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { Empresa } from "@/components/empresa";
-import { Tipos, Valores } from "@/types/types";
+import { TiposInicio, Valores } from "@/types/types";
 
 export const metadata: Metadata = {
     title: 'Ínicio',
@@ -32,7 +32,7 @@ export default async function DashBoard() {
        return
     }
 
-    const tipos: Tipos[] = [
+    const tipos: TiposInicio[] = [
         { n: "ORÇAMENTO", i: "/budge.svg", v: valores2.budget },
         { n: "CLIENTES TOTAIS", i: "/customers.svg", v: valores2.customers },
         { n: "PROGRESSO DA TAREFA", i: "/task.svg", v: valores2.task },

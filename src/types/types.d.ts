@@ -85,7 +85,7 @@ export interface RegistrarType {
     id: number
 }
 
-export interface Tipos {
+export interface TiposInicio {
     n: string,
     i: string
     v: number
