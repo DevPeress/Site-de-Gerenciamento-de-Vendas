@@ -18,7 +18,10 @@ export function LastCostumers() {
         })
         .then(res => res.json())
         .then(data => { setDados(data), setLoading(false)} )
-        .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
+        .catch((err) => {
+            Notify("Não foi encontrado os dados! Recarregue a Página")
+            console.error("LastCostumer: ",err)
+        })
     }, []);
 
     const getStatusInfo = (status: Usuarios['status']): Status => {
