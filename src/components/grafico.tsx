@@ -25,22 +25,24 @@ export function MyBarChart() {
       .catch(() => Notify("Não foi encontrado os dados! Recarregue a Página"));
   }, []);
 
+  if (loading) return (
+    <div className="flex absolute top-[1vw] justify-center items-center w-full h-full">
+      <h1 className="text-center text-[2vw] lg:text-[1.5vw] text-gray-500 dark:text-white">Carregando gráfico...</h1>
+    </div>
+  )
+  
   return (
     <div className="flex absolute top-[1vw] justify-center items-center w-full h-full">
-      {loading ? (
-        <h1 className="text-center text-[2vw] lg:text-[1.5vw] text-gray-500 dark:text-white">Carregando gráfico...</h1>
-      ) : (
-        <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={data}>
-            <CartesianGrid strokeDasharray="4 4" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="Atual" fill="#1D4ED8" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="Previsto" fill="#E5E7EB" radius={[4, 4, 0, 0]} />
-          </BarChart>
-        </ResponsiveContainer>
-      )}
+      <ResponsiveContainer width="100%" height="80%">
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="4 4" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="Atual" fill="#1D4ED8" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="Previsto" fill="#E5E7EB" radius={[4, 4, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
