@@ -35,11 +35,7 @@ export function LastCostumers() {
         }
     };
 
-    if (loading) {
-        return(
-            <h1 className="text-center text-[1.5vw] text-gray-500 dark:text-white">Carregando últimos compradores!</h1>
-        )
-    }
+    if (loading) return <h1 className="text-center text-[1.5vw] text-gray-500 dark:text-white">Carregando últimos compradores!</h1>
     
     return (
         <table className="absolute w-full h-auto top-[10%] md:top-[20%]">
