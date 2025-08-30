@@ -10,10 +10,10 @@ import { Escolhas } from "@/types/types";
 
 const Header = () => {
     const { dark, toggleTheme } = useTheme()
-    const [foto,setFoto] = useState<Escolhas['nome']>("/User.svg")
+    const [foto,setFoto] = useState<string>("/User.svg")
     const [logado,setLogado] = useState<boolean>(false)
-    const pathname: Escolhas['nome'] = usePathname();
-    const urlSemBarraInicial: Escolhas['nome'] = pathname.replace(/^\/+/, '');
+    const pathname: string = usePathname();
+    const urlSemBarraInicial: string = pathname.replace(/^\/+/, '');
     const [menu,setMenu] = useState<boolean>(false)
 
     const escolhas: Escolhas[] = [
