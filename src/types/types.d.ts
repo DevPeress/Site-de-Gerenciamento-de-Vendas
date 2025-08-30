@@ -84,3 +84,9 @@ export interface RegistrarType {
     email: string
     id: number
 }
+
+export interface Tipos {
+    n: string,
+    i: string
+    v: number
+}
