@@ -115,7 +115,7 @@ export default function Conta() {
         
           <div className="grid absolute grid-cols-1 md:grid-cols-2 w-[90vw] md:w-[50vw] lg:w-full h-auto gap-[4vw] md:gap-[1vw] p-2 md:p-10">
             {tipos.map((item, index) => {
-                const tipo = item.variavel
+                const tipo: string = item.variavel
 
                 return (
                   <div key={index} className="relative w-[85vw] md:w-[20vw] lg:w-full h-[12vw] md:h-[3.5vw] lg:h-[3vw] border-1 border-[#E6E8F0] dark:border-[#CAFF33] rounded-2xl text-[4vw] md:text-[1.2vw] lg:text-[.8vw]">
