@@ -41,8 +41,6 @@ export default function Customers() {
         });
     }, []);
 
-    const tableRef = useRef<HTMLTableSectionElement>(null);
-
     const CompradoresFiltrados = useMemo(() => {
         const searchTerm = pesquisa.toLowerCase()
         return CompradoresData.filter(itens => {
@@ -96,7 +94,7 @@ export default function Customers() {
                                         </tr>
                                     </thead>
 
-                                    <tbody ref={tableRef}>
+                                    <tbody>
                                         {CompradoresFiltrados.slice(lista-6,lista).map((item, index) => (
                                             <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] dark:text-[#FFFFFF] text-[1.5vw] md:text-[1vw] lg:text-[.7vw] h-[15vw] md:h-[8vw] lg:h-[4.2vw] hover:scale-101">
                                                 <td className="flex absolute items-center justify-center w-auto h-[15vw] md:h-[8vw] lg:h-[4.2vw]">
