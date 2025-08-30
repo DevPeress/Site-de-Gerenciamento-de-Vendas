@@ -104,7 +104,7 @@ export default function Login() {
                                     <input className="absolute w-[98%] h-full outline-0 p-2 text-[4vw] md:text-[1.6vw] lg:text-[.8vw] dark:text-[#FFFFFF]" type="password" value={login.senha} onChange={(e) => alterarDados("senha", e.target.value)} />
                                 </div>
                                 <h1 className="flex absolute w-[15vw] md:w-[4vw] top-[29vw] md:top-[13.35vw] lg:top-[11.6vw] left-[3vw] md:left-[.5vw] text-[2.5vw] md:text-[1vw] lg:text-[.5vw] text-[#6B7280] dark:text-[#CAFF33] bg-[#F9FAFC] dark:bg-[#0B0A0A] justify-center">Senha</h1> 
-                            </> : <></> 
+                            </> : null
                         }
 
                         <button className="absolute top-[50vw] md:top-[20vw] lg:top-[16vw] w-full h-[15vw] md:h-[4vw] lg:h-[3vw] bg-[#5048E5] dark:bg-[#333333] rounded text-[#000000] dark:text-[#FFFFFF] md:text-[2vw] lg:text-[1vw] items-center justify-center hover:scale-110" onClick={verify}>Continuar</button>
