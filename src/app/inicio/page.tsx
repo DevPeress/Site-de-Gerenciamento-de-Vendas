@@ -44,8 +44,8 @@ export default async function DashBoard() {
             <Pagina>
                 <div className="grid grid-cols-1 md:grid-cols-4 absolute left-[5vw] top-[2vw] md:top-[0.2vw] w-[90vw] md:w-[80vw] h-[60vh] md:h-[12vw] lg:h-[8vw] items-center justify-between select-none">
                     {tipos.map((item, index) => {
-                        const cifrao = item.n === "PROGRESSO DA TAREFA" || item.n === "CLIENTES TOTAIS" ? "" : "R$"
-                        const porc = item.n === "PROGRESSO DA TAREFA" ? "%" : ""
+                        const cifrao: string = item.n === "PROGRESSO DA TAREFA" || item.n === "CLIENTES TOTAIS" ? "" : "R$"
+                        const porc: string = item.n === "PROGRESSO DA TAREFA" ? "%" : ""
 
                         return (
                             <div key={index} className="flex relative w-full md:w-[15vw] h-[13.5vh] md:h-full bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center">
@@ -59,11 +59,11 @@ export default async function DashBoard() {
                                     height={38}
                                     priority
                                 />
-                                {porc ? <>
+                                {porc ? 
                                     <div className="absolute w-[90%] h-[2vw] md:h-[1vw] lg:h-[.5vw] bottom-[3vw] md:bottom-[2vw] lg:bottom-[1.5vw] bg-[#FFFFFF] dark:bg-[#191919] rounded overflow-hidden">
                                         <div className="bg-[#5048E5] dark:bg-[#D8FF66] h-full" style={{ width:`${valores2.task}%`}}></div>
                                     </div>
-                                    </>:<></>
+                                    : null
                                 }
                             </div>
                         )
