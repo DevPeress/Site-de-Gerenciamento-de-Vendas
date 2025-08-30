@@ -48,7 +48,10 @@ const Header = () => {
             setFoto(data.foto)
             setLogado(true)
         })
-        .catch((err) => { Notify("Não foi encontrado os dados! Recarregue a Página") })
+        .catch((err) => { 
+            Notify("Não foi encontrado os dados! Recarregue a Página")
+            console.error("Header: ", err)
+         })
     },[])
 
     return (
