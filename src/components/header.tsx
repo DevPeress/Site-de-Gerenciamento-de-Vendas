@@ -63,35 +63,32 @@ const Header = () => {
                     <div className="relative w-[1vw] h-[3vh] bg-white rounded"></div>
 
                     {menu ? 
-                        <>
-                            <div className="flex absolute w-[45vw] bg-[#111827] h-[60vw] top-[-.3vw] right-[-.3vw] rounded">
-                                <nav className="flex absolute w-full h-full items-center justify-center flex-wrap">
-                                    {escolhas.map((item) => {
-                                        const pagina: Escolhas['nome'] = item.nome.toLowerCase()
-                                        const isActive: boolean = urlSemBarraInicial === pagina;
-                                        const textColor: Escolhas['nome'] = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
-                                        const iconSrc: Escolhas['nome'] = isActive ? item.on : item.off;
-                                        const config: Escolhas['nome'] = item.nome === "Configuracoes" ? "Configurações" : item.nome
+                        <div className="flex absolute w-[45vw] bg-[#111827] h-[60vw] top-[-.3vw] right-[-.3vw] rounded">
+                            <nav className="flex absolute w-full h-full items-center justify-center flex-wrap">
+                                {escolhas.map((item) => {
+                                    const pagina: string = item.nome.toLowerCase()
+                                    const isActive: boolean = urlSemBarraInicial === pagina;
+                                    const textColor: string = isActive ? 'text-[#10B981]' : 'text-[#D1D5DB]';
+                                    const iconSrc: string = isActive ? item.on : item.off;
+                                    const config: string = item.nome === "Configuracoes" ? "Configurações" : item.nome
 
-                                        return (
-                                            <Link key={item.nome} href={pagina} className="flex relative w-full h-[5vw] items-center justify-center">
-                                                <Image
-                                                    className="relative w-[5vw] mr-[1vw]"
-                                                    src={iconSrc}
-                                                    alt={`Ícone para ${item.nome}`}
-                                                    width={180}
-                                                    height={38}
-                                                    priority
-                                                />
-                                                <h1 className={`relative text-[4vw] ${textColor}`}>{config}</h1>
-                                            </Link>
-                                        );
-                                    })}
-                                </nav>
-                            </div>
-                        </> 
-                        
-                        : <></>
+                                    return (
+                                        <Link key={item.nome} href={pagina} className="flex relative w-full h-[5vw] items-center justify-center">
+                                            <Image
+                                                className="relative w-[5vw] mr-[1vw]"
+                                                src={iconSrc}
+                                                alt={`Ícone para ${item.nome}`}
+                                                width={180}
+                                                height={38}
+                                                priority
+                                            />
+                                            <h1 className={`relative text-[4vw] ${textColor}`}>{config}</h1>
+                                        </Link>
+                                    );
+                                })}
+                            </nav>
+                        </div>
+                    : null
                     }
                 </div>
 
