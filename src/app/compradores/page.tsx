@@ -5,13 +5,14 @@ import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
 import { Compradores } from "@/types/types";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function Customers() {
     const [lista,setLista] = useState<number>(6)
     const [total,setTotal] = useState<number>(0)
     const [id,setID] = useState<number>(0)
     const [loading, setLoading] = useState<boolean>(true)
+    const [pesquisa,setPesquisar] = useState<string>("")
     const [CompradoresData,setCompradoresData] = useState<Compradores[]>([ ]) 
 
     const proximo = () => setLista((prev => (total - lista) > 6 ? prev + 6 : (total - lista) > 0 ? prev + (total - lista) : 6))
@@ -41,35 +42,21 @@ export default function Customers() {
     }, []);
 
     const tableRef = useRef<HTMLTableSectionElement>(null);
-    
-    const Pesquisar = (texto: string) => {
-        total > 0 ? setTotal(0) : setTotal(total)
-        const searchTerm: string = texto.toLowerCase()
-        const table: HTMLTableSectionElement | null = tableRef.current
 
-        if (table) { 
-            const rows = Array.from(table.getElementsByTagName('tr'));
-          
-            rows.forEach((row, index) => {
-              const loja: Compradores = CompradoresData[index];
-          
-              const searchContent = `
-                ${loja.nome.toLowerCase()}
-                ${loja.email.toLowerCase()}
-                ${loja.loc.toLowerCase()}
-                ${loja.cell.toLowerCase()}
-                ${loja.rg.toLowerCase()}
-              `;
-        
-              if (searchContent.includes(searchTerm)) {
-                (row as HTMLElement).style.display = ''; 
-                setTotal((prev) => prev + 1)
-              } else {
-                (row as HTMLElement).style.display = 'none';
-              }
-            });
-        }
-    }
+    const CompradoresFiltrados = useMemo(() => {
+        const searchTerm = pesquisa.toLowerCase()
+        return CompradoresData.filter(itens => {
+            const searchContent = `
+            ${itens.nome.toLowerCase()}
+            ${itens.email.toLowerCase()}
+            ${itens.loc.toLowerCase()}
+            ${itens.cell.toLowerCase()}
+            ${itens.rg.toLowerCase()}
+            `;
+
+            return searchContent.includes(searchTerm);
+        })
+    }, [pesquisa, CompradoresData])
 
     return (
         <>
@@ -92,7 +79,7 @@ export default function Customers() {
                                         height={38}
                                         priority
                                     />
-                                    <input type="text" className="absolute left-[8vw] md:left-[3vw] lg:left-[2vw] outline-0 text-[4vw] md:text-[1.5vw] lg:text-[.8vw] dark:text-[#FFFFFF]" onChange={(e) => Pesquisar(e.target.value)}/>
+                                    <input type="text" className="absolute left-[8vw] md:left-[3vw] lg:left-[2vw] outline-0 text-[4vw] md:text-[1.5vw] lg:text-[.8vw] dark:text-[#FFFFFF]" onChange={(e) => setPesquisar(e.target.value)}/>
                                 </div>
                             </div>
 
@@ -110,7 +97,7 @@ export default function Customers() {
                                     </thead>
 
                                     <tbody ref={tableRef}>
-                                        {CompradoresData.slice(lista-6,lista).map((item, index) => (
+                                        {CompradoresFiltrados.slice(lista-6,lista).map((item, index) => (
                                             <tr key={index} className="border-b border-[#E6E8F0] text-center text-[#111827] dark:text-[#FFFFFF] text-[1.5vw] md:text-[1vw] lg:text-[.7vw] h-[15vw] md:h-[8vw] lg:h-[4.2vw] hover:scale-101">
                                                 <td className="flex absolute items-center justify-center w-auto h-[15vw] md:h-[8vw] lg:h-[4.2vw]">
                                                     <Image
