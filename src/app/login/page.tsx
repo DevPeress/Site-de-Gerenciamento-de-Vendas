@@ -51,7 +51,10 @@ export default function Login() {
                 return router.push('/cadastro');
             }
         })
-        .catch((err) => Notify("Não foi encontrado os dados! Recarregue a Página"))
+        .catch((err) => {
+            Notify("Não foi encontrado os dados! Recarregue a Página")
+            console.error("Login: ", err)
+        })
     }
 
     const verifyLogin = () => {
