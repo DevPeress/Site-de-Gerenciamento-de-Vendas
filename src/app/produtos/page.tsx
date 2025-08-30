@@ -5,12 +5,13 @@ import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
 import { Produtos } from "@/types/types";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function Products() {
   const [produtosData,setprodutosData] = useState<Produtos[]>([]) 
   const [loading,setLoading] = useState<boolean>(true)
   const [id,setID] = useState<number>(0)
+  const [pesquisa,setPesquisar] = useState<string>("")
 
   useEffect(() => {
     document.title = "Produtos"
@@ -30,31 +31,17 @@ export default function Products() {
     })
   },[])
 
-  const tableRef = useRef<HTMLTableSectionElement>(null);
+  const ProdutosFiltrados = useMemo(() => {
+    const searchTerm = pesquisa.toLowerCase()
+    return produtosData.filter(itens => {
+      const searchContent = `
+      ${itens.nome.toLowerCase()}
+      ${itens.desc.toLowerCase()}
+      `;
 
-  const Pesquisar = (texto: string) => {
-    const searchTerm = texto.toLowerCase()
-    const table = tableRef.current
-
-    if (table) { 
-      const rows = Array.from(table.getElementsByTagName('main'));
-          
-      rows.forEach((row, index) => {
-        const loja = produtosData[index];
-          
-        const searchContent = `
-          ${loja.nome.toLowerCase()}
-          ${loja.desc.toLowerCase()}
-        `;
-        
-        if (searchContent.includes(searchTerm)) {
-          (row as HTMLElement).style.display = ''; 
-        } else {
-          (row as HTMLElement).style.display = 'none';
-        }
-      });
-    }
-  }
+      return searchContent.includes(searchTerm);
+    })
+  }, [pesquisa, produtosData])
 
   return (
     <>
@@ -78,12 +65,12 @@ export default function Products() {
                     priority
                   />
                   
-                  <input type="text" className="absolute left-[8vw] md:left-[3vw] lg:left-[2vw] outline-0 text-[4vw] md:text-[1.5vw] lg:text-[.8vw] dark:text-[#FFFFFF]" onChange={(e) => Pesquisar(e.target.value)}/>
+                  <input type="text" className="absolute left-[8vw] md:left-[3vw] lg:left-[2vw] outline-0 text-[4vw] md:text-[1.5vw] lg:text-[.8vw] dark:text-[#FFFFFF]" onChange={(e) => setPesquisar(e.target.value)}/>
                 </div>
               </div>
 
-              <div ref={tableRef} className="absolute w-[90vw] md:w-[80vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 top-[45vw] md:top-[15vw] lg:top-[12.5vw] left-[5vw] md:left-[2.7085vw] rounded items-center justify-between select-none gap-8">
-                {produtosData.map((item, index) => (
+              <div className="absolute w-[90vw] md:w-[80vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 top-[45vw] md:top-[15vw] lg:top-[12.5vw] left-[5vw] md:left-[2.7085vw] rounded items-center justify-between select-none gap-8">
+                {ProdutosFiltrados.map((item, index) => (
                   <main key={index}>
                     <div className="flex relative w-[90vw] md:w-[35vw] lg:w-[26vw] h-[60vw] md:h-[18vw] lg:h-[13vw] bg-[#FFFFFF] dark:bg-[#191919] rounded items-center justify-center hover:scale-105">
                       <Image
