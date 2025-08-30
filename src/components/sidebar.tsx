@@ -39,7 +39,10 @@ export function SideBar() {
                 setNome(data.nome);
                 localStorage.setItem('nome', data.nome);
             })
-            .catch((err) => Notify("Não foi possivel carregar toda a sidebar! Recarregue a Página"));
+            .catch((err) => {
+                Notify("Não foi possivel carregar toda a sidebar! Recarregue a Página")
+                console.error("SideBar: ",err)
+            });
         }
     }, []);
 
