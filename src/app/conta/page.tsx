@@ -2,14 +2,14 @@
 
 import { Notify } from "@/components/notify";
 import Pagina  from "@/components/pagina";
-import { Infos } from "@/types/types";
+import { Infos, TiposConta } from "@/types/types";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Conta() {
   const [infos,setInfos] = useState<Infos>({ nome: "", email: "", idade: "", rg: "", loc: "", celular: "", horario: "", foto: "/Avatar.svg" })
 
-  const tipos = [
+  const tipos: TiposConta[] = [
     { texto: "Primeiro Nome", variavel: "nome" },
     { texto: "Email", variavel: "email" },
     { texto: "RG", variavel: "rg" },

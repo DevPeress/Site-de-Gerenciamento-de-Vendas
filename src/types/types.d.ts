@@ -90,3 +90,8 @@ export interface TiposInicio {
     i: string
     v: number
 }
+
+export interface TiposConta {
+    texto: string
+    variavel: string
+}
