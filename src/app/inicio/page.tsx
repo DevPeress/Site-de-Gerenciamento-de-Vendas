@@ -20,7 +20,7 @@ export default async function DashBoard() {
     
     let valores = await JSON.parse(auth.value)
     if (!valores) return
-    
+
     let id: number = valores.id
 
     const resp = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/pegarValores?id=${id}`);
@@ -30,9 +30,7 @@ export default async function DashBoard() {
 
     const valores2: Valores = await resp.json();
         
-    if (!valores2) {
-       return
-    }
+    if (!valores2) return
 
     const tipos: TiposInicio[] = [
         { n: "ORÇAMENTO", i: "/budge.svg", v: valores2.budget },
