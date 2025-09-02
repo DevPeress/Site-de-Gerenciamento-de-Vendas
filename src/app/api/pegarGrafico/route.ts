@@ -25,9 +25,7 @@ export async function GET(req: Request) {
       where: { idLoja: id } 
     })
 
-    if (!empresa) {
-      return new NextResponse("ID inválido", { status: 400 });
-    }
+    if (!empresa) return new NextResponse("ID inválido", { status: 400 });
 
     const grafico = empresa.grafico
     if(grafico && typeof grafico === "object" && Object.values(grafico).length > 4) {
