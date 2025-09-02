@@ -27,9 +27,7 @@ export async function Infos(tipo: string, usuario?: number) {
         case "Dados":
             const auth = cookieStore.get('auth');
 
-            if (!auth) {
-                return false
-            }
+            if (!auth) return false
 
             const authData = JSON.parse(auth.value);
             return authData
