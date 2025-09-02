@@ -7,9 +7,7 @@ export async function PUT(req: Request) {
   const body = await req.json()
   const { senha, senhaNova } = body as { senha: string, senhaNova: string }
 
-  if (!senha || !senhaNova) {
-    return NextResponse.json({ status: 400, mensagem: "Ocorreu um erro!" })
-  }
+  if (!senha || !senhaNova) return NextResponse.json({ status: 400, mensagem: "Ocorreu um erro!" })
   
   const dados = await Infos("Dados")
   const id: number = dados.json().id
@@ -19,9 +17,7 @@ export async function PUT(req: Request) {
       where: { id: id }
     })
 
-    if (!conta) {
-      return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
-    }
+    if (!conta) return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
 
     const verify = await CheckPassword(senha,conta.senha)
     if (verify) {
