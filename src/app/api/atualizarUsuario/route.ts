@@ -14,9 +14,7 @@ export async function PUT(req: Request) {
             where: { id: id }
         })
 
-        if (!conta) {
-            return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
-        }
+        if (!conta) return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
 
         await prisma.usuario.update({
             where: { id: id },
