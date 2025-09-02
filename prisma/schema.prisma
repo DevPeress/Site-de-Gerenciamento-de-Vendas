@@ -33,7 +33,7 @@ model Produtos {
   idLoja  Int
   produto String
   desc String @default("Dropbox is a file hosting service that offers cloud storage, file synchronization, a personal cloud.")
-  icone String
+  icone String @default("/dropbox.svg")
 }
 
 model Empresas {
