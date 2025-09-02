@@ -9,10 +9,10 @@ import { LoginType } from "@/types/types";
 
 export default function Login() { 
     const { dark, toggleTheme } = useTheme()
+    const router = useRouter();
     const [login,setLogin] = useState<LoginType>({ email: "", senha: "" })
     const [etapa,setEtapa] = useState<"1" | "2">("1")
     const [mensagem,setMensagem] = useState<"Inserir Email" | "Logar na Plataforma">("Inserir Email") 
-    const router = useRouter();
 
     const email: string = login.email
     const senha: string = login.senha
@@ -46,7 +46,7 @@ export default function Login() {
         .then(data => { 
             if (data) {
                 setEtapa("2")
-                setMensagem("Logar na Plataforma")
+                return setMensagem("Logar na Plataforma")
             } else {
                 return router.push('/cadastro');
             }
@@ -67,7 +67,7 @@ export default function Login() {
         .then(data => { 
             if (data) {
                 if (data.status !== 400) {
-                    router.push('/inicio');
+                    return router.push('/inicio');
                 } else {
                     return Notify(data.mensagem)
                 }
