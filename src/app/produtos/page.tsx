@@ -23,7 +23,10 @@ export default function Products() {
       return fetch(`/api/pegarProdutos?id=${userId}`);
     })
     .then(res => res.json())
-    .then(data =>  { setprodutosData(data); setLoading(false) })
+    .then(data =>  { 
+      setprodutosData(data) 
+      setLoading(false) 
+    })
     .catch((err) => { 
       Notify("Não foi encontrado os dados! Recarregue a Página"); 
       setLoading(true)
