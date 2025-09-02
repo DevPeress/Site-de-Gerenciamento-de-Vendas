@@ -10,9 +10,7 @@ export async function GET(req: Request) {
       where: { id: id }
     })
 
-    if (!usuario) {
-      return new NextResponse("Usuário não encontrado", { status: 400 });
-    }
+    if (!usuario) return new NextResponse("Usuário não encontrado", { status: 400 });
 
     const dados = {
       nome: usuario.nome,
