@@ -58,11 +58,22 @@ export default function Login() {
     }
 
     const verifyLogin = () => {
-        if (!emailV || senha.length > 4) {
+        console.log(emailV)
+        console.log(senha.length)
+        if (!emailV || senha.length < 4) {
             return Notify("E-mail ou senha estão incorretos!")
         }
 
-        fetch(`/api/login?email=${email}&senha=${senha}`)
+        fetch("/api/login",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email,
+                senha: senha
+            })
+        })
         .then(res => res.json())
         .then(data => { 
             if (data) {

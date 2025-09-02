@@ -17,7 +17,7 @@ export async function POST(req: Request) {
           nome: nome,
           email: email,
           senha: senhaHash,
-          idade: idade,
+          idade: Number(idade),
           loc: "Osasco, Brasil, São Paulo",
           cell: celular,
           rg: rg,

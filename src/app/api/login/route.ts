@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import { CheckPassword } from "../../../lib/senha";
 import { Infos } from "../../../lib/dados";
 import { prisma } from "@/lib/prisma";
+import { LoginType } from "@/types/types";
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const email: string | null = searchParams.get("email")
-  const senha: string | null = searchParams.get("senha")
+export async function POST(req: Request) {
+  const body = await req.json();
+  const { email, senha } = body as LoginType
 
   if (!email || !senha) return NextResponse.json({ status: 400, mensagem: "E-mail ou senha estão incorretos!" })
 
