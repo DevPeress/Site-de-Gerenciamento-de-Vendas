@@ -8,18 +8,15 @@ const mesAtual = format(new Date(), 'MMMM', { locale: ptBR })
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const id: number = Number(searchParams.get("id"))
+  let porc = 0
+  let total = 0
 
   try {
     const valores = await prisma.empresas.findMany({
       where: { idLoja: id }
     })
 
-    if (!valores) {
-      return new NextResponse("Valores inválido", { status: 400 });
-    }
-
-    let porc = 0
-    let total = 0
+    if (!valores) return new NextResponse("Valores inválido", { status: 400 });
 
     const grafico = valores[0].grafico
     if(grafico && typeof grafico === "object" && Object.values(grafico).length > 4) {
