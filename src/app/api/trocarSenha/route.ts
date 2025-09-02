@@ -10,6 +10,7 @@ export async function PUT(req: Request) {
   if (!senha || !senhaNova) return NextResponse.json({ status: 400, mensagem: "Ocorreu um erro!" })
   
   const dados = await Infos("Dados")
+  if (!dados) return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
   const id: number = dados.json().id
 
   try {
