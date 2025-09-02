@@ -7,6 +7,7 @@ export async function GET() {
     const dados = await Infos("Dados")
     return NextResponse.json(dados)
   } catch(err) {
+    console.error("Infos: ", err)
     return new NextResponse("Erro ao encontrar dados", { status: 500 })
   } finally {
     await prisma.$disconnect()
