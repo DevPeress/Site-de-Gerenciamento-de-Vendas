@@ -7,6 +7,8 @@ export async function PUT(req: Request) {
     const { nome, email, loc, cell, rg, idade } = body as { nome: string, email: string, loc: string, cell: string, rg: string, idade: number }
     
     const dados = await Infos("Dados")
+    if (!dados) return NextResponse.json({ status: 400, mensagem: "Conta não encontrada!" })
+
     const id: number = dados.json().id
 
     try {
