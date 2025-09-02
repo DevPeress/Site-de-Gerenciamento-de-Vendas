@@ -1,17 +1,16 @@
 import { NextResponse } from "next/server";
 import { hashPassword } from "../../../lib/senha";
 import { prisma } from "@/lib/prisma";
+import { Registro } from "@/types/types";
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { email, senha, nome, idade, celular, rg } = body as { email: string, senha: string, nome: string, idade: number, celular: string, rg: string }
+  const { email, senha, nome, idade, celular, rg } = body as Registro
 
   try {
     const senhaHash = await hashPassword(senha);
 
-    if (typeof senhaHash !== "string") {
-      return new NextResponse("Erro ao gerar senha", { status: 500 });
-    }
+    if (typeof senhaHash !== "string") return new NextResponse("Erro ao gerar senha", { status: 500 });
 
     const user = await prisma.usuario.create({
         data: {
