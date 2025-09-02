@@ -31,7 +31,5 @@ export async function Infos(tipo: string, usuario?: number) {
 
             const authData = JSON.parse(auth.value);
             return authData
-        case "Login":
-            return !!cookieStore.get('auth');
     }
 }
