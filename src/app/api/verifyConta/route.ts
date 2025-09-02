@@ -5,9 +5,7 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const email: string | null = searchParams.get("email")
 
-  if (!email) {
-    return new NextResponse("Email inválido", { status: 400 });
-  }
+  if (!email) return new NextResponse("Email inválido", { status: 400 });
 
   try {
     const vendas = await prisma.usuario.findFirst({
