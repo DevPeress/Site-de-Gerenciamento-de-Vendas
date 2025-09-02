@@ -18,18 +18,18 @@ export async function PUT(req: Request) {
 
         await prisma.usuario.update({
             where: { id: id },
-            data: {
-                nome: nome,
-                email: email,
-                loc: loc,
-                cell: cell,
-                rg: rg,
-                idade: idade
+                data: {
+                    nome: nome,
+                    email: email,
+                    loc: loc,
+                    cell: cell,
+                    rg: rg,
+                    idade: idade
+                }
             }
-        }
-    )
+        )
 
-    return NextResponse.json("Senha alterada com sucesso!")
+        return NextResponse.json("Senha alterada com sucesso!")
     } catch(err) {
         console.error("[GET Login]:", err)
         return new NextResponse("Erro ao encontrar dados", { status: 500 })
